@@ -21,6 +21,7 @@ CREATE TABLE user_roles (
 
 CREATE TABLE driver(
     driver_id INTEGER,
+    user_id INTEGER,
     driver_name varchar(100) DEFAULT NULL,
     driver_email varchar(100) DEFAULT NULL,
     driver_phno varchar(100) DEFAULT NULL,
@@ -29,6 +30,7 @@ CREATE TABLE driver(
 
 CREATE TABLE customer(
     customer_id INTEGER,
+    user_id INTEGER,
     customer_name varchar(100) DEFAULT NULL,
     customer_email varchar(100) DEFAULT NULL,
     customer_phno varchar(100) DEFAULT NULL,
@@ -78,11 +80,11 @@ FOREIGN KEY (role_id) REFERENCES role(role_id);
 
 ALTER TABLE customer
 ADD CONSTRAINT fk_customer_user
-FOREIGN KEY (customer_id) REFERENCES user(user_id);
+FOREIGN KEY (user_id) REFERENCES user(user_id);
 
 ALTER TABLE driver
 ADD CONSTRAINT fk_driver_user
-FOREIGN KEY (driver_id) REFERENCES user(user_id);
+FOREIGN KEY (user_id) REFERENCES user(user_id);
 
 ALTER TABLE request
 ADD CONSTRAINT fk_cab_request
