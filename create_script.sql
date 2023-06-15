@@ -21,7 +21,7 @@ CREATE TABLE user_roles (
 
 CREATE TABLE driver(
     driver_id INTEGER,
-    user_id INTEGER,
+    user_id INTEGER UNIQUE NOT NULL,
     driver_name varchar(100) DEFAULT NULL,
     driver_email varchar(100) DEFAULT NULL,
     driver_phno varchar(100) DEFAULT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE driver(
 
 CREATE TABLE customer(
     customer_id INTEGER,
-    user_id INTEGER,
+    user_id INTEGER UNIQUE NOT NULL,
     customer_name varchar(100) DEFAULT NULL,
     customer_email varchar(100) DEFAULT NULL,
     customer_phno varchar(100) DEFAULT NULL,
@@ -119,3 +119,6 @@ INSERT INTO user values (3,"customer","$2a$08$qlXB4Pk7sF9ApzimkeQI0eDGvPWGal.Y26
 INSERT INTO user_roles (user_id, role_id) SELECT user.user_id, 1 FROM user WHERE user.username = "admin";
 INSERT INTO user_roles (user_id, role_id) SELECT user.user_id, 2 FROM user WHERE user.username = "driver";
 INSERT INTO user_roles (user_id, role_id) SELECT user.user_id, 3 FROM user WHERE user.username = "customer";
+
+INSERT INTO user_roles (user_id, role_id) SELECT user.user_id, 2 FROM user WHERE user.username = "admin";
+INSERT INTO user_roles (user_id, role_id) SELECT user.user_id, 3 FROM user WHERE user.username = "admin";
