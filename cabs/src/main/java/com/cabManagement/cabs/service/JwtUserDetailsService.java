@@ -85,7 +85,6 @@ public class JwtUserDetailsService implements UserDetailsService {
         return userDao.save(newUser);
     }
 
-
     public User saveAdmin(UserDTO user){
         User newUser = new User();
         newUser.setUsername(user.getUsername());

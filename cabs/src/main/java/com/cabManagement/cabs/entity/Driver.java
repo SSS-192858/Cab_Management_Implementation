@@ -8,7 +8,7 @@ public class Driver {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "")
+    @Column(name = "driver_id")
     private Integer id;
 
     public Integer getId() {
@@ -19,18 +19,19 @@ public class Driver {
         this.id = id;
     }
 
-    @Column(name = "")
+    @Column(name = "driver_name")
     private String driverName;
 
-    @Column(name = "")
+    @Column(name = "driver_email")
     private String email;
 
-    @Column(name = "")
+    @Column(name = "driver_phno")
     private String phone;
 
     @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "user_id")
     private User user;
+
     public User getUser() {
         return user;
     }

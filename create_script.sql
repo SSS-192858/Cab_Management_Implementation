@@ -42,6 +42,7 @@ CREATE TABLE cab(
     model varchar(20) DEFAULT NULL,
     colour varchar(20) DEFAULT NULL,
     fare INTEGER,
+    driver_id INTEGER UNIQUE,
     constraint pk_cab PRIMARY KEY (registration_number)
 );
 
@@ -52,13 +53,6 @@ CREATE TABLE request(
     start_date timestamp NOT NULL DEFAULT current_timestamp(),
     end_date datetime DEFAULT NULL,
     constraint pk_request PRIMARY KEY (slno)
-);
-
-CREATE TABLE cab_driver(
-    slno INTEGER,
-    driver_id INTEGER,
-    registration_number varchar(20),
-    constraint pk_cab_driver PRIMARY KEY (slno)
 );
 
 CREATE TABLE customer_cab(
