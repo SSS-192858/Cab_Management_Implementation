@@ -31,12 +31,38 @@ public class Customer {
     @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<CustomerCab> cabs;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Request> requests;
+
+
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<CustomerCab> getCabs(){
+        return this.cabs;
+    }
+
+    public void setCabs(List<CustomerCab> cabs){
+        this.cabs = cabs;
+    }
+
+    public List<Request> getRequests(){
+        return this.requests;
+    }
+
+    public void setRequests(List<Request> requests){
+        this.requests = requests;
     }
 
     public void setCustomerName(String customerName)
@@ -68,6 +94,14 @@ public class Customer {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public void addRequest(Request request){
+        if (requests == null){
+            requests = new ArrayList<Request>();
+        }
+        this.requests.add(request);
+        request.setCustomer(this);
     }
 
 }
