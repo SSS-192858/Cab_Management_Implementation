@@ -70,7 +70,7 @@ public class CabService {
             throw new DriverNotFoundException();
         }
 
-        cab.setDriver(driver);
+        cab.setDriver(driver1);
         return this.cabDAO.saveCab(cab);
     }
 }

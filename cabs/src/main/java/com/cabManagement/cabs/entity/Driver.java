@@ -52,6 +52,11 @@ public class Driver {
     public Driver (String driverName,String email,String phone) {
         this.driverName = driverName;
         this.phone = phone;
+        this.email = email;
+    }
+
+    public Driver(){
+
     }
 
     public String getEmail() {
