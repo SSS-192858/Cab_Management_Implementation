@@ -9,7 +9,6 @@ import java.util.*;
 public class Cab {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "registration_number")
     private String reg_no;
 
@@ -22,11 +21,11 @@ public class Cab {
     @Column(name = "fare")
     private double fare;
 
-    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
     @JoinColumn(name = "driver_id")
     private Driver driver;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cab")
     @JsonIgnore
     private List<CustomerCab> customers;
 
@@ -60,11 +59,11 @@ public class Cab {
     {
         this.colour = colour;
     }
-    public void setFair(double fare)
+    public void setFare(double fare)
     {
         this.fare = fare;
     }
-    public double getFair()
+    public double getFare()
     {
         return this.fare;
     }

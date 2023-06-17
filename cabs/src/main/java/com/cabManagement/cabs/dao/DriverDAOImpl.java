@@ -1,12 +1,13 @@
 package com.cabManagement.cabs.dao;
 
+import com.cabManagement.cabs.entity.Cab;
 import com.cabManagement.cabs.entity.Driver;
 import com.cabManagement.cabs.exceptions.CabNotFoundException;
 import com.cabManagement.cabs.exceptions.DriverNotFoundException;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.NonUniqueResultException;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,8 +16,7 @@ import java.util.List;
 public class DriverDAOImpl implements DriverDAO{
     private EntityManager entityManager;
 
-    public DriverDAOImpl() {}
-
+    @Autowired
     public DriverDAOImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
@@ -24,8 +24,7 @@ public class DriverDAOImpl implements DriverDAO{
     @Override
     @Transactional
     public Driver save(Driver driver) {
-        this.entityManager.merge(driver);
-        return driver;
+        return this.entityManager.merge(driver);
     }
 
     @Override
@@ -54,14 +53,8 @@ public class DriverDAOImpl implements DriverDAO{
     }
 
     @Override
-    public Driver getDriverByCabRegNo(String reg_no){
-        TypedQuery<Driver> query= this.entityManager.createQuery("FROM Cab where driver.id = :id", Driver.class);
-        List<Driver> result = query.getResultList();
-
-        if (result.isEmpty()){
-            throw new CabNotFoundException();
-        }else if (result.size() == 1) return result.get(0);
-
-        throw new NonUniqueResultException();
+    public Driver getDriverByCabRegNo(String reg_no) throws CabNotFoundException{
+        Cab cab = this.entityManager.find(Cab.class, reg_no);
+        return cab.getDriver();
     }
 }

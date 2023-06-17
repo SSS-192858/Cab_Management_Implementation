@@ -1,0 +1,16 @@
+{
+    "customer":{
+        "id": 2,
+        "customerName": "hduqidqqhqevfqeifgqeig",
+        "email": "dpiquifq@gmail.com",
+        "phone": "6315481343"
+    },
+    "cab":{
+        "reg_no": "abc12345",
+        "model": "Maruti Baleno",
+        "colour": "White",
+        "fare": 100.0
+    },
+    "startDate":"2023-04-21T00:00:00Z",
+    "endDate":"2023-04-22T00:00:00Z"
+}

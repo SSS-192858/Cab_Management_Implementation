@@ -24,8 +24,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     @Transactional
     public Customer save(Customer customer) {
-        this.entityManager.merge(customer);
-        return customer;
+        return this.entityManager.merge(customer);
     }
 
     @Override

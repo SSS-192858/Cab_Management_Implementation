@@ -28,14 +28,14 @@ public class CabController {
         return this.cabService.findAllCabs();
     }
 
-    @GetMapping("/{cabId}")
-    public Cab findCabById(@PathVariable  String reg_no) {
+    @GetMapping("/{reg_no}")
+    public Cab findCabById(@PathVariable String reg_no) {
         Cab cab = this.cabService.findCabById(reg_no);
         return cab;
     }
 
-    @DeleteMapping("/delete/{cabId}")
-    public Cab deleteCabById(@PathVariable  String reg_no){
+    @DeleteMapping("/delete/{reg_no}")
+    public Cab deleteCabById(@PathVariable String reg_no){
         return this.cabService.deleteCabById(reg_no);
     }
 
@@ -46,17 +46,18 @@ public class CabController {
     }
 
     @GetMapping("/getByDriverID/{id}")
-    public List<Cab> getCabsByDriverId(Integer id){
+    public List<Cab> getCabsByDriverId(@PathVariable Integer id){
         return this.cabService.getCabsByDriverId(id);
     }
 
 
-    @PutMapping("/updateDriver")
-    public Cab assignDriver(@RequestBody String reg_no,@RequestBody Driver driver){
+    @PutMapping("/updateDriver/{reg_no}")
+    public Cab assignDriver(@PathVariable String reg_no, @RequestBody Driver driver){
         return this.cabService.assignDriver(reg_no,driver);
     }
 
-
-
-
+    @PostMapping("/addCab")
+    public Cab addCab(@RequestBody Cab cab){
+        return this.cabService.saveCab(cab);
+    }
 }

@@ -52,6 +52,6 @@ public class DriverService {
     }
 
     public Driver getDriverByCabRegNo(String reg_no){
-        return this.getDriverByCabRegNo(reg_no);
+        return driverDAO.getDriverByCabRegNo(reg_no);
     }
 }

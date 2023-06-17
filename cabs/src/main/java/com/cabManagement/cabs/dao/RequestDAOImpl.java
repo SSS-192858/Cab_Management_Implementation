@@ -13,12 +13,10 @@ import java.util.List;
 public class RequestDAOImpl implements RequestDAO{
 
     private EntityManager entityManager;
-
     @Autowired
     public RequestDAOImpl(EntityManager entityManager){
         this.entityManager = entityManager;
     }
-
 
     @Override
     @Transactional
@@ -42,27 +40,26 @@ public class RequestDAOImpl implements RequestDAO{
 
     @Override
     public Request getRequestById(Integer id) {
-        Request request = this.entityManager.find(Request.class, id);
-        return request;
+        return this.entityManager.find(Request.class, id);
     }
 
     @Override
     public List<Request> getRequestByCustomerId(Integer id) {
-        TypedQuery<Request> query = this.entityManager.createQuery("FROM Request where Request.Customer.id=:val", Request.class);
+        TypedQuery<Request> query = this.entityManager.createQuery("FROM Request where customer.id=:val", Request.class);
         query.setParameter("val",id);
         return query.getResultList();
     }
 
     @Override
     public List<Request> getRequestByCabId(String id) {
-        TypedQuery<Request> query = this.entityManager.createQuery("FROM Request where Request.Cab.reg_no=:val", Request.class);
+        TypedQuery<Request> query = this.entityManager.createQuery("FROM Request where cab.reg_no=:val", Request.class);
         query.setParameter("val",id);
         return query.getResultList();
     }
 
     @Override
     public List<Request> getRequestByDriverId(Integer id) {
-        TypedQuery<Request> query = this.entityManager.createQuery("FROM Request where Request.Driver.id=:val", Request.class);
+        TypedQuery<Request> query = this.entityManager.createQuery("FROM Request where cab.driver.id=:val", Request.class);
         query.setParameter("val",id);
         return query.getResultList();
     }

@@ -5,12 +5,13 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "customer_cab")
 public class CustomerCab {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "slno")
-    private Integer Slno;
+    private Integer slno;
 
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "customer_id")
@@ -40,11 +41,11 @@ public class CustomerCab {
     }
 
     public void setSlno(Integer slno) {
-        this.Slno = slno;
+        this.slno = slno;
     }
 
     public Integer getSlno() {
-        return Slno;
+        return slno;
     }
 
     public Cab getCab() {

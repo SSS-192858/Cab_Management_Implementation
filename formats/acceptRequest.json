@@ -1,0 +1,43 @@
+{
+    "id": 2,
+    "customer": {
+        "id": 2,
+        "customerName": "hduqidqqhqevfqeifgqeig",
+        "email": "dpiquifq@gmail.com",
+        "phone": "6315481343",
+        "user": {
+            "id": 3,
+            "username": "customer",
+            "roles": [
+                {
+                    "id": 3,
+                    "name": "CUSTOMER"
+                }
+            ]
+        }
+    },
+    "cab": {
+        "reg_no": "abc12345",
+        "model": "Maruti Baleno",
+        "colour": "White",
+        "fare": 100.0,
+        "driver": {
+            "id": 3,
+            "driverName": "eoifhiuf",
+            "email": "diqhfiqe@gmail.com",
+            "phone": "7167168741",
+            "user": {
+                "id": 2,
+                "username": "driver",
+                "roles": [
+                    {
+                        "id": 2,
+                        "name": "DRIVER"
+                    }
+                ]
+            }
+        }
+    },
+    "startDate": "2023-04-21T00:00:00.000+00:00",
+    "endDate": "2023-04-22T00:00:00.000+00:00"
+}

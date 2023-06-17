@@ -32,11 +32,11 @@ public class Customer {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
     @JsonIgnore
     private List<CustomerCab> cabs;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
     @JsonIgnore
     private List<Request> requests;
 
@@ -78,6 +78,10 @@ public class Customer {
         this.customerName = customerName;
         this.email = email;
         this.phone = phone;
+    }
+
+    public Customer(){
+
     }
 
     public String getEmail() {

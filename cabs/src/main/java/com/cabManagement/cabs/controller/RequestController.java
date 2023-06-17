@@ -50,7 +50,7 @@ public class RequestController {
 
     @GetMapping("/requests/driver/{id}")
     public List<Request> getAllRequestsByDriverId(@PathVariable int id){
-        return requestService.getRequestByCustomerId(id);
+        return requestService.getRequestByDriverId(id);
     }
 
     @PostMapping("/requests/save")
@@ -90,7 +90,7 @@ public class RequestController {
         return customerCabService.getRequestByDriverId(id);
     }
 
-    @GetMapping("/customerCab/cab/{id}")
+    @GetMapping("/customerCab/cab/{reg_no}")
     public List<CustomerCab> getByCabId(@PathVariable String reg_no){
         return customerCabService.getByCabId(reg_no);
     }
@@ -116,6 +116,8 @@ public class RequestController {
             cc.setEndDate(request.getEndDate());
             cc.setStartDate(request.getStartDate());
             cc.setCab(request.getCab());
+            Driver driver = driverService.getDriverByCabRegNo(request.getCab().getReg_no());
+            cc.getCab().setDriver(driver);
             cc.setCustomer(request.getCustomer());
 
             User user = jwtUserDetailsService.getUserByUsername(request.getCustomer().getUser().getUsername());

@@ -56,8 +56,7 @@ public class DriverController {
         User user = jwtUserDetailsService.getUserByUsername(username);
         driver.setId(0);
         driver.setUser(user);
-        this.driverService.saveDriver(driver);
-        return driver;
+        return this.driverService.saveDriver(driver);
     }
 }
 
