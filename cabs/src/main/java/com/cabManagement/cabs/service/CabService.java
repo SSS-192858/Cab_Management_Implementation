@@ -55,7 +55,11 @@ public class CabService {
         return cab;
     }
 
-    public List<Cab> getCabsByDriverId(Integer id){
+    public List<Cab> getCabsByDriverId(Integer id) throws DriverNotFoundException{
+        Driver driver = this.driverDAO.getDriverbyId(id);
+        if (driver == null){
+            throw new DriverNotFoundException();
+        }
         return this.cabDAO.listCabsByDriverId(id);
     }
 

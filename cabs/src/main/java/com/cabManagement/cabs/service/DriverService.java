@@ -1,7 +1,10 @@
 package com.cabManagement.cabs.service;
 
+import com.cabManagement.cabs.dao.CabDAO;
 import com.cabManagement.cabs.dao.DriverDAO;
+import com.cabManagement.cabs.entity.Cab;
 import com.cabManagement.cabs.entity.Driver;
+import com.cabManagement.cabs.exceptions.CabNotFoundException;
 import com.cabManagement.cabs.exceptions.DriverNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,9 +15,11 @@ import java.util.List;
 public class DriverService {
 
     private DriverDAO driverDAO;
+    private CabDAO cabDAO;
 
     @Autowired
-    public DriverService(DriverDAO driverDAO) {
+    public DriverService(DriverDAO driverDAO, CabDAO cabDAO) {
+        this.cabDAO = cabDAO;
         this.driverDAO = driverDAO;
     }
 
@@ -51,7 +56,11 @@ public class DriverService {
         return driver;
     }
 
-    public Driver getDriverByCabRegNo(String reg_no){
+    public Driver getDriverByCabRegNo(String reg_no) throws CabNotFoundException {
+        Cab cab = this.cabDAO.findCabById(reg_no);
+        if (cab == null){
+            throw new CabNotFoundException();
+        }
         return driverDAO.getDriverByCabRegNo(reg_no);
     }
 }

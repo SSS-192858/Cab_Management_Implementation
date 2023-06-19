@@ -50,7 +50,7 @@ public class WebSecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests((configurer)->{
                     configurer.requestMatchers("/authenticate","/register_customer").permitAll()
-                            .requestMatchers(HttpMethod.POST,"/register_admin", "/register/driver").hasRole("ADMIN")
+                            .requestMatchers(HttpMethod.POST,"/register_admin", "/register_driver").hasRole("ADMIN")
                             .requestMatchers(HttpMethod.GET,"/dummy_customers").hasRole("CUSTOMER")
                             .requestMatchers(HttpMethod.GET,"/dummy_admin").hasRole("ADMIN")
                             .requestMatchers(HttpMethod.GET, "/dummy_driver").hasRole("DRIVER")
