@@ -12,6 +12,7 @@ import com.cabManagement.cabs.entity.User;
 
 @RestController
 @RequestMapping("/driver")
+@CrossOrigin(origins = "*")
 public class DriverController {
     private JwtTokenUtil jwtTokenUtil;
     private JwtUserDetailsService jwtUserDetailsService;

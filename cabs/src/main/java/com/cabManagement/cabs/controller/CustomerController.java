@@ -10,6 +10,7 @@ import com.cabManagement.cabs.entity.User;
 
 @RestController
 @RequestMapping("/customer")
+@CrossOrigin(origins = "*")
 public class CustomerController {
     private JwtTokenUtil jwtTokenUtil;
     private JwtUserDetailsService jwtUserDetailsService;
