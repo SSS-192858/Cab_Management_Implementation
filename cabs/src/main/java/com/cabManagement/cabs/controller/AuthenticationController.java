@@ -71,7 +71,7 @@ public class AuthenticationController {
 
     @RequestMapping(value = "/dummy_customers", method = RequestMethod.GET)
     public String userPage(){
-        return "Hello Student";
+        return "Hello Customer";
     }
 
     @RequestMapping(value = "/dummy_admin", method = RequestMethod.GET)
@@ -81,7 +81,7 @@ public class AuthenticationController {
 
     @RequestMapping(value = "/dummy_driver", method = RequestMethod.GET)
     public String driverPage(){
-        return "Hello Admin";
+        return "Hello Driver";
     }
 
     private void authenticate(String username, String password) throws Exception {
