@@ -4,7 +4,7 @@ use Cab_management_system;
 
 create table user(
     user_id INTEGER PRIMARY KEY auto_increment,
-    username varchar(100) NOT NULL,
+    username varchar(100) UNIQUE NOT NULL,
     password char(68) NOT NULL
 );
 
