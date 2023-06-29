@@ -22,5 +22,12 @@ export const phoneValidator = phone => {
     }
     return "";
 }
-  
-  
+
+export const confirmPasswordValidator = (confirmPassword, form) => {
+  if (!confirmPassword) {
+    return "Confirm password is required";
+  } else if (confirmPassword !== form.password) {
+    return "Passwords do not match";
+  }
+  return "";
+};

@@ -64,7 +64,7 @@ public class AuthenticationController {
         UserDTO dto = new UserDTO();
         dto.setPassword(user.getPassword());
         dto.setUsername(user.getUsername());
-        User user1 = this.userDetailsService.saveUser(dto);
+        User user1 = this.userDetailsService.saveDriver(dto);
         final String token = tokenGenerator(user.getUsername(), user.getPassword());
         return ResponseEntity.ok(new JwtResponse(token, user1));
     }
