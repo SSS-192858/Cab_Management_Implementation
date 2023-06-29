@@ -8,7 +8,7 @@ import { deleteRequest , accept } from "../services/request_services";
 import { useNavigate } from "react-router-dom";
 import { getRequestFromStorage } from "../services/localStorageHandler";
 
-const RequestDetails = ({isStudent,isAdmin}) => {
+const RequestDetails = ({isCustomer,isAdmin,isDriver}) => {
 
     const [open, setOpen] = useState(false);
     const [open1, setOpen1] = useState(false);
@@ -22,11 +22,13 @@ const RequestDetails = ({isStudent,isAdmin}) => {
     })
 
     const handleToClose = () => {
-        deleteRequest(request.slno);
+        deleteRequest(request.id);
         setOpen(false);
         setOpen1(false);
         if(isAdmin){navigate("/allRequests")}
-        else if(isStudent){navigate("/requestsForStudent")}
+        else if(isCustomer){navigate("/requestsForCustomer")}
+        else if(isDriver){navigate("/requestForDriver")}
+
     };
 
     const handleCancel = ()=>{
@@ -44,7 +46,7 @@ const RequestDetails = ({isStudent,isAdmin}) => {
                 navigate("/allRequests")
             },
             error => {
-              const resMessage = "The book can't be assigned for the requested dates as it has already been issued to someone else for these dates."
+              const resMessage = "The cab can't be assigned for the requested dates as it has already been issued to someone else for these dates."
               setMessage(resMessage);
               setAcceptOpen(false);
               setOpen1(true);
@@ -54,14 +56,14 @@ const RequestDetails = ({isStudent,isAdmin}) => {
 
     return (
         <div>
-            <p>{request.slno}</p>
-            <p>{request.student.id}</p>
-            <p>{request.student.studentName}</p>
-            <p>{request.student.email}</p>
-            <p>{request.student.phone}</p>
-            <p>{request.book.bookCode}</p>
-            <p>{request.book.bookTitle}</p>
-            <p>{request.book.author}</p>
+            <p>{request.id}</p>
+            <p>{request.customer.id}</p>
+            <p>{request.customer.customerName}</p>
+            <p>{request.customer.email}</p>
+            <p>{request.customer.phone}</p>
+            <p>{request.cab.reg_no}</p>
+            <p>{request.cab.model}</p>
+            <p>{request.cab.colour}</p>
             <p>{request.startDate}</p>
             <p>{request.endDate}</p>
 

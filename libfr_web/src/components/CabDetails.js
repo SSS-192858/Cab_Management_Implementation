@@ -38,20 +38,21 @@ const CabDetails = ({isCustomer,isAdmin,isDriver}) => {
         navigate("/cabRequest")
     }
 
-    const seeRequestsForBook = () => {
+    const seeRequestsForCab = () => {
         navigate("/requestsForCab");
     }
 
+    // customer Cab
     const seeBookStudentsForBook = () => {
         navigate("/bookStudentByBook");
     }
 
     return (
         <div>
-            <p>{cab.re}</p>
-            <p>{book.bookTitle}</p>
-            <p>{book.author}</p>
-            <p>{book.bookDesc}</p>
+            <p>{cab.reg_no}</p>
+            <p>{cab.model}</p>
+            <p>{cab.colour}</p>
+            <p>{cab.fare}</p>
 
             {isCustomer &&
             <button onClick={handleRequest} className="btn btn-primary btn-block">
@@ -62,16 +63,16 @@ const CabDetails = ({isCustomer,isAdmin,isDriver}) => {
             {isAdmin && 
 
             <>
-            <button onClick={seeRequestsForBook} className="btn btn-primary btn-block">
-                See all requests for this book
+            <button onClick={seeRequestsForCab} className="btn btn-primary btn-block">
+                See all requests for this Cab
             </button>
 
             <button onClick={navFunc} className="btn btn-primary btn-block">
-                Update Book
+                Update Cab
             </button>
 
             <button onClick={()=>{setOpen(true)}} className="btn btn-primary btn-block">
-                Delete Book
+                Delete Cab
             </button>
 
             </>
@@ -79,16 +80,16 @@ const CabDetails = ({isCustomer,isAdmin,isDriver}) => {
 
             {isAdmin && 
                 <button onClick={seeBookStudentsForBook} className="btn btn-primary btn-block">
-                    See all records for issue of this book
+                    See all records for this Cab
                 </button>
             } 
             
              
             <Dialog open={open} onClose={handleToClose}>
-                <DialogTitle>{"Delete Book"}</DialogTitle>
+                <DialogTitle>{"Delete Cab"}</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        Are you sure you want to delete the book?
+                        Are you sure you want to delete the Cab?
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>

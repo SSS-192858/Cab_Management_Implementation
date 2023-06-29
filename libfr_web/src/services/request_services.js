@@ -9,29 +9,33 @@ export const getAllRequests = async () => {
     return responseList.data;
 }
 
-export const getRequestByStudentId = async(id) => {
+export const getRequestByCustomerID = async(id) => {
     var token = authHeader();
-    const responseList = await axios.get(API_URL+`requests/student/${id}`, {headers: {Authorization: "Bearer "+token}});
+    const responseList = await axios.get(API_URL+`requests/customer/${id}`, {headers: {Authorization: "Bearer "+token}});
     return responseList.data;
 }
 
-export const getRequestByBookCode = async(id) => {
+export const getRequestByCabCode = async(id) => {
     var token = authHeader();
     console.log(id)
-    const responseList = await axios.get(API_URL+`requests/book/${id}`, {headers: {Authorization: "Bearer "+token}});
+    const responseList = await axios.get(API_URL+`requests/cab/${id}`, {headers: {Authorization: "Bearer "+token}});
     return responseList.data;
 }
 
+export const getRequestByDriverId = async(id)=>{
+    const responseList = await axios.get(API_URL+`requests/driver/${id}`,{headers: {Authorization: "Bearer "+token}});
+    return responseList.data;
+}
 export const getRequestById = async (request_id) => {
     const response = await axios.get(API_URL + `requests/${request_id}`, { headers: { Authorization: "Bearer " + authHeader() } });
     console.log(response.data)
     return response.data;
 }
 
-export const registerRequest = async(student,book,startDate,endDate)=>{
+export const registerRequest = async(customer,cab,startDate,endDate)=>{
     await axios.post(API_URL+`requests/save`,{
-        student,
-        book,
+        customer,
+        cab,
         startDate,
         endDate
     } , {headers:{Authorization:"Bearer "+authHeader()}}
@@ -47,10 +51,10 @@ export const deleteRequest = async(slno) => {
 
 export const accept = async(request) => {
     console.log(request);
-    const response = await axios.post(API_URL+`bookStudent/accept`,{
-        slno : request.slno,
-        book : request.book,
-        student: request.student,
+    const response = await axios.post(API_URL+`/customerCab/accept`,{
+        id : request.id,
+        cab : request.cab,
+        customer: request.customer,
         startDate: request.startDate,
         endDate: request.endDate
     }, {headers:{Authorization:"Bearer "+authHeader()}});
