@@ -5,18 +5,19 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import { useNavigate } from "react-router-dom";
-import {useBookSaveValidator} from "../validators/BookSaveValidator";
-import {saveBook} from '../services/auth_services';
-import { removeBookFromStorage } from "../services/localStorageHandler";
+import { saveCab} from '../services/auth_services';
+import {removeCabFromStorage } from "../services/localStorageHandler";
+import { useCabSaveValidator } from "../validators/CabSaveValidator";
 
-const BookSaveForm = () => {
+const CabSaveForm = () => {
   
     const [open,setOpen] = React.useState(false);
 
     const [form, setForm] = useState({
-        bookTitle: "",
-        author: "",
-        bookDesc:""
+        reg_no: "",
+        model: "",
+        colour:"",
+        fare:""
   });
 
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const BookSaveForm = () => {
 };
   const [message, setMessage] = useState("");
 
-  const {errors, validateForm} = useBookSaveValidator(form)
+  const {errors, validateForm} = useCabSaveValidator(form)
 
   const onUpdateField = e => {
     const nextFormState = {
@@ -38,8 +39,8 @@ const BookSaveForm = () => {
 
   const handleToClose = () => {
     setOpen(false);
-    navigate("/books")
-    removeBookFromStorage();
+    navigate("/cabs")
+    removeCabFromStorage();
   };
 
   const onSubmitForm = e => {
@@ -47,7 +48,7 @@ const BookSaveForm = () => {
     e.preventDefault();    
     const { isValid } = validateForm({ form, errors, forceTouchErrors: true });
     if (!isValid) return;
-    saveBook(form.bookTitle, form.bookDesc, form.author).then(
+    saveCab(form.reg_no,form.model, form.colour,form.fare).then(
         response => {
             handleClickToOpen()
         },
@@ -74,53 +75,68 @@ const BookSaveForm = () => {
 
             <form onSubmit={onSubmitForm}>
                 <div className="form-group">
-                    <label htmlFor="bookTitle">Book Title</label>
+                    <label htmlFor="bookTitle">reg_no</label>
                     <input
                     className="form-control"
                     type="text"
-                    aria-label="bookTitle"
-                    name="bookTitle"
-                    placeholder="book name"
-                    value={form.bookTitle}
+                    aria-label="reg_no"
+                    name="reg_no"
+                    placeholder="reg_no"
+                    value={form.reg_no}
                     onChange={onUpdateField}
                     />
 
-                    {errors.bookTitle.dirty && errors.bookTitle.error ? (
-                            <div className="alert alert-danger" role="alert">{errors.bookTitle.message}</div>
+                    {errors.reg_no.dirty && errors.reg_no.error ? (
+                            <div className="alert alert-danger" role="alert">{errors.reg_no.message}</div>
                             ) : null}
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="bookDesc">Book Desc</label>
+                    <label htmlFor="model">Model</label>
                     <textarea
                     className="form-control"
-                    type="bookDesc"
-                    aria-label="bookDesc"
-                    name="bookDesc"
-                    placeholder="book description"
-                    value={form.bookDesc}
+                    type="model"
+                    aria-label="model"
+                    name="model"
+                    placeholder="model"
+                    value={form.model}
                     onChange={onUpdateField}
                     />
 
-                    {errors.bookDesc.dirty && errors.bookDesc.error ? (
-                            <div className="alert alert-danger" role="alert">{errors.bookDesc.message}</div>
+                    {errors.model.dirty && errors.model.error ? (
+                            <div className="alert alert-danger" role="alert">{errors.model.message}</div>
                             ) : null}
                 </div>
-
                 <div className="form-group">
-                    <label htmlFor="author">Author</label>
+                    <label htmlFor="colour">Colour</label>
                     <input
                     className="form-control"
-                    type="author"
-                    aria-label="author"
-                    name="author"
-                    placeholder="book author"
-                    value={form.author}
+                    type="colour"
+                    aria-label="colour"
+                    name="colour"
+                    placeholder="colour"
+                    value={form.colour}
                     onChange={onUpdateField}
                     />
 
-                    {errors.author.dirty && errors.author.error ? (
-                            <div className="alert alert-danger" role="alert">{errors.author.message}</div>
+                    {errors.colour.dirty && errors.colour.error ? (
+                            <div className="alert alert-danger" role="alert">{errors.colour.message}</div>
+                            ) : null}
+                </div>
+                <div className="form-group">
+                    <label htmlFor="fare">Fare</label>
+                    <input
+                    className="form-control"
+                    type="fare"
+                    aria-label="fare"
+                    name="fare"
+                    placeholder="fare"
+                    value={form.fare}
+                    onChange={onUpdateField}
+                    />
+
+                    {errors.fare.dirty && errors.fare.error ? (
+                            <div className="alert alert-danger" role="alert">{errors.fare.message}</div>
                             ) : null}
                 </div>
                 <div className="form-group">
@@ -135,10 +151,10 @@ const BookSaveForm = () => {
             </form>
         </div>
         <Dialog open={open} onClose={handleToClose}>
-                <DialogTitle>{"Book Saved successfully"}</DialogTitle>
+                <DialogTitle>{"Cab Saved successfully"}</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        Book was saved successfully
+                        Cab was saved successfully
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
@@ -152,4 +168,4 @@ const BookSaveForm = () => {
   );
 };
 
-export default BookSaveForm;
+export default CabSaveForm;

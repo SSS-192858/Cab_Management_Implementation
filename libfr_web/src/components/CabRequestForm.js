@@ -7,10 +7,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import {registerRequest} from "../services/request_services";
-import { RequestBookValidator } from "../validators/RequestBookValidator";
-import { getBookFromStorage, getStudentFromStorage } from "../services/localStorageHandler";
+import {getCabFromStorage, getCustomerFromStorage} from "../services/localStorageHandler";
+import { RequestCabValidator } from "../validators/RequestCabValidator";
 
-const BookRequestForm = () => {
+const CabRequestForm = () => {
 
     const [open, setOpen] = React.useState(false);
 
@@ -19,20 +19,20 @@ const BookRequestForm = () => {
         endDate:""
     });
 
-    const [book, setBook] = useState(() => {
-        const temp = getBookFromStorage();
+    const [cab, setCab] = useState(() => {
+        const temp = getCabFromStorage();
         return temp;
     })
 
-    const [student, setStudent] = useState(() => {
-        const temp = getStudentFromStorage();
+    const [customer, setCustomer] = useState(() => {
+        const temp = getCustomerFromStorage();
         return temp;
     })
 
     const navigate = useNavigate();
     const [message, setMessage] = useState("");
 
-    const {errors, validateForm} = RequestBookValidator(form);
+    const {errors, validateForm} = RequestCabValidator(form);
 
     const handleClickToOpen = () => {
         setOpen(true);
@@ -40,7 +40,7 @@ const BookRequestForm = () => {
  
     const handleToClose = () => {
         setOpen(false);
-        navigate("/books")
+        navigate("/cabs")
     };
 
     const onUpdateField = e => {
@@ -56,7 +56,7 @@ const BookRequestForm = () => {
         e.preventDefault();    
         const { isValid } = validateForm({ form, errors, forceTouchErrors: true });
         if (!isValid) return;
-        registerRequest(student,book,form.startDate,form.endDate).then(
+        registerRequest(customer,cab,form.startDate,form.endDate).then(
             response => {
                 handleClickToOpen()
             },
@@ -129,13 +129,13 @@ const BookRequestForm = () => {
                 <DialogTitle>{"Request Book"}</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        We have received your request kindly wait till the Admin Approves it. Bye Bye !
+                        We have received your request kindly wait till it gets Approved. Bye Bye !
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <button onClick={handleToClose}
                         color="primary" autoFocus>
-                        Go to Books list
+                        Go to Cabs list
                     </button>
                 </DialogActions>
             </Dialog>
@@ -143,4 +143,4 @@ const BookRequestForm = () => {
     )
 }
 
-export default BookRequestForm;
+export default CabRequestForm;

@@ -46,7 +46,7 @@ function App() {
     setIsAdmin(false);
     // setIsStudent(false);
     setIsCustomer(false);
-    setI
+    setIsDriver(false);
   }
 
   useEffect(() => {

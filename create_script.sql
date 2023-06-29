@@ -67,19 +67,19 @@ CREATE TABLE customer_cab(
 
 ALTER TABLE user_roles
 ADD CONSTRAINT fk_user_userRoles
-FOREIGN KEY (user_id) REFERENCES user(user_id);
+FOREIGN KEY (user_id) REFERENCES user(user_id) on delete cascade;
 
 ALTER TABLE user_roles
 ADD CONSTRAINT fk_role_userRoles
-FOREIGN KEY (role_id) REFERENCES role(role_id);
+FOREIGN KEY (role_id) REFERENCES role(role_id) on delete cascade;
 
 ALTER TABLE customer
 ADD CONSTRAINT fk_customer_user
-FOREIGN KEY (user_id) REFERENCES user(user_id);
+FOREIGN KEY (user_id) REFERENCES user(user_id) on delete cascade;
 
 ALTER TABLE driver
 ADD CONSTRAINT fk_driver_user
-FOREIGN KEY (user_id) REFERENCES user(user_id);
+FOREIGN KEY (user_id) REFERENCES user(user_id) on delete cascade;
 
 ALTER TABLE cab
 ADD CONSTRAINT fk_cab_cabdriver
@@ -87,19 +87,19 @@ FOREIGN KEY (driver_id) REFERENCES driver(driver_id) on delete set null;
 
 ALTER TABLE request
 ADD CONSTRAINT fk_cab_request
-FOREIGN KEY (registration_number) REFERENCES cab(registration_number);
+FOREIGN KEY (registration_number) REFERENCES cab(registration_number) on delete cascade;
 
 ALTER TABLE request
 ADD CONSTRAINT fk_cust_request
-FOREIGN KEY (customer_id) REFERENCES customer(customer_id);
+FOREIGN KEY (customer_id) REFERENCES customer(customer_id) on delete cascade;
 
 ALTER TABLE customer_cab
 ADD CONSTRAINT fk_cab_customer_reg_no
-FOREIGN KEY (registration_number) REFERENCES cab(registration_number);
+FOREIGN KEY (registration_number) REFERENCES cab(registration_number) on delete cascade;
 
 ALTER TABLE customer_cab
 ADD CONSTRAINT fk_cust_cab_id
-FOREIGN KEY (customer_id) REFERENCES customer(customer_id);
+FOREIGN KEY (customer_id) REFERENCES customer(customer_id) on delete cascade;
 
 INSERT INTO role values (1,'ADMIN'),(2,'DRIVER'),(3,'CUSTOMER');
 INSERT INTO user values (1,"admin","$2a$08$qlXB4Pk7sF9ApzimkeQI0eDGvPWGal.Y265Goukid6hdlzz/QN/cy");

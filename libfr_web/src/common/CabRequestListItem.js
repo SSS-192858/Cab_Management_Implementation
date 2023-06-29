@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {setRequestInStorage} from "../services/localStorageHandler";
 
-const RequestListItem = ({request}) => {
+const CabRequestListItem = ({request}) => {
 
     const handleClick = () => {
         setRequestInStorage(request);
@@ -12,19 +12,17 @@ const RequestListItem = ({request}) => {
         <div className="book" onClick={handleClick}>
             <Link to="/requestDetails">
                 <p>
-                    Book Details :
+                    Cab Details :
                 </p>
-                <p>{request.book.bookCode}</p>
-                <p>{request.book.bookTitle}</p>
-                <p>{request.book.author}</p>
-                <p>{request.book.bookDesc}</p>
-
+                <p>{request.cab.reg_no}</p>
+                <p>{request.cab.model}</p>
+                <p>{request.book.colour}</p>
                 <p>
-                    Student Details :
+                    Customer Details :
                 </p>
 
-                <p>{request.student.id}</p>
-                <p>{request.student.studentName}</p>
+                <p>{request.customer.id}</p>
+                <p>{request.customer.customerName}</p>
 
                 <p>
                     Start Date : {request.startDate}
@@ -37,4 +35,4 @@ const RequestListItem = ({request}) => {
     )
 }
 
-export default RequestListItem;
+export default CabRequestListItem;
