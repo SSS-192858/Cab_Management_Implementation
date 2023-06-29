@@ -1,4 +1,5 @@
 import axios from "axios";
+import authHeader from "./auth_header";
 
 const API_URL = "http://localhost:8080/";
 
@@ -22,7 +23,7 @@ export const registerAdmin = async (username, password) => {
     await axios.post(API_URL + "register_admin", {
       username,
       password
-    });
+    }, {headers: {Authorization: "Bearer "+authHeader()}});
 
     return "Admin added successfully";
 };
@@ -37,7 +38,6 @@ export const registerCustomer = async (username, password, customerName, email, 
     
     if (response.data.token) {
         token = response.data.token;
-        localStorage.setItem("user", JSON.stringify(response.data));
     }
 
     await axios.post(API_URL+"customer/save", {
@@ -53,13 +53,12 @@ export const registerDriver = async (username, password, driverName, email, phon
     const response = await axios.post(API_URL + "register_driver", {
       username,
       password
-    });
+    }, {headers: {Authorization: "Bearer "+authHeader()}});
 
     var token = "";
     
     if (response.data.token) {
         token = response.data.token;
-        localStorage.setItem("user", JSON.stringify(response.data));
     }
 
     await axios.post(API_URL+"driver/save", {
@@ -70,6 +69,7 @@ export const registerDriver = async (username, password, driverName, email, phon
 
     return "Signup successful";
 }
+
 export const getCurrentUser = () => {
     return JSON.parse(localStorage.getItem('user'));
   }

@@ -5,10 +5,12 @@ import { getCurrentUser, logout } from './services/auth_services';
 import { useEffect, useState } from 'react';
 import LoginForm from './components/loginForm';
 import Home from './components/home';
-// import BoardUser from './components/BoardUser';
 import BoardCustomer from "./components/BoardCustomer";
 import BoardAdmin from "./components/BoardAdmin";
 import BoardDriver from "./components/BoardDriver";
+import SignupCustomer from "./components/SignupCustomer";
+import SignupDriver from "./components/SignupDriver";
+import SignupAdmin from "./components/SignupAdmin";
 
 function App() {
 
@@ -86,6 +88,23 @@ function App() {
                   Log out
                 </a>
               </li>
+
+              {isAdmin 
+                ? <li className="nav-item">
+                    <a href="/registerDriver" className="nav-link">
+                      Register New Driver
+                    </a>
+                  </li>     
+              : null}
+
+              {isAdmin 
+                ? <li className="nav-item">
+                    <a href="/registerAdmin" className="nav-link">
+                      Register New Admin
+                    </a>
+                  </li>     
+              : null}
+
             </div>
           ) : (
             <div className="navbar-nav ml-auto">
@@ -95,11 +114,11 @@ function App() {
                 </Link>
               </li>
 
-              {/* <li className="nav-item">
-                <Link to={"/register"} className="nav-link">
+              <li className="nav-item">
+                <Link to={"/registerCustomer"} className="nav-link">
                   Sign Up
                 </Link>
-              </li> */}
+              </li>
             </div>
           )}
         </nav>
@@ -109,7 +128,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/login" element={<LoginForm setCurrentUser = {setCurrentUser} setIsAdmin = {setIsAdmin} setIsCustomer = {setIsCustomer} setIsDriver={setIsDriver}/>} />
-            {/* <Route path="/register" element={<Register />} /> */}
+            <Route path="/registerCustomer" element={<SignupCustomer />} />
+            <Route path="/registerDriver" element={<SignupDriver />} />
+            <Route path="/registerAdmin" element={<SignupAdmin />} />
             <Route path="/customer" element={<BoardCustomer/>} />
             <Route path="/admin" element={<BoardAdmin/>}/>
             <Route path="/driver" element={<BoardDriver/>}/>
