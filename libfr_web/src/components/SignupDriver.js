@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-// import { registerStudent } from "../services/auth_services";
 import { registerDriver } from "../services/auth_services";
 import { useNavigate } from "react-router-dom";
-
 import Dialog from "@mui/material/Dialog";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-// import { useStudentSignupFormValidator } from "../validators/signupStudentValidator";
 import { useDriverSignupFormValidator } from "../validators/signupDriverValidator";
 
 const SignupDriver = () => {

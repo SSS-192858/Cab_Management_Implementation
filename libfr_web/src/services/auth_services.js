@@ -42,7 +42,7 @@ export const registerDriver = async(username, password, driverName, email, phone
         localStorage.setItem("user", JSON.stringify(response.data));
     }
 
-    await axios.post(API_URL + "student/save", {
+    await axios.post(API_URL + "driver/save", {
         driverName,
         email,
         phone
@@ -50,6 +50,7 @@ export const registerDriver = async(username, password, driverName, email, phone
 
     return "Signup successful";
 }
+
 export const registerCustomer = async(username, password, customerName, email, phone) => {
     const response = await axios.post(API_URL + "register_customer", {
         username,
@@ -71,44 +72,50 @@ export const registerCustomer = async(username, password, customerName, email, p
 
     return "Signup successful";
 }
-export const saveBook = async(bookTitle, bookDesc, author) => {
+
+export const saveCab = async(reg_no, model, colour, fare) => {
     var token = authHeader();
-    await axios.post(API_URL + "books/save", {
-        bookTitle,
-        bookDesc,
-        author
+    await axios.post(API_URL + "cabs/addCab", {
+        reg_no,
+        model,
+        colour,
+        fare
     }, { headers: { Authorization: "Bearer " + token } });
 
-    return "Book Successfully Saved";
+    return "Cab has been registered";
 }
 
-export const deleteBook = async(bookCode) => {
+export const deleteCab = async(reg_no) => {
     var token = authHeader();
-    await axios.delete(API_URL + `books/deleteBook/${bookCode}`, { headers: { Authorization: "Bearer " + token } })
-    return "Book Successfully Deleted!";
+    await axios.delete(API_URL + `cabs/delete/${reg_no}`, { headers: { Authorization: "Bearer " + token } })
+    return "Cab Successfully Deleted";
 }
 
 export const getCurrentUser = () => {
     return JSON.parse(localStorage.getItem('user'));
 }
 
-export const updateBook = async(bookCode, bookTitle, bookDesc, author) => {
+export const updateCab = async(reg_no, model, colour, fare) => {
     var token = authHeader();
 
-    await axios.put(API_URL + "books/updateBook", {
-        bookCode,
-        bookTitle,
-        author,
-        bookDesc
+    await axios.put(API_URL + "cabs/updateCab", {
+        reg_no,
+        model,
+        colour,
+        fare
     }, { headers: { Authorization: "Bearer " + token } });
 
-    return "Book Data updated successfully";
+    return "Cab details updated successfully";
 }
 
 export const deleteDriver = async(driverId) => {
-
     await axios.delete(API_URL + `driver/delete/${driverId}`, { headers: { Authorization: "Bearer " + authHeader() } });
     return "Driver Deleted Successfully";
+}
+
+export const deleteCustomer = async(customerID) => {
+    await axios.delete(API_URL + `customer/delete/${customerID}`, { headers: { Authorization: "Bearer " + authHeader() } });
+    return "Customer Deleted Successfully";
 }
 
 export const updateDriver = async(id, driverName, email, phone) => {

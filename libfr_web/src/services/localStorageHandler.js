@@ -1,14 +1,14 @@
-export const setBookInStorage = (book) => {
-    localStorage.setItem("book", JSON.stringify(book));
+export const setCabInStorage = (cab) => {
+    localStorage.setItem("cab", JSON.stringify(cab));
 }
 
-export const getBookFromStorage = () => {
-    const book = JSON.parse(localStorage.getItem("book"));
-    return book;
+export const getCabFromStorage = () => {
+    const cab = JSON.parse(localStorage.getItem("cab"));
+    return cab;
 }
 
-export const removeBookFromStorage = () => {
-    localStorage.removeItem("book");
+export const removeCabFromStorage = () => {
+    localStorage.removeItem("cab");
 }
 
 export const setDriverInStorage = (driver) => {
@@ -29,8 +29,13 @@ export const getCustomerFromStorage = () => {
     const customer = JSON.parse(localStorage.getItem("customer"));
     return customer;
 }
+
 export const removeDriverFromStorage = () => {
     localStorage.removeItem("driver");
+}
+
+export const removeCustomerFromStorage = () => {
+    localStorage.removeItem("customer");
 }
 
 export const setRequestInStorage = (request) => {
@@ -46,15 +51,15 @@ export const removeRequestFromStorage = () => {
     localStorage.removeItem("request");
 }
 
-export const setBookStudentInStorage = (bookStudent) => {
-    localStorage.setItem("bookStudent", JSON.stringify(bookStudent));
+export const setCabCustomerInStorage = (cabCustomer) => {
+    localStorage.setItem("cabCustomer", JSON.stringify(cabCustomer));
 }
 
-export const getBookStudentFromStorage = () => {
-    const bookStudent = JSON.parse(localStorage.getItem("bookStudent"));
-    return bookStudent;
+export const getCabCustomerFromStorage = () => {
+    const cabCustomer = JSON.parse(localStorage.getItem("cabCustomer"));
+    return cabCustomer;
 }
 
-export const removeBookStudentFromStorage = async () => {
-    localStorage.removeItem("bookStudent");
+export const removeCabCustomerFromStorage = async () => {
+    localStorage.removeItem("cabCustomer");
 }

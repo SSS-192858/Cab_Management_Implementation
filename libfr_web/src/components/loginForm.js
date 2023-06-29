@@ -2,12 +2,10 @@ import { useState } from "react";
 import { useLoginFormValidator } from "../validators/loginFormValidator";
 import { getCurrentUser, login } from "../services/auth_services";
 import { useNavigate } from "react-router-dom";
-// import { getStudentById } from "../services/user_services"; 
-import {getDriverById} from "../services/user_services";
-// import { setStudentInStorage } from "../services/localStorageHandler";
-import {setDriverInStorage} from "../services/localStorageHandler";
+import {getDriverById, getCustomerById} from "../services/user_services";
+import {setDriverInStorage, setCustomerInStorage} from "../services/localStorageHandler";
 
-const LoginForm = ({setCurrentUser, setIsAdmin, setIsDriver}) => {
+const LoginForm = ({setCurrentUser, setIsAdmin, setIsDriver, setIsCustomer}) => {
   const [form, setForm] = useState({
     username: "",
     password: ""
@@ -30,6 +28,13 @@ const LoginForm = ({setCurrentUser, setIsAdmin, setIsDriver}) => {
     const temp = await getDriverById();
     console.log(temp)
     setDriverInStorage(temp);
+    return temp;
+  }
+
+  const setCurrentCustomer = async () => {
+    const temp = await getCustomerById();
+    console.log(temp)
+    setCustomerInStorage(temp);
     return temp;
   }
 
@@ -57,11 +62,18 @@ const LoginForm = ({setCurrentUser, setIsAdmin, setIsDriver}) => {
           navigate("/admin")
         }
 
-        if (user && user.user && user.user.roles[0] && user.user.roles[0].name && user.user.roles[0].name === "STUDENT"){
+        if (user && user.user && user.user.roles[0] && user.user.roles[0].name && user.user.roles[0].name === "CUSTOMER"){
+          setIsCustomer(true)
+          setCurrentCustomer();
+          navigate("/customer")
+        }
+
+        if (user && user.user && user.user.roles[0] && user.user.roles[0].name && user.user.roles[0].name === "DRIVER"){
           setIsDriver(true)
           setCurrentDriver();
-          navigate("/user")
+          navigate("/driver")
         }
+        
       },
       error => {
         const resMessage =

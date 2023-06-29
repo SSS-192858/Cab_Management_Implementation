@@ -7,7 +7,7 @@ import LoginForm from './components/loginForm';
 import Home from './components/home';
 import BoardUser from './components/BoardUser';
 import BoardAdmin from "./components/BoardAdmin";
-import SignupStudent from "./components/SignupStudent";
+
 import SignupAdmin from "./components/SignupAdmin";
 import BooksList from "./components/BookList";
 import BookDetails from "./components/BookDetails";
@@ -25,7 +25,9 @@ import BookStudentDetails from "./components/BookStudentDetails"
 function App() {
 
   const [isAdmin, setIsAdmin] = useState(false);
-  const [isStudent, setIsStudent] = useState(false);
+  const [isDriver, setIsDriver] = useState(false);
+  const [isCustomer, setIsCustomer] = useState(false);
+  
   const [currentUser, setCurrentUser] = useState(null);
 
   const resolveLogin = () => {
@@ -33,7 +35,8 @@ function App() {
     if (user) {
       setCurrentUser(user);
       setIsAdmin(user.user.roles[0].name === "ADMIN");
-      setIsStudent(user.user.roles[0].name === "STUDENT");
+      setIsCustomer(user.user.roles[0].name === "CUSTOMER");
+      setIsDriver(user.user.roles[0].name === "DRIVER")
     }
   };
 
@@ -41,7 +44,9 @@ function App() {
     logout();
     setCurrentUser(null);
     setIsAdmin(false);
-    setIsStudent(false);
+    // setIsStudent(false);
+    setIsCustomer(false);
+    setI
   }
 
   useEffect(() => {
@@ -181,18 +186,18 @@ function App() {
             <Route path="/login" element={<LoginForm setCurrentUser = {setCurrentUser} setIsAdmin = {setIsAdmin} setIsStudent = {setIsStudent}/>} />
             <Route path="/registerStudent" element={<SignupStudent />} />
             <Route path="/registerAdmin" element={<SignupAdmin />} />
-            <Route path="/books" element={<BooksList/>}/>
+            <Route path="/cabs" element={<BooksList/>}/>
             <Route path="/moreInfo" element={<BookDetails isStudent={isStudent} isAdmin={isAdmin}/>} />
             <Route path="/booksSave" element={<BookSaveForm/>}/>
-            <Route path="/booksUpdate" element={<BookUpdateForm/>}/>
+            <Route path="/cabsUpdate" element={<BookUpdateForm/>}/>
             <Route path="/students" element={<StudentList/>}/>
             <Route path="/updateStudent" element={<UpdateStudent/>} />
             <Route path="/studentDetail" element={<StudentDetails isStudent={isStudent} isAdmin={isAdmin}/>}/>
-            <Route path="/bookRequest" element={<BookRequestForm/>}/>
+            <Route path="/cabRequest" element={<BookRequestForm/>}/>
             <Route path="/allRequests" element={<RequestList choice={1}/>} />
             <Route path="/requestDetails" element={<RequestDetails isStudent={isStudent} isAdmin={isAdmin} />} />
-            <Route path="/requestsForBook" element={<RequestList choice={2}/>}/>
-            <Route path="/bookStudentDetail" element={<BookStudentDetails isAdmin={isAdmin}/>}/>
+            <Route path="/requestsForCab" element={<RequestList choice={2}/>}/>
+            <Route path="/cabCustomerDetail" element={<BookStudentDetails isAdmin={isAdmin}/>}/>
             <Route path="/bookStudentList" element={<BookStudentList choice={1}/>}/>
             <Route path="/bookStudentByStudent" element={<BookStudentList choice={2} />}/>
             <Route path="/bookStudentByBook" element={<BookStudentList choice={3} />}/>

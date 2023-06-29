@@ -6,23 +6,23 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import { deleteBook } from "../services/auth_services";
 import { useNavigate } from "react-router-dom";
-import { getBookFromStorage, removeBookFromStorage, setBookInStorage } from "../services/localStorageHandler";
+import { getCabFromStorage, removeCabFromStorage, setCabInStorage } from "../services/localStorageHandler";
 
-const BookDetails = ({isStudent,isAdmin}) => {
+const CabDetails = ({isCustomer,isAdmin,isDriver}) => {
 
     const [open, setOpen] = useState(false);
     const navigate = useNavigate();
 
-    const [book, setBook] = useState(() => {
-        const temp = getBookFromStorage();
+    const [cab, setCab] = useState(() => {
+        const temp = getCabFromStorage();
         return temp;
     })
 
     const handleToClose = () => {
-        deleteBook(book.bookCode);
-        removeBookFromStorage();
+        deleteBook(cab.reg_no);
+        removeCabFromStorage();
         setOpen(false);
-        navigate("/books");
+        navigate("/cabs");
     };
 
     const handleCancel = ()=>{
@@ -30,17 +30,16 @@ const BookDetails = ({isStudent,isAdmin}) => {
     }
 
     const navFunc = () => {
-        navigate("/booksUpdate")
+        navigate("/cabsUpdate")
     }
 
     const handleRequest = ()=>{
-        setBookInStorage(book);
-        console.log(book);
-        navigate("/bookRequest")
+        setCabInStorage(cab);
+        navigate("/cabRequest")
     }
 
     const seeRequestsForBook = () => {
-        navigate("/requestsForBook");
+        navigate("/requestsForCab");
     }
 
     const seeBookStudentsForBook = () => {
@@ -49,16 +48,14 @@ const BookDetails = ({isStudent,isAdmin}) => {
 
     return (
         <div>
-            <p>{book.bookCode}</p>
+            <p>{cab.re}</p>
             <p>{book.bookTitle}</p>
             <p>{book.author}</p>
             <p>{book.bookDesc}</p>
 
-            
-
-            {isStudent &&
+            {isCustomer &&
             <button onClick={handleRequest} className="btn btn-primary btn-block">
-                Request Book
+                Request Cab
             </button>    
             }  
 
@@ -111,4 +108,4 @@ const BookDetails = ({isStudent,isAdmin}) => {
     )
 }
 
-export default BookDetails;
+export default CabDetails;

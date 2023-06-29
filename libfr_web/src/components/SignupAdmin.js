@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { registerAdmin } from "../services/auth_services";
 import { useAdminSignupFormValidator } from "../validators/signupAdminValidator";
 import { useNavigate } from "react-router-dom";
-
 import Dialog from "@mui/material/Dialog";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
