@@ -55,7 +55,7 @@ const UpdateCustomer = () => {
         e.preventDefault();    
         const { isValid } = validateForm({ form, errors, forceTouchErrors: true });
         if (!isValid) return;
-        updateDriver(customer.id, form.driverName, form.email, form.phone).then(
+        updateDriver(customer.id, form.customerName, form.email, form.phone).then(
             response => {
                 handleClickToOpen()
             },
@@ -83,18 +83,18 @@ const UpdateCustomer = () => {
             <form onSubmit={onSubmitForm}>
 
                     <div className="form-group">
-                    <label htmlFor="driverName">Name</label>
+                    <label htmlFor="customerName">Name</label>
                     <input
                         type="text"
                         className="form-control"
-                        name="driverName"
-                        aria-label="Driver Name"
-                        value={form.driverName}
+                        name="customerName"
+                        aria-label="Customer Name"
+                        value={form.customerName}
                         onChange={onUpdateField}
                     />
 
-                    {errors.driverName.dirty && errors.driverName.error ? (
-                            <div className="alert alert-danger" role="alert">{errors.driverName.message}</div>
+                    {errors.customerName.dirty && errors.customerName.error ? (
+                            <div className="alert alert-danger" role="alert">{errors.customerName.message}</div>
                             ) : null}
                     </div>
 
@@ -144,7 +144,7 @@ const UpdateCustomer = () => {
                 <DialogTitle>{"Signup successful"}</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        Driver details have been updated successfully!
+                        Customer details have been updated successfully!
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
@@ -158,4 +158,4 @@ const UpdateCustomer = () => {
     )
 }
 
-export default UpdateDriver;
+export default UpdateCustomer;

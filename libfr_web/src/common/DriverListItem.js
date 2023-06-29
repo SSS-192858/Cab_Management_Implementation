@@ -12,7 +12,7 @@ const DriverListItem = ({driver}) => {
         <div className="book" onClick={handleClick}>
             <Link to="/driverDetail">
                 <p>{driver.id}</p>
-                <p>{driver.studentName}</p>
+                <p>{driver.driverName}</p>
                 <p>{driver.email}</p>
                 <p>{driver.phone}</p>
             </Link>
