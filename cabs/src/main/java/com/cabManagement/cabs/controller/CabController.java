@@ -24,7 +24,7 @@ public class CabController {
         this.cabService = cabService;
     }
 
-    @GetMapping("/allcabs")
+    @GetMapping("/allCabs")
     public List<Cab> findAllCabs(){
         return this.cabService.findAllCabs();
     }
