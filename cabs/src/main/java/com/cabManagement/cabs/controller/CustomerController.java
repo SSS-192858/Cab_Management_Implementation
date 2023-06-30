@@ -58,4 +58,10 @@ public class CustomerController {
         this.customerService.saveCustomer(customer);
         return customer;
     }
+
+    @GetMapping("/getByUser")
+    public Customer getCustomerByUserId(@RequestHeader String Authorization) {
+        User user = jwtUserDetailsService.getUserByUsername(jwtTokenUtil.getUsernameFromToken(Authorization.substring(7)));
+        return this.customerService.getCustomerByUserId(user.getId());
+    }
 }

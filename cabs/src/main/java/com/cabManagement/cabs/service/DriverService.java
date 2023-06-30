@@ -63,4 +63,8 @@ public class DriverService {
         }
         return driverDAO.getDriverByCabRegNo(reg_no);
     }
+
+    public Driver getDriverByUserId(Integer id){
+        return this.driverDAO.getDriverByUserId(id);
+    }
 }

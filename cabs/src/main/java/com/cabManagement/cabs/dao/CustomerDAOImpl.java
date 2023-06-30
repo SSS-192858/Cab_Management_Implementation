@@ -58,4 +58,13 @@ public class CustomerDAOImpl implements CustomerDAO {
         Cab cab = this.entityManager.find(Cab.class,id);
         return cab.getDriver();
     }
+
+    @Override
+    public Customer getCustomerByUserId(Integer id) {
+        TypedQuery<Customer> query = entityManager.createQuery("FROM Customer where user.id = :id", Customer.class);
+        query.setParameter("id", id);
+        return query.getSingleResult();
+    }
+
+
 }

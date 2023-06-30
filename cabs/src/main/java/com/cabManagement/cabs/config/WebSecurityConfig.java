@@ -87,6 +87,8 @@ public class WebSecurityConfig {
                             .requestMatchers(HttpMethod.POST,"/customerCab/save").hasAnyRole("ADMIN","DRIVER")
                             .requestMatchers(HttpMethod.DELETE,"/customerCab/delete/**").hasAnyRole("CUSTOMER","DRIVER","ADMIN")
                             .requestMatchers(HttpMethod.POST, "/customerCab/accept").hasAnyRole("DRIVER", "ADMIN")
+                            .requestMatchers(HttpMethod.GET, "/customer/getByUser").hasRole("CUSTOMER")
+                            .requestMatchers(HttpMethod.GET, "/driver/getByUser").hasRole("DRIVER")
                             .anyRequest().authenticated();
                 }).exceptionHandling(exception -> exception.authenticationEntryPoint(jwtAuthenticationEntryPoint))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));

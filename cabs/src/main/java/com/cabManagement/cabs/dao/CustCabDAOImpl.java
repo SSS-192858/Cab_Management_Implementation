@@ -75,7 +75,7 @@ public class CustCabDAOImpl implements CustCabDAO {
         Date endDate = request.getEndDate();
         String reg = request.getCab().getReg_no();
 
-        TypedQuery<CustomerCab> typedQuery = this.entityManager.createQuery("FROM CustomerCab where cab.reg_no = :reg_no and startDate not between :startDate and :endDate and endDate not between :startDate and :endDate", CustomerCab.class);
+        TypedQuery<CustomerCab> typedQuery = this.entityManager.createQuery("FROM CustomerCab where cab.reg_no = :reg_no and ((startDate between :startDate and :endDate) or (endDate between :startDate and :endDate) or (startDate < :startDate and endDate > :endDate))", CustomerCab.class);
         typedQuery.setParameter("reg_no",reg);
         typedQuery.setParameter("startDate",startDate);
         typedQuery.setParameter("endDate",endDate);

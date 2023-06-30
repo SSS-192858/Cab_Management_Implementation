@@ -49,4 +49,8 @@ public class CustomerService {
         this.customerDAO.updateCustomer(customer);
         return customer;
     }
+
+    public Customer getCustomerByUserId(Integer id){
+        return this.customerDAO.getCustomerByUserId(id);
+    }
 }
