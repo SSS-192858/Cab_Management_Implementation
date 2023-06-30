@@ -1,6 +1,7 @@
 package com.cabManagement.cabs.controller;
 
 import com.cabManagement.cabs.config.JwtTokenUtil;
+import com.cabManagement.cabs.entity.Customer;
 import com.cabManagement.cabs.exceptions.DriverNotFoundException;
 import com.cabManagement.cabs.service.CustomerService;
 import com.cabManagement.cabs.service.DriverService;
@@ -58,6 +59,12 @@ public class DriverController {
         driver.setId(0);
         driver.setUser(user);
         return this.driverService.saveDriver(driver);
+    }
+
+    @GetMapping("/getByUser")
+    public Driver getDriverByUserId(@RequestHeader String Authorization) {
+        User user = jwtUserDetailsService.getUserByUsername(jwtTokenUtil.getUsernameFromToken(Authorization.substring(7)));
+        return this.driverService.getDriverByUserId(user.getId());
     }
 }
 

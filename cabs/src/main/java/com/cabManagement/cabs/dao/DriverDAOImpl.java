@@ -1,6 +1,7 @@
 package com.cabManagement.cabs.dao;
 
 import com.cabManagement.cabs.entity.Cab;
+import com.cabManagement.cabs.entity.Customer;
 import com.cabManagement.cabs.entity.Driver;
 import com.cabManagement.cabs.exceptions.CabNotFoundException;
 import com.cabManagement.cabs.exceptions.DriverNotFoundException;
@@ -56,5 +57,12 @@ public class DriverDAOImpl implements DriverDAO{
     public Driver getDriverByCabRegNo(String reg_no) throws CabNotFoundException{
         Cab cab = this.entityManager.find(Cab.class, reg_no);
         return cab.getDriver();
+    }
+
+    @Override
+    public Driver getDriverByUserId(Integer id) {
+        TypedQuery<Driver> query = entityManager.createQuery("FROM Driver where user.id = :id", Driver.class);
+        query.setParameter("id", id);
+        return query.getSingleResult();
     }
 }

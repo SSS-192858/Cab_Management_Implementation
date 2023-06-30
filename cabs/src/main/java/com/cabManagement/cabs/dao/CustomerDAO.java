@@ -12,4 +12,5 @@ public interface CustomerDAO {
     public void updateCustomer(Customer customer);
     public List<Customer> findAll();
     public Driver getDriverbyCabId(Integer id);
+    public Customer getCustomerByUserId(Integer id);
 }

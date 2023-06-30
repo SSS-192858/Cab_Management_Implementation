@@ -1,5 +1,6 @@
 package com.cabManagement.cabs.dao;
 
+import com.cabManagement.cabs.entity.Customer;
 import com.cabManagement.cabs.entity.Driver;
 import java.util.*;
 
@@ -10,4 +11,5 @@ public interface DriverDAO {
     public void updateDriver(Driver Driver);
     public List<Driver> findAllDrivers();
     public Driver getDriverByCabRegNo(String reg_no);
+    public Driver getDriverByUserId(Integer id);
 }
