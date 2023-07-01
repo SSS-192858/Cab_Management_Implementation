@@ -25,7 +25,7 @@ const CustomerCabList = ({choice}) => {
         const response = await getCustomerCabsbyCabId(cab.reg_no);
         setcustomerCabs(response);
     }
-    else if (choice === 3){
+    else if (choice === 4){
       driver = getDriverFromStorage();
       const response = await getCustomerCabsByDriverId(driver.id);
       setcustomerCabs(response);
@@ -39,7 +39,7 @@ const CustomerCabList = ({choice}) => {
   return (
     <ul id="remove">
       {customerCabs.map((data) => (
-        <li id="space" key= {data.slno}><CustomerCabListItem bookStudent={data}/></li>
+        <li id="space" key= {data.slno}><CustomerCabListItem customerCab={data}/></li>
       ))}
     </ul>
   );

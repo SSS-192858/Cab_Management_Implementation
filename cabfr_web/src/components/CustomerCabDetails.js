@@ -19,9 +19,9 @@ const CustomerCabDetail = ({isAdmin}) => {
     const navigate = useNavigate();
 
     const handleToClose = () => {
-        deleteCustomerCabbyId(CustomerCab.id);
+        deleteCustomerCabbyId(CustomerCab.slno);
         setOpen(false);
-        navigate("/customerCabs");
+        navigate("/cabCustomerList");
     };
 
     const handleCancel = ()=>{
@@ -31,7 +31,7 @@ const CustomerCabDetail = ({isAdmin}) => {
     return (
         <div>
             <div className="book">
-                <p>{CustomerCab.id}</p>
+                <p>{CustomerCab.slno}</p>
                 <p>
                     Cab Details
                 </p>

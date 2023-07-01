@@ -65,7 +65,7 @@ public class WebSecurityConfig {
                             .requestMatchers(HttpMethod.DELETE, "/driver/delete/**").hasAnyRole("DRIVER", "ADMIN")
                             .requestMatchers(HttpMethod.PUT, "/driver/update").hasRole("DRIVER")
                             .requestMatchers(HttpMethod.POST, "/driver/save").hasRole("DRIVER")
-                            .requestMatchers(HttpMethod.GET,"/cabs/allCabs").hasAnyRole("CUSTOMER","ADMIN")
+                            .requestMatchers(HttpMethod.GET,"/cabs/allCabs").hasAnyRole("CUSTOMER","ADMIN","DRIVER")
                             .requestMatchers(HttpMethod.GET,"/cabs/**").hasAnyRole("CUSTOMER","ADMIN")
                             .requestMatchers(HttpMethod.DELETE,"/cabs/delete/**").hasRole("ADMIN")
                             .requestMatchers(HttpMethod.POST, "/cabs/addCab").hasRole("ADMIN")

@@ -15,7 +15,7 @@ const UpdateDriver = () => {
 
     const [open, setOpen] = React.useState(false);
     const [driver, setDriver] = useState(() => {
-        const temp = getDriverFromStorage
+        const temp = getDriverFromStorage();
         return temp;
     })
 

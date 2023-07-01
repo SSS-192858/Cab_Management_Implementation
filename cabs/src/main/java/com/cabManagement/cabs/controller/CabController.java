@@ -31,8 +31,7 @@ public class CabController {
 
     @GetMapping("/{reg_no}")
     public Cab findCabById(@PathVariable String reg_no) {
-        Cab cab = this.cabService.findCabById(reg_no);
-        return cab;
+        return this.cabService.findCabById(reg_no);
     }
 
     @DeleteMapping("/delete/{reg_no}")

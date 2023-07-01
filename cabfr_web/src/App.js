@@ -154,11 +154,6 @@ function App() {
                     Register New Admin
                   </a>
                 </li>
-                <li>
-                <a href = "/registerCustomer" className="nav-link">
-                  Register New Customer
-                </a>
-              </li>
               <li>
                 <a href = "/registerDriver" className="nav-link">
                   Register New Driver
@@ -177,8 +172,8 @@ function App() {
                 </li>
 
                 <li className="nav-item">
-                  <Link to={"/cabCustomerByCustomer"} className="nav-link">
-                    Cabs Requested
+                  <Link to={"/cabCustomerByDriver"} className="nav-link">
+                    Cab Appointments
                   </Link>
                 </li>
 
@@ -193,28 +188,23 @@ function App() {
               {isDriver &&(
                 <>
                 <li className="nav-item">
-                  <Link to={"/requestsForDriver"} className="nav-link">
+                  <Link to={"/requestForDriver"} className="nav-link">
                     Pending Requests
                   </Link>
                 </li>
-                <li>
-                <a href = "/registerCustomer" className="nav-link">
-                  Register New Customer
-                </a>
-              </li>
                 <li className="nav-item">
                   <Link to={"/cabsforDriver"} className="nav-link">
                     See my cabs
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to={"/CabCustomerByDriver"} className="nav-link">
+                  <Link to={"/cabCustomerByDriver"} className="nav-link">
                     Cabs Requested
                   </Link>
                 </li>
 
                 <li className="nav-item">
-                  <Link to={"/customerDetail"} className="nav-link">
+                  <Link to={"/driverDetail"} className="nav-link">
                     Profile
                   </Link>
                 </li>

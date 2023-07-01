@@ -2,8 +2,10 @@ package com.cabManagement.cabs.service;
 
 import com.cabManagement.cabs.dao.CabDAO;
 import com.cabManagement.cabs.dao.DriverDAO;
+import com.cabManagement.cabs.dao.UserDAO;
 import com.cabManagement.cabs.entity.Cab;
 import com.cabManagement.cabs.entity.Driver;
+import com.cabManagement.cabs.entity.User;
 import com.cabManagement.cabs.exceptions.CabNotFoundException;
 import com.cabManagement.cabs.exceptions.DriverNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +17,12 @@ import java.util.List;
 public class DriverService {
 
     private DriverDAO driverDAO;
+    private UserDAO userDAO;
     private CabDAO cabDAO;
 
     @Autowired
-    public DriverService(DriverDAO driverDAO, CabDAO cabDAO) {
+    public DriverService(DriverDAO driverDAO, CabDAO cabDAO, UserDAO userDAO) {
+        this.userDAO = userDAO;
         this.cabDAO = cabDAO;
         this.driverDAO = driverDAO;
     }
@@ -44,7 +48,10 @@ public class DriverService {
         if (driver == null){
             throw new DriverNotFoundException();
         }
-        return driverDAO.deletebyId(id);
+        User user = driver.getUser();
+        Driver d1 = driverDAO.deletebyId(id);
+        userDAO.delete(user);
+        return d1;
     }
 
     public Driver updateDriver(Driver driver) throws DriverNotFoundException {

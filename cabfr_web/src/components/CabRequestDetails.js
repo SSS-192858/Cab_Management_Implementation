@@ -27,7 +27,7 @@ const CabRequestDetails = ({isCustomer,isAdmin,isDriver}) => {
         setOpen1(false);
         if(isAdmin){navigate("/allRequests")}
         else if(isCustomer){navigate("/requestsForCustomer")}
-        else if(isDriver){navigate("/requestsForDriver")}
+        else if(isDriver){navigate("/requestForDriver")}
 
     };
 
