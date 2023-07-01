@@ -84,7 +84,7 @@ const CabRequestForm = () => {
             <form onSubmit={onSubmitForm}>
                 
                 <div className="form-group">
-                    <label htmlFor="startDate">startDate</label>
+                    <label htmlFor="startDate">Start Date</label>
                     <input
                         type="date"
                         className="form-control"
@@ -116,7 +116,7 @@ const CabRequestForm = () => {
                     </div>
 
                     <div className="form-group">
-                        <button className="btn btn-primary btn-block">Request Book</button>
+                        <button className="btn btn-primary btn-block">Request Cab</button>
                     </div>
 
                     {message ? 

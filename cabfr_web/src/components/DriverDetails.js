@@ -35,7 +35,7 @@ const DriverDetails = ({isDriver, isAdmin}) => {
     } 
 
     const navFunc2 = () => {
-        navigate("/requestsForDriver");
+        navigate("/requestForDriver");
     }
 
     const navFunc3 = () => {
