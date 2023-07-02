@@ -172,7 +172,7 @@ function App() {
                 </li>
 
                 <li className="nav-item">
-                  <Link to={"/cabCustomerByDriver"} className="nav-link">
+                  <Link to={"/cabCustomerByCustomer"} className="nav-link">
                     Cab Appointments
                   </Link>
                 </li>
@@ -199,7 +199,7 @@ function App() {
                 </li>
                 <li className="nav-item">
                   <Link to={"/cabCustomerByDriver"} className="nav-link">
-                    Cabs Requested
+                    Cabs Appointments
                   </Link>
                 </li>
 

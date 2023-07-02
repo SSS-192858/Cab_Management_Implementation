@@ -45,11 +45,10 @@ public class CabController {
         return cab;
     }
 
-    @GetMapping("/getByDriverID/{id}")
+    @GetMapping("/getByDriverId/{id}")
     public List<Cab> getCabsByDriverId(@PathVariable Integer id){
         return this.cabService.getCabsByDriverId(id);
     }
-
 
     @PutMapping("/updateDriver/{reg_no}")
     public Cab assignDriver(@PathVariable String reg_no, @RequestBody Driver driver){
@@ -59,5 +58,10 @@ public class CabController {
     @PostMapping("/addCab")
     public Cab addCab(@RequestBody Cab cab){
         return this.cabService.saveCab(cab);
+    }
+
+    @PutMapping("/removeDriver/{reg_no}")
+    public Cab removeDriver(@PathVariable String reg_no){
+        return this.cabService.removeDriver(reg_no);
     }
 }
