@@ -6,20 +6,16 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 
 import { useNavigate } from "react-router-dom";
-import { getDriverFromStorage,getPersonalDriverFromStorage,removeDriverFromStorage} from "../services/localStorageHandler";
+import { getPersonalDriverFromStorage, setDriverInStorage, removeDriverFromStorage} from "../services/localStorageHandler";
 import { deleteDriver } from "../services/auth_services";
 
-const DriverDetails = ({isDriver, isAdmin}) => {
+const PersonalDriverDetails = ({isDriver, isAdmin}) => {
     const [open, setOpen] = useState(false);
     const navigate = useNavigate();
 
     const [driver, setDriver] = useState(() => {
-        const temp = getDriverFromStorage();
-        return temp;
-    })
-
-    const [currDriver, setCurrentDriver] = useState(() => {
         const temp = getPersonalDriverFromStorage();
+        setDriverInStorage(temp);
         return temp;
     })
 
@@ -57,7 +53,7 @@ const DriverDetails = ({isDriver, isAdmin}) => {
             <p>{driver.email}</p>
             <p>{driver.phone}</p>
 
-            {(isDriver && currDriver.id === driver.id) && (
+            {(isDriver) && (
                 <>
                 <button onClick={navFunc1} className="btn btn-primary btn-block" type="submit">
                     Update Info
@@ -106,4 +102,4 @@ const DriverDetails = ({isDriver, isAdmin}) => {
     )
 }
 
-export default DriverDetails;
+export default PersonalDriverDetails;

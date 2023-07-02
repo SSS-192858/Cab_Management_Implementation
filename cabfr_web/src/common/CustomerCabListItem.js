@@ -10,7 +10,7 @@ export const CustomerCabListItem = ({customerCab}) => {
 
     return (
     <div className="book" onClick={handleClick}>
-    <Link to="/customerCabDetail">
+    <Link to="/cabCustomerDetails">
         <p>
             Cab Details :
         </p>

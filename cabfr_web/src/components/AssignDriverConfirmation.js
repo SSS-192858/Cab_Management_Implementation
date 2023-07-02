@@ -3,12 +3,20 @@ import { useNavigate } from "react-router-dom/dist";
 import { getCabFromStorage, getDriverFromStorage} from "../services/localStorageHandler";
 import { assignDriverToCab } from "../services/user_services";
 
+import Dialog from "@mui/material/Dialog";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+
 const AssignDriverConfirmation = () => {
 
     const [cab, setCab] = useState(() => {
         const temp = getCabFromStorage();
         return temp;
     })
+
+    const [open, setOpen] = useState(false);
 
     const [driver, setDriver] = useState(() => {
         const temp = getDriverFromStorage();
@@ -23,6 +31,11 @@ const AssignDriverConfirmation = () => {
 
     const handleAssign = () => {
         assignDriverToCab(cab.reg_no, driver);
+        setOpen(true)
+    }
+
+    const handleToClose = () => {
+        setOpen(false);
         navigate("/cabs")
     }
 
@@ -44,6 +57,21 @@ const AssignDriverConfirmation = () => {
             <button className="btn btn-primary btn-block" onClick={handleAssign}>
                 Assign
             </button>
+
+            <Dialog open={open} onClose={handleToClose}>
+                <DialogTitle>{"Assignment successful"}</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Driver was assigned successfully, kindly click on the button to close the dialog box.
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <button onClick={handleToClose}
+                        color="primary" autoFocus>
+                        Close
+                    </button>
+                </DialogActions>
+            </Dialog>
         </>
     )
 }

@@ -15,10 +15,18 @@ export const setDriverInStorage = (driver) => {
     localStorage.setItem("driver", JSON.stringify(driver));
 }
 
+export const setPersonalDriverInStorage = (driver) => {
+    localStorage.setItem("personalDriver", JSON.stringify(driver));
+}
+
 export const setCustomerInStorage = (customer) => {
     localStorage.setItem("customer", JSON.stringify(customer));
 }
 
+export const getPersonalDriverFromStorage = () => {
+    const driver = JSON.parse(localStorage.getItem("personalDriver"));
+    return driver;
+}
 
 export const getDriverFromStorage = () => {
     const driver = JSON.parse(localStorage.getItem("driver"));
@@ -32,6 +40,10 @@ export const getCustomerFromStorage = () => {
 
 export const removeDriverFromStorage = () => {
     localStorage.removeItem("driver");
+}
+
+export const removePersonalDriverFromStorage = () => {
+    localStorage.removeItem("personalDriver");
 }
 
 export const removeCustomerFromStorage = () => {

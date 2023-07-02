@@ -17,7 +17,6 @@ import CabRequestList from "./components/CabRequestList";
 import CustomerCabList from "./components/CustomerCabList";
 import CabRequestForm from "./components/CabRequestForm";
 import CabRequestDetails from "./components/CabRequestDetails";
-import CustomerCabDetails from "./components/CustomerCabDetails"
 import SignupCustomer from "./components/SignupCustomer";
 import SignupDriver from "./components/SignupDriver";
 import CabSaveForm from "./components/CabSaveForm";
@@ -29,6 +28,8 @@ import UpdateDriver from "./components/DriverUpdateForm";
 import CustomerCabDetail from "./components/CustomerCabDetails";
 import AssignDriver from "./components/AssignDriver";
 import AssignDriverConfirmation from "./components/AssignDriverConfirmation";
+import { removeCabFromStorage, removeCustomerCabFromStorage, removeDriverFromStorage, removePersonalDriverFromStorage, removeRequestFromStorage } from "./services/localStorageHandler";
+import PersonalDriverDetails from "./components/PersonalDriverDetails";
 
 function App() {
 
@@ -53,6 +54,11 @@ function App() {
     setIsAdmin(false);
     setIsCustomer(false);
     setIsDriver(false);
+    removeCabFromStorage();
+    removeCustomerCabFromStorage();
+    removeDriverFromStorage();
+    removeRequestFromStorage();
+    removePersonalDriverFromStorage();
   }
 
   useEffect(() => {
@@ -204,7 +210,7 @@ function App() {
                 </li>
 
                 <li className="nav-item">
-                  <Link to={"/driverDetail"} className="nav-link">
+                  <Link to={"/personalDriverDetail"} className="nav-link">
                     Profile
                   </Link>
                 </li>
@@ -252,6 +258,7 @@ function App() {
             <Route path="/drivers" element={<DriverList/>}/>
             <Route path="/updateDriver" element={<UpdateDriver/>} />
             <Route path="/driverDetail" element={<DriverDetails isDriver={isDriver} isAdmin={isAdmin}/>}/>
+            <Route path="/personalDriverDetail" element={<PersonalDriverDetails isDriver={isDriver} isAdmin={isAdmin}/>}/>
             <Route path="/customers" element={<CustomerList/>}/>
             <Route path="/updateCustomer" element={<UpdateCustomer/>} />
             <Route path="/customerDetail" element={<CustomerDetails isCustomer={isCustomer} isAdmin={isAdmin} />}/>
@@ -260,7 +267,6 @@ function App() {
             <Route path="/requestsForCab" element={<CabRequestList choice={2}/>}/>
             <Route path="/requestForCustomer" element={<CabRequestList choice={3}/>}/>
             <Route path="/requestForDriver" element={<CabRequestList choice={4}/>}/>
-            <Route path="/customerCabDetail" element={<CustomerCabDetails isAdmin={isAdmin}/>}/>
             <Route path="/cabCustomerList" element={<CustomerCabList choice={1}/>}/>
             <Route path="/cabCustomerDetails" element={<CustomerCabDetail isAdmin={isAdmin}/>}/>
             <Route path="/cabCustomerByCustomer" element={<CustomerCabList choice={2}/>}/>

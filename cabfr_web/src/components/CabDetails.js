@@ -6,7 +6,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import { deleteCab } from "../services/auth_services";
 import { useNavigate } from "react-router-dom";
-import { getCabFromStorage, getDriverFromStorage, removeCabFromStorage, setCabInStorage, setDriverInStorage } from "../services/localStorageHandler";
+import { getCabFromStorage, getPersonalDriverFromStorage, removeCabFromStorage, setCabInStorage, setDriverInStorage } from "../services/localStorageHandler";
 import { removeDriverFromCab } from "../services/user_services";
 
 const CabDetails = ({isCustomer,isAdmin,isDriver}) => {
@@ -20,7 +20,7 @@ const CabDetails = ({isCustomer,isAdmin,isDriver}) => {
     });
 
     const [driver, setDriver] = useState(() => {
-        const temp = getDriverFromStorage();
+        const temp = getPersonalDriverFromStorage();
         return temp;
     })
 
