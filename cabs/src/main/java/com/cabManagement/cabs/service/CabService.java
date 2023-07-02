@@ -77,4 +77,13 @@ public class CabService {
         cab.setDriver(driver1);
         return this.cabDAO.saveCab(cab);
     }
+
+    public Cab removeDriver(String reg_no) throws CabNotFoundException{
+        Cab cab = this.cabDAO.findCabById(reg_no);
+        if (cab == null) {
+            throw new CabNotFoundException();
+        }
+        cab.setDriver(null);
+        return this.cabDAO.updateCab(cab);
+    }
 }

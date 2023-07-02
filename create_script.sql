@@ -109,7 +109,6 @@ INSERT INTO user values (3,"customer","$2a$08$qlXB4Pk7sF9ApzimkeQI0eDGvPWGal.Y26
 INSERT INTO customer values (1,"customer","customer@gmail.com","8126371782");
 INSERT INTO driver values (1, "driver", "driver@gmail.com", "7185516728");
 
-
 INSERT INTO user_roles (user_id, role_id) SELECT user.user_id, 1 FROM user WHERE user.username = "admin";
 INSERT INTO user_roles (user_id, role_id) SELECT user.user_id, 2 FROM user WHERE user.username = "driver";
 INSERT INTO user_roles (user_id, role_id) SELECT user.user_id, 3 FROM user WHERE user.username = "customer";

@@ -7,6 +7,7 @@ import DialogContent from "@mui/material/DialogContent";
 import { deleteCab } from "../services/auth_services";
 import { useNavigate } from "react-router-dom";
 import { getCabFromStorage, getDriverFromStorage, removeCabFromStorage, setCabInStorage, setDriverInStorage } from "../services/localStorageHandler";
+import { removeDriverFromCab } from "../services/user_services";
 
 const CabDetails = ({isCustomer,isAdmin,isDriver}) => {
 
@@ -23,6 +24,8 @@ const CabDetails = ({isCustomer,isAdmin,isDriver}) => {
         return temp;
     })
 
+    const [open1, setOpen1] = useState(false);
+
     const handleToClose = () => {
         deleteCab(cab.reg_no);
         removeCabFromStorage();
@@ -32,6 +35,7 @@ const CabDetails = ({isCustomer,isAdmin,isDriver}) => {
 
     const handleCancel = ()=>{
         setOpen(false);
+        setOpen1(false);
     }
 
     const navFunc = () => {
@@ -60,6 +64,16 @@ const CabDetails = ({isCustomer,isAdmin,isDriver}) => {
     const AssignDriver = () => {
         setCabInStorage(cab);
         navigate("/assignDriver")
+    }
+
+    const openDialog = () => {
+        setOpen1(true);
+    }
+
+    const handleToClose1 = () => {
+        removeDriverFromCab(cab.reg_no);
+        setOpen1(false);
+        navigate("/cabs")
     }
 
     return (
@@ -127,6 +141,11 @@ const CabDetails = ({isCustomer,isAdmin,isDriver}) => {
                 <button onClick={seeDriverForCab} className="btn btn-primary btn-block">
                     See driver of this cab
                 </button>
+                {isAdmin &&
+                    <button onClick={openDialog} className="btn btn-primary btn-block">
+                        Remove Driver of this cab
+                    </button>
+                }
             </> : null}
 
             
@@ -145,6 +164,25 @@ const CabDetails = ({isCustomer,isAdmin,isDriver}) => {
                     <button onClick={handleToClose}
                         color="primary" autoFocus>
                         Delete
+                    </button>
+                    
+                </DialogActions>
+            </Dialog>
+
+            <Dialog open={open1} onClose={handleToClose1}>
+                <DialogTitle>{"Remove Driver for Cab"}</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Are you sure you want to remove the driver for this cab?
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <button onClick={handleCancel} color="primary" autoFocus>
+                        Cancel
+                    </button>
+                    <button onClick={handleToClose1}
+                        color="primary" autoFocus>
+                        Remove
                     </button>
                     
                 </DialogActions>

@@ -89,11 +89,17 @@ export const deleteCustomerCabbyId = async(id) => {
 }
 
 export const getCabsByDriverId = async(id) => {
-    const response = await axios.get(API_URL + `cabs/getByDriverID/${id}`, { headers: { Authorization: "Bearer " + authHeader() } });
+    const response = await axios.get(API_URL + `cabs/getByDriverId/${id}`, { headers: { Authorization: "Bearer " + authHeader() } });
     return response.data;
 }
 
 export const assignDriverToCab = async(reg_no, driver) => {
     const response = await axios.put(API_URL + `cabs/updateDriver/${reg_no}`, { id: driver.id, driverName: driver.driverName, email: driver.email, driver: driver.phone, user: driver.user }, { headers: { Authorization: "Bearer " + authHeader() } });
+    return response.data;
+}
+
+
+export const removeDriverFromCab = async(reg_no) => {
+    const response = await axios.put(API_URL + `cabs/removeDriver/${reg_no}`,{}, { headers: { Authorization: "Bearer " + authHeader() } });
     return response.data;
 }
