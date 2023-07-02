@@ -3,7 +3,7 @@ import { useLoginFormValidator } from "../validators/loginFormValidator";
 import { getCurrentUser, login } from "../services/auth_services";
 import { useNavigate } from "react-router-dom";
 import {getDriverById, getCustomerById} from "../services/user_services";
-import {setDriverInStorage, setCustomerInStorage} from "../services/localStorageHandler";
+import {setCustomerInStorage, setPersonalDriverInStorage} from "../services/localStorageHandler";
 
 const LoginForm = ({setCurrentUser, setIsAdmin, setIsDriver, setIsCustomer}) => {
   const [form, setForm] = useState({
@@ -20,7 +20,7 @@ const LoginForm = ({setCurrentUser, setIsAdmin, setIsDriver, setIsCustomer}) => 
   const setCurrentDriver = async () => {
     const temp = await getDriverById();
     console.log(temp)
-    setDriverInStorage(temp);
+    setPersonalDriverInStorage(temp);
     return temp;
   }
 
