@@ -26,11 +26,21 @@ function CabList({choice}) {
   },[])
     
   return (
+    <>
+    { (cabs.length === 0) ? <div className='container banner'>
+        <header className='jumbotron banner'> 
+          <h5>Nothing to show</h5>
+        </header>
+        
+      </div>
+        : null
+      } 
     <ul id="remove">
       {cabs.map((data) => (
         <li id="space" key= {data.reg_no}><CabListItem cab={data}/></li>
       ))}
     </ul>
+    </>
   );
 }
 

@@ -37,11 +37,20 @@ const CustomerCabList = ({choice}) => {
   },[])
     
   return (
-    <ul id="remove">
-      {customerCabs.map((data) => (
-        <li id="space" key= {data.slno}><CustomerCabListItem customerCab={data}/></li>
-      ))}
-    </ul>
+    <>
+      { (customerCabs.length === 0) ? <div className='container banner'>
+              <header className='jumbotron banner'> 
+                  <h5>Nothing to show</h5>
+              </header>
+          </div>
+              : null
+        }
+      <ul id="remove">
+        {customerCabs.map((data) => (
+          <li id="space" key= {data.slno}><CustomerCabListItem customerCab={data}/></li>
+        ))}
+      </ul>
+    </>
   );
 }
 

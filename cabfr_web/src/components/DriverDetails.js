@@ -51,39 +51,42 @@ const DriverDetails = ({isDriver, isAdmin}) => {
     }
 
     return (
-        <div>
-            <p>{driver.id}</p>
-            <p>{driver.driverName}</p>
-            <p>{driver.email}</p>
-            <p>{driver.phone}</p>
+        <div className="container">
+            <div className="card">
+                <div className="card-body">
+                    <h1 className="card-title">{driver.id} {driver.driverName}</h1>
+                    <div className="card-text">
+                        <p>{driver.email}</p>
+                        <p>{driver.phone}</p>
+                    </div>
+                    {(isDriver && currDriver.id === driver.id) && (
+                        <>
+                        <button onClick={navFunc1} className="btn btn-warning " type="submit">
+                            Update Info
+                        </button>
 
-            {(isDriver && currDriver.id === driver.id) && (
-                <>
-                <button onClick={navFunc1} className="btn btn-primary btn-block" type="submit">
-                    Update Info
-                </button>
+                        <button onClick={navFunc2} className="btn btn-primary " type="submit">
+                            See all Cab Requests
+                        </button>
 
-                <button onClick={navFunc2} className="btn btn-primary btn-block" type="submit">
-                    See all Cab Requests
-                </button>
+                        <button onClick={navFunc3} className="btn btn-info " type="submit">
+                            See all Cab Appointments
+                        </button>
 
-                <button onClick={navFunc3} className="btn btn-primary btn-block" type="submit">
-                    See all Cab Appointments
-                </button>
+                        <button onClick={navFunc4} className="btn btn-primary " type="submit">
+                            See all Cabs 
+                        </button>
 
-                <button onClick={navFunc4} className="btn btn-primary btn-block" type="submit">
-                    See all Cabs 
-                </button>
+                        </>
+                    )}
 
-                </>
-            )}
-
-            {isAdmin && (
-                <button onClick={()=>{setOpen(true)}} className="btn btn-primary btn-block" type="submit">
-                    Delete Driver
-                </button>
-            )}
-
+                    {isAdmin && (
+                        <button onClick={()=>{setOpen(true)}} className="btn btn-danger " type="submit">
+                            Delete Driver
+                        </button>
+                    )}
+                </div>
+            </div>
             <Dialog open={open} onClose={handleToClose}>
                 <DialogTitle>{"Delete Dtiver"}</DialogTitle>
                 <DialogContent>
@@ -96,7 +99,7 @@ const DriverDetails = ({isDriver, isAdmin}) => {
                         Cancel
                     </button>
                     <button onClick={handleToClose}
-                        color="primary" autoFocus>
+                        color="danger" autoFocus>
                         Delete
                     </button>
                     

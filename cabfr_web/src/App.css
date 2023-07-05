@@ -12,8 +12,27 @@ a {
   color: black;
 }
 
+a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.student {
+  float: left;
+}
+
+.container1 {
+  overflow: hidden;
+  width: min-content;
+}
+
+.nav {
+  background-color: #001C30;
+  height: 12vh;
+}
+
 .card {
-  background-color: #f7f7f7;
+  background-color: aliceblue;
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
   margin-top: 50px;
@@ -23,6 +42,56 @@ a {
   -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.card1 {
+  background-color: aliceblue;
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.card1:hover {
+  background-color: #176B87;
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.btn {
+  margin: 7px;
+}
+
+.banner {
+  background-color: aliceblue;
+}
+
+.heading {
+  text-align: center;
+}
+
+.form-button {
+  margin-top: 40px;
+  height: 35px;
+}
+
+.form-button1 {
+  margin-top: 40px;
+  height: 35px;
+  background-color: #1C8ADB;
+  color: white;
 }
 
 .book {
@@ -50,4 +119,8 @@ li#space {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
+}
+
+html, body {
+  background-color: #64CCC5;
 }

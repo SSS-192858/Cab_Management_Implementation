@@ -7,7 +7,7 @@ import DialogContent from "@mui/material/DialogContent";
 import { deleteCustomerCabbyId } from "../services/user_services";
 import { useNavigate } from "react-router-dom";
 import { getCustomerCabFromStorage } from "../services/localStorageHandler";
-
+import dateFormat from "dateformat";
 const CustomerCabDetail = ({isAdmin}) => {
 
     const [CustomerCab,setCustomerCab] = useState(() => {
@@ -29,46 +29,51 @@ const CustomerCabDetail = ({isAdmin}) => {
     }
 
     return (
-        <div>
-            <div className="book">
-                <p>{CustomerCab.slno}</p>
-                <p>
-                    Cab Details
-                </p>
-                <p>{CustomerCab.cab.reg_no}</p>
-                <p>{CustomerCab.cab.model}</p>
-                <p>{CustomerCab.cab.colour}</p>
-                <p>{CustomerCab.cab.fare}</p>
+        <div className="container">
+            <div className="card">
+                <div className="card-body">
+                    <h1 className="card-title">Cab Serial Number - {CustomerCab.slno}</h1>
+                    <div className="card-text">
+                        <p>
+                            Cab Details
+                        </p>
+                        <p>Cab Registration Number - {CustomerCab.cab.reg_no}</p>
+                        <p>Cab Model - {CustomerCab.cab.model}</p>
+                        <p>Colour {CustomerCab.cab.colour}</p>
+                        <p>Cab Fare - {CustomerCab.cab.fare}</p>
 
-                <p>
-                    Customer Details :
-                </p>
+                        <p>
+                            Customer Details :
+                        </p>
 
-                <p>{CustomerCab.customer.id}</p>
-                <p>{CustomerCab.customer.customerName}</p>
-                <p>{CustomerCab.customer.email}</p>
-                <p>{CustomerCab.customer.phone}</p>
+                        <p>Customer Id - {CustomerCab.customer.id}</p>
+                        <p>Customer Name - {CustomerCab.customer.customerName}</p>
+                        <p>Customer Email - {CustomerCab.customer.email}</p>
+                        <p>Customer PhoneNo - {CustomerCab.customer.phone}</p>
 
-                <p>
-                    Start Date : {CustomerCab.startDate}
-                </p>
-                <p>
-                    End Date : {CustomerCab.endDate}
-                </p>
-                {CustomerCab.cab.driver && (
-                    <>
-                    <p> Driver Details</p>
-                    <p>{CustomerCab.cab.driver.id}</p>
-                    <p>{CustomerCab.cab.driver.driverName}</p>
-                    <p>{CustomerCab.cab.driver.email}</p>
-                    <p>{CustomerCab.cab.driver.phone}</p>
-                    </>
-                )}
-            {isAdmin && 
-            <button onClick={()=>{setOpen(true)}} className="btn btn-primary btn-block" type="submit">
-                Delete CustomerCab
-            </button>
-            }   
+                        <p>
+                            Start Date : {dateFormat(CustomerCab.startDate,"fullDate")}
+                        </p>
+                        <p>
+                            End Date : {dateFormat(CustomerCab.endDate,"fullDate")}
+                        </p>
+                    </div>
+                    {CustomerCab.cab.driver && (
+                        <>
+                        <p> Driver Details</p>
+                        <p> Driver ID - {CustomerCab.cab.driver.id}</p>
+                        <p>Driver Name - {CustomerCab.cab.driver.driverName}</p>
+                        <p>Driver Email - {CustomerCab.cab.driver.email}</p>
+                        <p>Driver PhoneNo - {CustomerCab.cab.driver.phone}</p>
+                        </>
+                    )}
+                {isAdmin && 
+                <button onClick={()=>{setOpen(true)}} className="btn btn-danger" type="submit">
+                    Delete CustomerCab
+                </button>
+                }   
+                </div>
+            </div>
             <Dialog open={open} onClose={handleToClose}>
                 <DialogTitle>{"Delete CustomerCab"}</DialogTitle>
                 <DialogContent>
@@ -81,12 +86,12 @@ const CustomerCabDetail = ({isAdmin}) => {
                         Cancel
                     </button>
                     <button onClick={handleToClose}
-                        color="primary" autoFocus>
+                        color="danger" autoFocus>
                         Delete CustomerCab
                     </button>
                 </DialogActions>
             </Dialog>
-            </div>
+            
     </div>
     )
 }
