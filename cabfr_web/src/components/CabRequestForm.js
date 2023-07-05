@@ -116,7 +116,7 @@ const CabRequestForm = () => {
                     </div>
 
                     <div className="form-group">
-                        <button className="btn btn-primary btn-block">Request Cab</button>
+                        <button className="btn btn-success">Request Cab</button>
                     </div>
 
                     {message ? 

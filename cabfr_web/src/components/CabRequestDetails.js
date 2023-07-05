@@ -7,7 +7,7 @@ import DialogContent from "@mui/material/DialogContent";
 import { deleteRequest , accept } from "../services/request_services";
 import { useNavigate } from "react-router-dom";
 import { getRequestFromStorage } from "../services/localStorageHandler";
-
+import dateFormat from "dateformat";
 const CabRequestDetails = ({isCustomer,isAdmin,isDriver}) => {
 
     const [open, setOpen] = useState(false);
@@ -55,27 +55,28 @@ const CabRequestDetails = ({isCustomer,isAdmin,isDriver}) => {
     }
 
     return (
-        <div>
-            <p>{request.id}</p>
-            <p>{request.customer.id}</p>
-            <p>{request.customer.customerName}</p>
-            <p>{request.customer.email}</p>
-            <p>{request.customer.phone}</p>
-            <p>{request.cab.reg_no}</p>
-            <p>{request.cab.model}</p>
-            <p>{request.cab.colour}</p>
-            <p>{request.startDate}</p>
-            <p>{request.endDate}</p>
-
-            {(isAdmin || isDriver) &&
-            <button onClick={()=>{setAcceptOpen(true)}} className="btn btn-primary btn-block" type="submit">
-                Accept
-            </button>
-            }
-            
-            <button onClick={()=>{setOpen(true)}} className="btn btn-primary btn-block" type="submit" >
-                Delete
-            </button>
+        <div className="container">
+            <div className="card">
+                <div className="card-body">
+                    <h1 className="card-title">{request.id}. {request.customer.id} {request.customer.customerName} {request.cab.reg_no} {request.cab.model}</h1>
+                    <div className="card-text">
+                        <p>Customer Email - {request.customer.email}</p>
+                        <p>Customer phone - {request.customer.phone}</p>
+                        <p>Cab colour - {request.cab.colour}</p>
+                        <p> StartDate - dateFormat({request.startDate},"fullDate")</p>
+                        <p>End Date - dateFormat({request.endDate},"fullDate")</p>
+                    </div>
+                    {(isAdmin || isDriver) &&
+                    <button onClick={()=>{setAcceptOpen(true)}} className="btn btn-success" type="submit">
+                        Accept
+                    </button>
+                    }
+                    
+                    <button onClick={()=>{setOpen(true)}} className="btn btn-danger" type="submit" >
+                        Delete
+                    </button>
+                </div>
+            </div>
             {message==="" ? (
                 <Dialog open={acceptOpen} onClose={handleAccept}>
                     <DialogTitle>{"Accept Request"}</DialogTitle>
@@ -89,7 +90,7 @@ const CabRequestDetails = ({isCustomer,isAdmin,isDriver}) => {
                             Cancel
                         </button>
                         <button onClick={handleAccept}
-                            color="primary" autoFocus>
+                            color="success" autoFocus>
                             Accept
                         </button>
                         
@@ -104,7 +105,7 @@ const CabRequestDetails = ({isCustomer,isAdmin,isDriver}) => {
                     </DialogContent>
                     <DialogActions>
                         <button onClick={handleToClose}
-                            color="primary" autoFocus>
+                            color="danger" autoFocus>
                             Delete Request
                         </button>
                         
@@ -125,7 +126,7 @@ const CabRequestDetails = ({isCustomer,isAdmin,isDriver}) => {
                         Cancel
                     </button>
                     <button onClick={handleToClose}
-                        color="primary" autoFocus>
+                        color="danger" autoFocus>
                         Delete
                     </button>
                     

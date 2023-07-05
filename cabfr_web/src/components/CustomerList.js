@@ -17,11 +17,20 @@ function CustomerList(){
   },[])
   
   return (
+    <>
+    { (customers.length === 0) ? <div className='container banner'>
+            <header className='jumbotron banner'> 
+            <h5>Nothing to show</h5>
+            </header>
+        </div>
+            : null
+        }
     <ul id="remove">
       {customers.map((data) => (
         <li id="space" key= {data.id}><CustomerListItem customer={data}/></li>
       ))}
     </ul>
+    </>
   );
 }
 

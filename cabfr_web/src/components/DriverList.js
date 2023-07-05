@@ -17,11 +17,20 @@ function DriverList(){
   },[])
   
   return (
-    <ul id="remove">
-      {drivers.map((data) => (
-        <li id="space" key= {data.id}><DriverListItem driver={data}/></li>
-      ))}
-    </ul>
+    <>
+      { (drivers.length === 0) ? <div className='container banner'>
+            <header className='jumbotron banner'> 
+            <h5>Nothing to show</h5>
+            </header>
+        </div>
+            : null
+      }
+      <ul id="remove">
+        {drivers.map((data) => (
+          <li id="space" key= {data.id}><DriverListItem driver={data}/></li>
+        ))}
+      </ul>
+    </>
   );
 }
 
