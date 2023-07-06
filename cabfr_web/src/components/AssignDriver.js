@@ -30,11 +30,14 @@ const AssignDriver = () => {
             </header>
         </div>
 
-        <ul id="remove">
-            {drivers.map((data) => (
-                <li id="space" key= {data.id}><DriverAssignItem driver={data} cab={cab}/></li>
-            ))}
-        </ul>
+        <div className='container'>
+          <div className='row'>
+
+          {drivers.map((data) => (
+            <div id="space" key= {data.id} className='col-lg-4 col-sm-12 col-md-6'><DriverAssignItem driver={data} cab={cab}/></div>
+          ))}
+          </div>
+        </div>
         </>
     )
 

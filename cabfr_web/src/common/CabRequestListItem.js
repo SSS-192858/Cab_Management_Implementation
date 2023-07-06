@@ -11,26 +11,17 @@ const CabRequestListItem = ({request}) => {
     return (
         <a href="/requestDetails">
             <div className="card1" onClick={handleClick}>
-                <div className="card-body">    
-                    <h1>
-                        Cab Details :
-                    </h1>
-                    <p>Cab Reistration Number- {request.cab.reg_no}</p>
-                    <p>Cab Model{request.cab.model}</p>
-                    <p>Cab colour - {request.cab.colour}</p>
+                <div className="card-body">   
+                    <h3>Cab- {request.cab.reg_no}</h3>
+                    <h3>Customer- {request.customer.customerName}</h3>
+                    <br/>
                     <p>
-                        Customer Details :
-                    </p>
-
-                    <p>Customer Id - {request.customer.id}</p>
-                    <p>Customer Name - {request.customer.customerName}</p>
-
-                    <p>
-                        Start Date : dateFormat({request.startDate},"fullDate");
+                        From - {dateFormat(request.startDate, "fullDate")}
                     </p>
                     <p>
-                        End Date : dateFormat({request.endDate},"fullDate"):
-                    </p>
+                        To - {dateFormat(request.endDate, "fullDate")}
+                    </p> 
+                    
                 </div>
             </div>
         </a>

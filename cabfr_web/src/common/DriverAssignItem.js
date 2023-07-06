@@ -12,7 +12,7 @@ const DriverAssignItem = ({driver, cab}) => {
     <a href="/assignDriverConfirmation">
         <div className="card1" onClick={navFunc}>
             <div className="card-body">
-                <h1>Driver Name - {driver.driverName}</h1>
+                <h3>Driver Name - {driver.driverName}</h3>
                 <p>Driver Id - {driver.id}</p>
                 <p>Driver Email - {driver.email}</p>
                 <p>Driver Phone - {driver.phone}</p>

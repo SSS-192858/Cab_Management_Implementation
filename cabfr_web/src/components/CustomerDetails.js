@@ -46,10 +46,14 @@ const CustomerDetails = ({isCustomer, isAdmin}) => {
         <div className="container">
             <div className="card">
                 <div className="card-body">
-                    <h1 className="card-title">Customer Id - {customer.id}</h1>
-                    <p>Customer Name - {customer.customerName}</p>
-                    <p>Customer Email - {customer.email}</p>
-                    <p>Customer PhoneNo - {customer.phone}</p>
+                    <h1 className="card-title">
+                        Customer Name - {customer.customerName}
+                    </h1>
+                    <div className="card-text">
+                        <p>Customer id - {customer.id}</p>
+                        <p>Customer Email - {customer.email}</p>
+                        <p>Customer Phone - {customer.phone}</p>
+                    </div>
                     {isCustomer && (
                         <button onClick={navFunc1} className="btn btn-warning " type="submit">
                         Update Info

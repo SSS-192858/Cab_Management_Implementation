@@ -9,6 +9,7 @@ import DialogContent from "@mui/material/DialogContent";
 import {registerRequest} from "../services/request_services";
 import {getCabFromStorage, getCustomerFromStorage} from "../services/localStorageHandler";
 import { RequestCabValidator } from "../validators/RequestCabValidator";
+import image from "../assets/image.png";
 
 const CabRequestForm = () => {
 
@@ -76,10 +77,10 @@ const CabRequestForm = () => {
         <div className="col-md-12">
             <div className="card card-container">
             <img
-                src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                src={image}
                 alt="profile-img"
-                className="profile-img-card"
             />
+            <br/>
 
             <form onSubmit={onSubmitForm}>
                 
@@ -116,7 +117,7 @@ const CabRequestForm = () => {
                     </div>
 
                     <div className="form-group">
-                        <button className="btn btn-success">Request Cab</button>
+                        <button className="btn btn-block form-button">Request Cab</button>
                     </div>
 
                     {message ? 

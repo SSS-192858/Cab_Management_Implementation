@@ -1,8 +1,6 @@
 import React, { useState} from "react";
-// import { updateStudent } from "../services/auth_services";
 import { updateDriver } from "../services/auth_services";
 import { useNavigate } from "react-router-dom";
-
 import Dialog from "@mui/material/Dialog";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -10,6 +8,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import { useDriverUpdateFormValidator} from "../validators/DriverUpdateValidator";
 import { getDriverFromStorage, setDriverInStorage} from "../services/localStorageHandler";
+import image1 from "../assets/image1.png";
 
 const UpdateDriver = () => {
 
@@ -75,7 +74,7 @@ const UpdateDriver = () => {
         <div className="col-md-12">
             <div className="card card-container">
             <img
-                src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                src={image1}
                 alt="profile-img"
                 className="profile-img-card"
             />
@@ -131,7 +130,7 @@ const UpdateDriver = () => {
                     </div>
 
                     <div className="form-group">
-                        <button className="btn btn-warning">Update details</button>
+                        <button className="btn btn-block form-button">Update details</button>
                     </div>
 
                     {message ? 
