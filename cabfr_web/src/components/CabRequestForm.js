@@ -129,7 +129,7 @@ const CabRequestForm = () => {
                 <DialogTitle>{"Request Cab"}</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        We have received your request kindly wait till it gets Approved. Bye Bye !
+                        We have received your request kindly wait till it gets Approved.
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>

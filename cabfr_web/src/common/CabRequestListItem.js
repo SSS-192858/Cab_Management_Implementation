@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {setRequestInStorage} from "../services/localStorageHandler";
-
+import dateFormat from 'dateformat';
 const CabRequestListItem = ({request}) => {
 
     const handleClick = () => {
@@ -9,29 +9,31 @@ const CabRequestListItem = ({request}) => {
     }
 
     return (
-        <div className="book" onClick={handleClick}>
-            <Link to="/requestDetails">
-                <p>
-                    Cab Details :
-                </p>
-                <p>{request.cab.reg_no}</p>
-                <p>{request.cab.model}</p>
-                <p>{request.cab.colour}</p>
-                <p>
-                    Customer Details :
-                </p>
+        <a href="/requestDetails">
+            <div className="card1" onClick={handleClick}>
+                <div className="card-body">    
+                    <h1>
+                        Cab Details :
+                    </h1>
+                    <p>Cab Reistration Number- {request.cab.reg_no}</p>
+                    <p>Cab Model{request.cab.model}</p>
+                    <p>Cab colour - {request.cab.colour}</p>
+                    <p>
+                        Customer Details :
+                    </p>
 
-                <p>{request.customer.id}</p>
-                <p>{request.customer.customerName}</p>
+                    <p>Customer Id - {request.customer.id}</p>
+                    <p>Customer Name - {request.customer.customerName}</p>
 
-                <p>
-                    Start Date : {request.startDate}
-                </p>
-                <p>
-                    End Date : {request.endDate}
-                </p>
-            </Link>
-        </div>
+                    <p>
+                        Start Date : dateFormat({request.startDate},"fullDate");
+                    </p>
+                    <p>
+                        End Date : dateFormat({request.endDate},"fullDate"):
+                    </p>
+                </div>
+            </div>
+        </a>
     )
 }
 

@@ -9,14 +9,16 @@ const CustomerListItem = ({customer}) => {
     }
 
     return (
-        <div className="book" onClick={handleClick}>
-            <Link to="/customerDetail">
-                <p>{customer.id}</p>
-                <p>{customer.customerName}</p>
-                <p>{customer.email}</p>
-                <p>{customer.phone}</p>
-            </Link>
+    <a href="customerDetail">
+        <div className="card1" onClick={handleClick}>
+           <div className="card-body">
+                <h1>Customer Name {customer.customerName}</h1>
+                <p>Customer ID- {customer.id}</p>
+                <p>Customer Email - {customer.email}</p>
+                <p>Customer Phone - {customer.phone}</p>
+            </div>
         </div>
+    </a>
     )
 }
 

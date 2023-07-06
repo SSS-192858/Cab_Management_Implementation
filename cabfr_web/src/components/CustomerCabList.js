@@ -45,11 +45,14 @@ const CustomerCabList = ({choice}) => {
           </div>
               : null
         }
-      <ul id="remove">
+      <div className='container'>
+        <div className='row'>
         {customerCabs.map((data) => (
-          <li id="space" key= {data.slno}><CustomerCabListItem customerCab={data}/></li>
+          <div id="space" key= {data.slno} className='col-lg-4 col-sm-12 col-md-6'><CustomerCabListItem customerCab={data}/></div>
         ))}
-      </ul>
+        </div>
+
+      </div>
     </>
   );
 }
