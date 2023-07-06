@@ -25,11 +25,13 @@ function DriverList(){
         </div>
             : null
       }
-      <ul id="remove">
+      <div className='container'>
+        <div className='row'>
         {drivers.map((data) => (
-          <li id="space" key= {data.id}><DriverListItem driver={data}/></li>
+          <div id="space" key= {data.id} className='col-lg-4 col-sm-12 col-md-6'><DriverListItem driver={data} className='col-lg-4 col-sm-12 col-md-6'/></div>
         ))}
-      </ul>
+        </div>
+      </div>
     </>
   );
 }

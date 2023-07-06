@@ -58,13 +58,13 @@ const CabRequestDetails = ({isCustomer,isAdmin,isDriver}) => {
         <div className="container">
             <div className="card">
                 <div className="card-body">
-                    <h1 className="card-title">{request.id}. {request.customer.id} {request.customer.customerName} {request.cab.reg_no} {request.cab.model}</h1>
+                    <h1 className="card-title">{request.id}. {request.customer.customerName} {request.cab.reg_no} {request.cab.model}</h1>
                     <div className="card-text">
                         <p>Customer Email - {request.customer.email}</p>
                         <p>Customer phone - {request.customer.phone}</p>
                         <p>Cab colour - {request.cab.colour}</p>
-                        <p> StartDate - dateFormat({request.startDate},"fullDate")</p>
-                        <p>End Date - dateFormat({request.endDate},"fullDate")</p>
+                        <p> StartDate - {dateFormat(request.startDate,"fullDate")}</p>
+                        <p>End Date - {dateFormat(request.endDate,"fullDate")}</p>
                     </div>
                     {(isAdmin || isDriver) &&
                     <button onClick={()=>{setAcceptOpen(true)}} className="btn btn-success" type="submit">

@@ -120,8 +120,7 @@ const CabDetails = ({isCustomer,isAdmin,isDriver}) => {
                     </button>
                     </>
                     } 
-                </div>
-            </div>
+                
 
             {((isDriver) && (cab.driver) && (cab.driver.id === driver.id)) && 
 
@@ -153,7 +152,8 @@ const CabDetails = ({isCustomer,isAdmin,isDriver}) => {
                 }
             </> : null}
 
-            
+            </div>
+            </div>
              
             <Dialog open={open} onClose={handleToClose}>
                 <DialogTitle>{"Delete Cab"}</DialogTitle>

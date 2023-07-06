@@ -25,11 +25,13 @@ function CustomerList(){
         </div>
             : null
         }
-    <ul id="remove">
-      {customers.map((data) => (
-        <li id="space" key= {data.id}><CustomerListItem customer={data}/></li>
-      ))}
-    </ul>
+    <div className='container'>
+      <div className='row'>
+        {customers.map((data) => (
+          <div id="space" key= {data.id} className='col-lg-4 col-sm-12 col-md-6'><CustomerListItem customer={data}/></div>
+        ))}
+      </div>
+    </div>
     </>
   );
 }

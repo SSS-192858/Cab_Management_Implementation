@@ -35,11 +35,13 @@ function CabList({choice}) {
       </div>
         : null
       } 
-    <ul id="remove">
-      {cabs.map((data) => (
-        <li id="space" key= {data.reg_no}><CabListItem cab={data}/></li>
-      ))}
-    </ul>
+    <div className="container">
+      <div className='row'>
+        {cabs.map((data) => (
+          <div id="space" key= {data.reg_no} className='col-lg-4 col-sm-12 col-md-6'><CabListItem cab={data}/></div>
+        ))}
+      </div>
+    </div>
     </>
   );
 }

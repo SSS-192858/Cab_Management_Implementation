@@ -9,15 +9,16 @@ const DriverAssignItem = ({driver, cab}) => {
     }
 
     return (
-        
-        <div className="book" onClick={navFunc}>
-            <Link to="/assignDriverConfirmation">
-                <p>{driver.id}</p>
-                <p>{driver.driverName}</p>
-                <p>{driver.email}</p>
-                <p>{driver.phone}</p>
-            </Link>
+    <a href="/assignDriverConfirmation">
+        <div className="card1" onClick={navFunc}>
+            <div className="card-body">
+                <h1>Driver Name - {driver.driverName}</h1>
+                <p>Driver Id - {driver.id}</p>
+                <p>Driver Email - {driver.email}</p>
+                <p>Driver Phone - {driver.phone}</p>
+            </div>
         </div>
+    </a>
     )
 }
 
