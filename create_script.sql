@@ -106,8 +106,8 @@ INSERT INTO user values (1,"admin","$2a$08$qlXB4Pk7sF9ApzimkeQI0eDGvPWGal.Y265Go
 -- test123
 INSERT INTO user values (2,"driver","$2a$08$qlXB4Pk7sF9ApzimkeQI0eDGvPWGal.Y265Goukid6hdlzz/QN/cy");
 INSERT INTO user values (3,"customer","$2a$08$qlXB4Pk7sF9ApzimkeQI0eDGvPWGal.Y265Goukid6hdlzz/QN/cy");
-INSERT INTO customer values (1,3,"customer@gmail.com","8126371782");
-INSERT INTO driver values (1,2, "driver@gmail.com", "7185516728");
+INSERT INTO customer values (1,3,"Customer1","customer@gmail.com","8126371782");
+INSERT INTO driver values (1,2,"Driver1", "driver@gmail.com", "7185516728");
 
 INSERT INTO user_roles (user_id, role_id) SELECT user.user_id, 1 FROM user WHERE user.username = "admin";
 INSERT INTO user_roles (user_id, role_id) SELECT user.user_id, 2 FROM user WHERE user.username = "driver";
@@ -284,7 +284,7 @@ INSERT INTO customer_cab values (2,2,"KA-02-NP-5020","2023-02-14 08:00:00","2023
 INSERT INTO customer_cab values (3,5,"KA-14-K2-6035","2023-01-27 12:30:00","2023-01-30 12:30:00");
 INSERT INTO customer_cab values (4,4,"KA-35-B8-4610","2023-02-19 13:00:00","2023-02-19 21:00:00");
 INSERT INTO customer_cab values (5,4,"KA-01-BQ-8456","2023-02-28 21:30:00","2023-03-02 21:30:00");
-INSERT INTO customer_cab values (6,7,"KA-01-PC-7946","2023-03-13 08:00:00","2023-0-14 07:00:00");
+INSERT INTO customer_cab values (6,7,"KA-01-PC-7946","2023-03-13 08:00:00","2023-03-14 07:00:00");
 INSERT INTO customer_cab values (7,3,"KA-10-S2-5319","2023-04-05 12:00:00","2023-04-06 00:00:00");
 INSERT INTO customer_cab values (8,20,"KA-35-B8-4610","2023-04-16 17:00:00","2023-04-20 16:00:00");
 INSERT INTO customer_cab values (9,12,"KA-89-P1-3984","2023-05-08 11:30:00","2023-05-11 11:30:00");
