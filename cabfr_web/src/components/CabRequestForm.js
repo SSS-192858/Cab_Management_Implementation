@@ -116,7 +116,7 @@ const CabRequestForm = () => {
                     </div>
 
                     <div className="form-group">
-                        <button className="btn btn-primary btn-block">Request Cab</button>
+                        <button className="btn btn-success">Request Cab</button>
                     </div>
 
                     {message ? 
@@ -129,7 +129,7 @@ const CabRequestForm = () => {
                 <DialogTitle>{"Request Cab"}</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        We have received your request kindly wait till it gets Approved. Bye Bye !
+                        We have received your request kindly wait till it gets Approved.
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>

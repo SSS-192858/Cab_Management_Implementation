@@ -77,78 +77,83 @@ const CabDetails = ({isCustomer,isAdmin,isDriver}) => {
     }
 
     return (
-        <div>
-            <p>{cab.reg_no}</p>
-            <p>{cab.model}</p>
-            <p>{cab.colour}</p>
-            <p>{cab.fare}</p>
+        <div className="container">
+            <div className="card">
+                <div className="card-body">
+                    <h1 className="card-title">{cab.reg_no}</h1>
+                    <div className="card-text">
+                        <p>{cab.model}</p>
+                        <p>{cab.colour}</p>
+                        <p>{cab.fare}</p>
 
-            {(cab.driver) ? <>
-                <p>{cab.driver.id}</p>
-                <p>{cab.driver.driverName}</p>
-                <p>{cab.driver.email}</p>
-                <p>{cab.driver.phone}</p>
+                        {(cab.driver) ? <>
+                            <p>{cab.driver.id}</p>
+                            <p>{cab.driver.driverName}</p>
+                            <p>{cab.driver.email}</p>
+                            <p>{cab.driver.phone}</p>
+                            
+                        </> : null}
+                    </div>
+                    {isCustomer &&
+                    <button onClick={handleRequest} className="btn btn-success ">
+                        Request Cab
+                    </button>    
+                    }  
+
+                    {isAdmin && 
+
+                    <>
+                    <button onClick={seeRequestsForCab} className="btn btn-info ">
+                        See all requests for this Cab
+                    </button>
+
+                    <button onClick={navFunc} className="btn btn-warning ">
+                        Update Cab
+                    </button>
+
+                    <button onClick={()=>{setOpen(true)}} className="btn btn-danger ">
+                        Delete Cab
+                    </button>
+
+                    <button onClick={seeCustomerCabForCab} className="btn btn-primary ">
+                        See all records for this Cab
+                    </button>
+                    </>
+                    } 
                 
-            </> : null}
-
-            {isCustomer &&
-            <button onClick={handleRequest} className="btn btn-primary btn-block">
-                Request Cab
-            </button>    
-            }  
-
-            {isAdmin && 
-
-            <>
-            <button onClick={seeRequestsForCab} className="btn btn-primary btn-block">
-                See all requests for this Cab
-            </button>
-
-            <button onClick={navFunc} className="btn btn-primary btn-block">
-                Update Cab
-            </button>
-
-            <button onClick={()=>{setOpen(true)}} className="btn btn-primary btn-block">
-                Delete Cab
-            </button>
-
-            <button onClick={seeCustomerCabForCab} className="btn btn-primary btn-block">
-                See all records for this Cab
-            </button>
-            </>
-            } 
 
             {((isDriver) && (cab.driver) && (cab.driver.id === driver.id)) && 
 
             <>
-            <button onClick={seeRequestsForCab} className="btn btn-primary btn-block">
+            <button onClick={seeRequestsForCab} className="btn btn-info ">
                 See all requests for this Cab
             </button>
 
-            <button onClick={seeCustomerCabForCab} className="btn btn-primary btn-block">
+            <button onClick={seeCustomerCabForCab} className="btn btn-primary ">
                 See all records for this Cab
             </button>
             </>
             } 
 
             {isAdmin ? 
-            <button onClick={AssignDriver} className="btn btn-primary btn-block">
+            <button onClick={AssignDriver} className="btn btn-success ">
                 Assign Driver
             </button>
             : null }
 
             {(cab.driver) ? <>
-                <button onClick={seeDriverForCab} className="btn btn-primary btn-block">
+                <button onClick={seeDriverForCab} className="btn btn-primary ">
                     See driver of this cab
                 </button>
                 {isAdmin &&
-                    <button onClick={openDialog} className="btn btn-primary btn-block">
+                    <button onClick={openDialog} className="btn btn-danger">
                         Remove Driver of this cab
                     </button>
                 }
             </> : null}
 
-            
+            </div>
+            </div>
              
             <Dialog open={open} onClose={handleToClose}>
                 <DialogTitle>{"Delete Cab"}</DialogTitle>
@@ -162,7 +167,7 @@ const CabDetails = ({isCustomer,isAdmin,isDriver}) => {
                         Cancel
                     </button>
                     <button onClick={handleToClose}
-                        color="primary" autoFocus>
+                        color="danger" autoFocus>
                         Delete
                     </button>
                     
@@ -181,7 +186,7 @@ const CabDetails = ({isCustomer,isAdmin,isDriver}) => {
                         Cancel
                     </button>
                     <button onClick={handleToClose1}
-                        color="primary" autoFocus>
+                        color="danger" autoFocus>
                         Remove
                     </button>
                     

@@ -50,11 +50,11 @@ const AssignDriverConfirmation = () => {
             <p>{driver.email}</p>
             <p>{driver.phone}</p>
             
-            <button className="btn btn-primary btn-block" onClick={handleCancel}>
+            <button className="btn btn-info" onClick={handleCancel}>
                 Cancel
             </button>
 
-            <button className="btn btn-primary btn-block" onClick={handleAssign}>
+            <button className="btn btn-success" onClick={handleAssign}>
                 Assign
             </button>
 

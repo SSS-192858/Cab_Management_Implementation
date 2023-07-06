@@ -26,11 +26,23 @@ function CabList({choice}) {
   },[])
     
   return (
-    <ul id="remove">
-      {cabs.map((data) => (
-        <li id="space" key= {data.reg_no}><CabListItem cab={data}/></li>
-      ))}
-    </ul>
+    <>
+    { (cabs.length === 0) ? <div className='container banner'>
+        <header className='jumbotron banner'> 
+          <h5>Nothing to show</h5>
+        </header>
+        
+      </div>
+        : null
+      } 
+    <div className="container">
+      <div className='row'>
+        {cabs.map((data) => (
+          <div id="space" key= {data.reg_no} className='col-lg-4 col-sm-12 col-md-6'><CabListItem cab={data}/></div>
+        ))}
+      </div>
+    </div>
+    </>
   );
 }
 

@@ -9,14 +9,16 @@ const DriverListItem = ({driver}) => {
     }
 
     return (
-        <div className="book" onClick={handleClick}>
-            <Link to="/driverDetail">
-                <p>{driver.id}</p>
-                <p>{driver.driverName}</p>
-                <p>{driver.email}</p>
-                <p>{driver.phone}</p>
-            </Link>
+    <a href="/driverDetail">
+        <div className="card1" onClick={handleClick}>
+            <div className="card-body">
+            <h1>Driver Name - {driver.driverName}</h1>
+                <p>Driver Id - {driver.id}</p>
+                <p>Driver Email - {driver.email}</p>
+                <p>Driver Phone - {driver.phone}</p>
+            </div>
         </div>
+    </a>
     )
 }
 

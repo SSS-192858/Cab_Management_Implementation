@@ -140,7 +140,7 @@ const CabSaveForm = () => {
                             ) : null}
                 </div>
                 <div className="form-group">
-                    <button className="btn btn-primary btn-block" type="submit">
+                    <button className="btn btn-success " type="submit">
                     Save Cab
                     </button>
                 </div>

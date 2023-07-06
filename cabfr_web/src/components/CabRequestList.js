@@ -33,11 +33,23 @@ const CabRequestList = ({choice}) => {
         getRequests();
     }, [])
 
-    return (<ul id="remove">
-        {requests.map((data) => (
-            <li id="space" key= {data.id}><CabRequestListItem request={data}/></li>
-        ))}
-        </ul>
+    return (
+    <>
+        { (requests.length === 0) ? <div className='container banner'>
+            <header className='jumbotron banner'> 
+                <h5>Nothing to show</h5>
+            </header>
+        </div>
+            : null
+      }
+        <div className="container">
+            <div className="row">
+                {requests.map((data) => (
+                    <div id="space" key= {data.id} className='col-lg-4 col-sm-12 col-md-6'><CabRequestListItem request={data}/></div>
+                ))}
+            </div>
+        </div>
+    </>
     )
 }
 

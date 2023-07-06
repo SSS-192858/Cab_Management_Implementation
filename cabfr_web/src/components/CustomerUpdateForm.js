@@ -130,7 +130,7 @@ const UpdateCustomer = () => {
                     </div>
 
                     <div className="form-group">
-                        <button className="btn btn-primary btn-block">Update details</button>
+                        <button className="btn btn-warning">Update details</button>
                     </div>
 
                     {message ? 

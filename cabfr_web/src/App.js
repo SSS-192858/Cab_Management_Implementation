@@ -5,9 +5,6 @@ import { getCurrentUser, logout } from './services/auth_services';
 import { useEffect, useState } from 'react';
 import LoginForm from './components/loginForm';
 import Home from './components/home';
-import BoardUser from './components/BoardUser';
-import BoardAdmin from "./components/BoardAdmin";
-import BoardDriver from "./components/BoardDriver";
 import SignupAdmin from "./components/SignupAdmin";
 import CabDetails from "./components/CabDetails";
 import UpdateCustomer from "./components/CustomerUpdateForm";
@@ -33,10 +30,34 @@ import PersonalDriverDetails from "./components/PersonalDriverDetails";
 
 function App() {
 
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isDriver, setIsDriver] = useState(false);
-  const [isCustomer, setIsCustomer] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(()=>{
+    const user = getCurrentUser();
+    if (user && user.user && user.user.roles[0] && user.user.roles[0].name && user.user.roles[0].name === "ADMIN"){
+      return true;
+    }else{
+      return false;
+    }
+  });
+  const [isDriver, setIsDriver] = useState(()=>{
+    const user = getCurrentUser();
+    if (user && user.user && user.user.roles[0] && user.user.roles[0].name && user.user.roles[0].name === "DRIVER"){
+      return true;
+    }else{
+      return false;
+    }
+  });
+  const [isCustomer, setIsCustomer] = useState(()=>{
+    const user = getCurrentUser();
+    if (user && user.user && user.user.roles[0] && user.user.roles[0].name && user.user.roles[0].name === "CUSTOMER"){
+      return true;
+    }else{
+      return false;
+    }
+  });
+  const [currentUser, setCurrentUser] = useState(()=>{
+    const temp = getCurrentUser();
+    return temp;
+  });
 
   const resolveLogin = () => {
     const user = getCurrentUser();
@@ -72,11 +93,6 @@ function App() {
             Cab Company
           </Link>
           <div className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link to={"/home"} className="nav-link">
-                Home
-              </Link>
-            </li>
 
             {currentUser && (
               <li className="nav-item">
@@ -89,11 +105,6 @@ function App() {
             {isAdmin && (
               <>
               <li className="nav-item">
-                <Link to={"/admin"} className="nav-link">
-                  Admin Board
-                </Link>
-              </li>
-              <li className="nav-item">
               <Link to={"/cabsSave"} className="nav-link">
                 Add a Cab
               </Link>
@@ -101,25 +112,6 @@ function App() {
             </>
             )}
 
-            {isDriver && (
-              <>
-                <li className="nav-item">
-                  <Link to={"/driver"} className="nav-link">
-                    Driver Board
-                  </Link>
-                </li>
-              </>
-            )}
-
-            {isCustomer && (
-              <>
-                <li className="nav-item">
-                  <Link to={"/user"} className="nav-link">
-                    User Board
-                  </Link>
-                </li>
-              </>
-            )}
 
             {isAdmin && (
               <>
@@ -243,8 +235,8 @@ function App() {
 
         <div className="container mt-3">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home currentUser={currentUser} />} />
+            <Route path="/home" element={<Home currentUser={currentUser}/>} />
             <Route path="/login" element={<LoginForm setCurrentUser = {setCurrentUser} setIsAdmin = {setIsAdmin} setIsDriver={setIsDriver} setIsCustomer = {setIsCustomer}/>} />
             <Route path="/registerCustomer" element={<SignupCustomer/>} />
             <Route path="/registerDriver" element={<SignupDriver/>} />
@@ -274,9 +266,9 @@ function App() {
             <Route path="/cabCustomerByDriver" element={<CustomerCabList choice={4}/>}/>
             <Route path="/assignDriver" element={<AssignDriver/>}/>
             <Route path="/assignDriverConfirmation" element={<AssignDriverConfirmation/>}/>
-            <Route path="/user" element={<BoardUser />} />
+            {/* <Route path="/user" element={<BoardUser />} />
             <Route path="/admin" element={<BoardAdmin />} />
-            <Route path="/driver" element={<BoardDriver />} />
+            <Route path="/driver" element={<BoardDriver />} /> */}
           </Routes>
         </div>
       </div>

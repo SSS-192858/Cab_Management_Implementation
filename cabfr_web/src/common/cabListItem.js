@@ -9,14 +9,17 @@ const CabListItem = ({cab}) => {
     }
 
     return (
-        <div className="book" onClick={handleClick}>
-            <Link to="/cabDetails">
-                <p>{cab.reg_no}</p>
-                <p>{cab.model}</p>
-                <p>{cab.colour}</p>
-                <p>{cab.fare}</p>
-            </Link>
-        </div>
+        <a href="/cabDetails">
+            <div className="card1" onClick={handleClick}>
+                <div className="card-body">
+                    <h1>Cab-Reg-Number - {cab.reg_no}</h1>
+                    <br/>
+                    <p>Cab Model - {cab.model}</p>
+                    <p>Cab Colour - {cab.colour}</p>
+                    <p>Cab Fare - {cab.fare}</p>
+                </div>
+            </div>
+        </a>
     )
 }
 export default CabListItem;

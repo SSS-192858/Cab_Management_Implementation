@@ -43,32 +43,34 @@ const CustomerDetails = ({isCustomer, isAdmin}) => {
     }
 
     return (
-        <div>
-            <p>{customer.id}</p>
-            <p>{customer.customerName}</p>
-            <p>{customer.email}</p>
-            <p>{customer.phone}</p>
+        <div className="container">
+            <div className="card">
+                <div className="card-body">
+                    <h1 className="card-title">Customer Id - {customer.id}</h1>
+                    <p>Customer Name - {customer.customerName}</p>
+                    <p>Customer Email - {customer.email}</p>
+                    <p>Customer PhoneNo - {customer.phone}</p>
+                    {isCustomer && (
+                        <button onClick={navFunc1} className="btn btn-warning " type="submit">
+                        Update Info
+                        </button>
+                    )}
 
-            {isCustomer && (
-                <button onClick={navFunc1} className="btn btn-primary btn-block" type="submit">
-                Update Info
-                </button>
-            )}
+                    <button onClick={navFunc2} className="btn btn-info " type="submit">
+                        See all Cab Requests
+                    </button>
 
-            <button onClick={navFunc2} className="btn btn-primary btn-block" type="submit">
-                See all Cab Requests
-            </button>
+                    <button onClick={navFunc3} className="btn btn-primary " type="submit">
+                        See all Booked Cabs
+                    </button>
 
-            <button onClick={navFunc3} className="btn btn-primary btn-block" type="submit">
-                See all Booked Cabs
-            </button>
-
-            {isAdmin && (
-                <button onClick={()=>{setOpen(true)}} className="btn btn-primary btn-block" type="submit">
-                    Delete Customer
-                </button>
-            )}
-
+                    {isAdmin && (
+                        <button onClick={()=>{setOpen(true)}} className="btn btn-danger " type="submit">
+                            Delete Customer
+                        </button>
+                    )}
+                </div>
+            </div>
             <Dialog open={open} onClose={handleToClose}>
                 <DialogTitle>{"Delete Customer"}</DialogTitle>
                 <DialogContent>
@@ -81,7 +83,7 @@ const CustomerDetails = ({isCustomer, isAdmin}) => {
                         Cancel
                     </button>
                     <button onClick={handleToClose}
-                        color="primary" autoFocus>
+                        color="danger" autoFocus>
                         Delete
                     </button>
                     
