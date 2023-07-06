@@ -54,11 +54,15 @@ const DriverDetails = ({isDriver, isAdmin}) => {
         <div className="container">
             <div className="card">
                 <div className="card-body">
-                    <h1 className="card-title">{driver.id} {driver.driverName}</h1>
+                    <h1 className="card-title">
+                        Driver Name - {driver.driverName}
+                    </h1>
                     <div className="card-text">
-                        <p>{driver.email}</p>
-                        <p>{driver.phone}</p>
+                        <p>Driver id - {driver.id}</p>
+                        <p>Driver Email - {driver.email}</p>
+                        <p>Driver Phone - {driver.phone}</p>
                     </div>
+                    
                     {(isDriver && currDriver.id === driver.id) && (
                         <>
                         <button onClick={navFunc1} className="btn btn-warning " type="submit">

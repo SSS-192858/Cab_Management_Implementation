@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { getCabFromStorage,removeCabFromStorage } from "../services/localStorageHandler";
 import { useCabSaveValidator } from "../validators/CabSaveValidator";
 import { updateCab } from "../services/auth_services";
+import image from "../assets/image.png";
 
 const CabUpdateForm = () => {
   
@@ -74,10 +75,10 @@ const CabUpdateForm = () => {
     <div className="col-md-12">``
         <div className="card card-container">
               <img
-                src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                src={image}
                 alt="profile-img"
-                className="profile-img-card"
               />
+              <br/>
 
             <form onSubmit={onSubmitForm}>
                 <div className="form-group">
@@ -92,7 +93,7 @@ const CabUpdateForm = () => {
                     type="text"
                     aria-label="model"
                     name="model"
-                    placeholder="model"
+                    placeholder="Model"
                     value={form.model}
                     onChange={onUpdateField}
                     />
@@ -104,12 +105,12 @@ const CabUpdateForm = () => {
 
                 <div className="form-group">
                     <label htmlFor="colour">Car Colour</label>
-                    <textarea
+                    <input
                     className="form-control"
                     type="colour"
                     aria-label="colour"
                     name="colour"
-                    placeholder="colour"
+                    placeholder="Colour"
                     value={form.colour}
                     onChange={onUpdateField}
                     />
@@ -126,7 +127,7 @@ const CabUpdateForm = () => {
                     type="fare"
                     aria-label="fare"
                     name="fare"
-                    placeholder="fare"
+                    placeholder="Fare"
                     value={form.fare}
                     onChange={onUpdateField}
                     />
@@ -136,7 +137,7 @@ const CabUpdateForm = () => {
                             ) : null}
                 </div>
                 <div className="form-group">
-                    <button className="btn btn-warning " type="submit">
+                    <button className="btn btn-warning btn-block" type="submit">
                     Update Cab
                     </button>
                 </div>

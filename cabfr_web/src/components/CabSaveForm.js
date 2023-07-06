@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { saveCab} from '../services/auth_services';
 import {removeCabFromStorage } from "../services/localStorageHandler";
 import { useCabSaveValidator } from "../validators/CabSaveValidator";
+import image from "../assets/image.png";
 
 const CabSaveForm = () => {
   
@@ -68,10 +69,10 @@ const CabSaveForm = () => {
     <div className="col-md-12">
         <div className="card card-container">
               <img
-                src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                src={image}
                 alt="profile-img"
-                className="profile-img-card"
               />
+              <br/>
 
             <form onSubmit={onSubmitForm}>
                 <div className="form-group">
@@ -93,12 +94,12 @@ const CabSaveForm = () => {
 
                 <div className="form-group">
                     <label htmlFor="model">Model</label>
-                    <textarea
+                    <input
                     className="form-control"
-                    type="model"
+                    type="text"
                     aria-label="model"
                     name="model"
-                    placeholder="model"
+                    placeholder="Model"
                     value={form.model}
                     onChange={onUpdateField}
                     />
@@ -111,10 +112,10 @@ const CabSaveForm = () => {
                     <label htmlFor="colour">Colour</label>
                     <input
                     className="form-control"
-                    type="colour"
+                    type="text"
                     aria-label="colour"
                     name="colour"
-                    placeholder="colour"
+                    placeholder="Colour"
                     value={form.colour}
                     onChange={onUpdateField}
                     />
@@ -127,10 +128,10 @@ const CabSaveForm = () => {
                     <label htmlFor="fare">Fare</label>
                     <input
                     className="form-control"
-                    type="fare"
+                    type="text"
                     aria-label="fare"
                     name="fare"
-                    placeholder="fare"
+                    placeholder="Fare"
                     value={form.fare}
                     onChange={onUpdateField}
                     />
@@ -140,7 +141,7 @@ const CabSaveForm = () => {
                             ) : null}
                 </div>
                 <div className="form-group">
-                    <button className="btn btn-success " type="submit">
+                    <button className="btn btn-block form-button" type="submit">
                     Save Cab
                     </button>
                 </div>

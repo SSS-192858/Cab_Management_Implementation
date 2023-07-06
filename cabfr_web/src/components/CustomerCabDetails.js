@@ -32,41 +32,46 @@ const CustomerCabDetail = ({isAdmin}) => {
         <div className="container">
             <div className="card">
                 <div className="card-body">
-                    <h1 className="card-title">Cab Serial Number - {CustomerCab.slno}</h1>
-                    <div className="card-text">
-                        <p>
-                            Cab Details
-                        </p>
-                        <p>Cab Registration Number - {CustomerCab.cab.reg_no}</p>
-                        <p>Cab Model - {CustomerCab.cab.model}</p>
-                        <p>Colour {CustomerCab.cab.colour}</p>
-                        <p>Cab Fare - {CustomerCab.cab.fare}</p>
+                <h1 className="card-title">
+                {CustomerCab.slno}. {CustomerCab.cab.reg_no} - {CustomerCab.customer.customerName}
+                </h1>
+                <div className="card-text">
+                    
+                    <h4>
+                        Cab Details :
+                    </h4>
+                    <p>Model : {CustomerCab.cab.model}</p>
+                    <p>Colour : {CustomerCab.cab.colour}</p>
+                    <p>Fare : {CustomerCab.cab.fare}</p>
 
-                        <p>
-                            Customer Details :
-                        </p>
-
-                        <p>Customer Id - {CustomerCab.customer.id}</p>
-                        <p>Customer Name - {CustomerCab.customer.customerName}</p>
-                        <p>Customer Email - {CustomerCab.customer.email}</p>
-                        <p>Customer PhoneNo - {CustomerCab.customer.phone}</p>
-
-                        <p>
-                            Start Date : {dateFormat(CustomerCab.startDate,"fullDate")}
-                        </p>
-                        <p>
-                            End Date : {dateFormat(CustomerCab.endDate,"fullDate")}
-                        </p>
-                    </div>
-                    {CustomerCab.cab.driver && (
+                    {CustomerCab.cab.driver ?
                         <>
-                        <p> Driver Details</p>
-                        <p> Driver ID - {CustomerCab.cab.driver.id}</p>
-                        <p>Driver Name - {CustomerCab.cab.driver.driverName}</p>
-                        <p>Driver Email - {CustomerCab.cab.driver.email}</p>
-                        <p>Driver PhoneNo - {CustomerCab.cab.driver.phone}</p>
+                            <h4>
+                                Driver Details :
+                            </h4>
+                            <p></p>
+                            <p>Driver Name : {CustomerCab.cab.driver.driverName}</p>
+                            <p>Email : {CustomerCab.cab.driver.email}</p>
+                            <p>Phone : {CustomerCab.cab.driver.phone}</p>
                         </>
-                    )}
+                    : null }
+                    
+                    <h4>
+                        Customer Details :
+                    </h4>
+                    <p></p>
+                    <p>Email : {CustomerCab.customer.email}</p>
+                    <p>Phone : {CustomerCab.customer.phone}</p>
+
+                    <p>
+                        Start Date : {dateFormat(CustomerCab.startDate,"fullDate")}
+                    </p>
+                    
+                    <p>
+                        End Date : {dateFormat(CustomerCab.endDate,"fullDate")}
+                    </p>
+                </div>
+                    
                 {isAdmin && 
                 <button onClick={()=>{setOpen(true)}} className="btn btn-danger" type="submit">
                     Delete CustomerCab

@@ -27,12 +27,12 @@ a:hover {
 }
 
 .nav {
-  background-color: #001C30;
+  background-color: #2B2B28;
   height: 12vh;
 }
 
 .card {
-  background-color: aliceblue;
+  background-color: #F8F8F8;
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
   margin-top: 50px;
@@ -45,7 +45,7 @@ a:hover {
 }
 
 .card1 {
-  background-color: aliceblue;
+  background-color: #F8F8F8;
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
   margin-top: 50px;
@@ -58,7 +58,7 @@ a:hover {
 }
 
 .card1:hover {
-  background-color: #176B87;
+  background-color: #C07F00;
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
   margin-top: 50px;
@@ -75,7 +75,7 @@ a:hover {
 }
 
 .banner {
-  background-color: aliceblue;
+  background-color: #F8F8F8;
 }
 
 .heading {
@@ -85,12 +85,7 @@ a:hover {
 .form-button {
   margin-top: 40px;
   height: 35px;
-}
-
-.form-button1 {
-  margin-top: 40px;
-  height: 35px;
-  background-color: #1C8ADB;
+  background-color: #C07F00;
   color: white;
 }
 
@@ -112,7 +107,7 @@ li#space {
 }
 
 .profile-img-card {
-  width: 96px;
+  width: 112px;
   height: 96px;
   margin: 0 auto 10px;
   display: block;
@@ -122,5 +117,5 @@ li#space {
 }
 
 html, body {
-  background-color: #64CCC5;
+  background-color: #F1D6AB;
 }

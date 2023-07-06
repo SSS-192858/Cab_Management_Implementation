@@ -8,6 +8,7 @@ import { deleteRequest , accept } from "../services/request_services";
 import { useNavigate } from "react-router-dom";
 import { getRequestFromStorage } from "../services/localStorageHandler";
 import dateFormat from "dateformat";
+
 const CabRequestDetails = ({isCustomer,isAdmin,isDriver}) => {
 
     const [open, setOpen] = useState(false);
@@ -18,6 +19,7 @@ const CabRequestDetails = ({isCustomer,isAdmin,isDriver}) => {
     
     const [request, setRequest] = useState(() => {
         const temp = getRequestFromStorage();
+        console.log(temp)
         return temp;
     })
 
@@ -55,17 +57,50 @@ const CabRequestDetails = ({isCustomer,isAdmin,isDriver}) => {
     }
 
     return (
+        
         <div className="container">
             <div className="card">
                 <div className="card-body">
-                    <h1 className="card-title">{request.id}. {request.customer.customerName} {request.cab.reg_no} {request.cab.model}</h1>
-                    <div className="card-text">
-                        <p>Customer Email - {request.customer.email}</p>
-                        <p>Customer phone - {request.customer.phone}</p>
-                        <p>Cab colour - {request.cab.colour}</p>
-                        <p> StartDate - {dateFormat(request.startDate,"fullDate")}</p>
-                        <p>End Date - {dateFormat(request.endDate,"fullDate")}</p>
-                    </div>
+                    
+                <h1 className="card-title">
+                {request.id}. {request.cab.reg_no} - {request.customer.customerName}
+                </h1>
+                <div className="card-text">
+                    
+                    <h4>
+                        Cab Details :
+                    </h4>
+                    <p>Model : {request.cab.model}</p>
+                    <p>Colour : {request.cab.colour}</p>
+                    <p>Fare : {request.cab.fare}</p>
+
+                    {request.cab.driver ?
+                        <>
+                            <h4>
+                                Driver Details :
+                            </h4>
+                            <p></p>
+                            <p>Driver Name : {request.cab.driver.driverName}</p>
+                            <p>Email : {request.cab.driver.email}</p>
+                            <p>Phone : {request.cab.driver.phone}</p>
+                        </>
+                    : null }
+                    
+                    <h4>
+                        Customer Details :
+                    </h4>
+                    <p></p>
+                    <p>Email : {request.customer.email}</p>
+                    <p>Phone : {request.customer.phone}</p>
+
+                    <p>
+                        Start Date : {dateFormat(request.startDate,"fullDate")}
+                    </p>
+                    
+                    <p>
+                        End Date : {dateFormat(request.endDate,"fullDate")}
+                    </p>
+
                     {(isAdmin || isDriver) &&
                     <button onClick={()=>{setAcceptOpen(true)}} className="btn btn-success" type="submit">
                         Accept
@@ -76,7 +111,8 @@ const CabRequestDetails = ({isCustomer,isAdmin,isDriver}) => {
                         Delete
                     </button>
                 </div>
-            </div>
+                </div>
+                </div>
             {message==="" ? (
                 <Dialog open={acceptOpen} onClose={handleAccept}>
                     <DialogTitle>{"Accept Request"}</DialogTitle>
@@ -132,6 +168,7 @@ const CabRequestDetails = ({isCustomer,isAdmin,isDriver}) => {
                     
                 </DialogActions>
             </Dialog>
+            
         </div>
     )
 }

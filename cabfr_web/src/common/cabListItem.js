@@ -12,7 +12,7 @@ const CabListItem = ({cab}) => {
         <a href="/cabDetails">
             <div className="card1" onClick={handleClick}>
                 <div className="card-body">
-                    <h1>Cab-Reg-Number - {cab.reg_no}</h1>
+                    <h3>Cab-Reg-No. - {cab.reg_no}</h3>
                     <br/>
                     <p>Cab Model - {cab.model}</p>
                     <p>Cab Colour - {cab.colour}</p>

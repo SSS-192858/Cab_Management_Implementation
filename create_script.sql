@@ -52,7 +52,7 @@ CREATE TABLE request(
     customer_id INTEGER,
     registration_number varchar(20),
     start_date timestamp NOT NULL DEFAULT current_timestamp(),
-    end_date datetime DEFAULT NULL,
+    end_date timestamp DEFAULT NULL,
     constraint pk_request PRIMARY KEY (slno)
 );
 
@@ -61,7 +61,7 @@ CREATE TABLE customer_cab(
     customer_id INTEGER,
     registration_number varchar(20),
     start_date timestamp NOT NULL DEFAULT current_timestamp(),
-    end_date datetime DEFAULT NULL,
+    end_date timestamp DEFAULT NULL,
     constraint pk_cust_cab PRIMARY KEY (slno)
 );
 

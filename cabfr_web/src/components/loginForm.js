@@ -4,6 +4,7 @@ import { getCurrentUser, login } from "../services/auth_services";
 import { useNavigate } from "react-router-dom";
 import {getDriverById, getCustomerById} from "../services/user_services";
 import {setCustomerInStorage, setDriverInStorage, setPersonalDriverInStorage} from "../services/localStorageHandler";
+import image1 from "../assets/image1.png";
 
 const LoginForm = ({setCurrentUser, setIsAdmin, setIsDriver, setIsCustomer}) => {
   const [form, setForm] = useState({
@@ -53,19 +54,19 @@ const LoginForm = ({setCurrentUser, setIsAdmin, setIsDriver, setIsCustomer}) => 
 
         if (user && user.user && user.user.roles[0] && user.user.roles[0].name && user.user.roles[0].name === "ADMIN"){
           setIsAdmin(true)
-          navigate("/admin")
+          navigate("/home")
         }
 
         if (user && user.user && user.user.roles[0] && user.user.roles[0].name && user.user.roles[0].name === "CUSTOMER"){
           setIsCustomer(true)
           setCurrentCustomer();
-          navigate("/user")
+          navigate("/home")
         }
 
         if (user && user.user && user.user.roles[0] && user.user.roles[0].name && user.user.roles[0].name === "DRIVER"){
           setIsDriver(true)
           setCurrentDriver();
-          navigate("/driver")
+          navigate("/home")
         }
         
       },
@@ -82,7 +83,7 @@ const LoginForm = ({setCurrentUser, setIsAdmin, setIsDriver, setIsCustomer}) => 
     <div className="col-md-12">
         <div className="card card-container">
               <img
-                src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                src={image1}
                 alt="profile-img"
                 className="profile-img-card"
               />
@@ -120,7 +121,7 @@ const LoginForm = ({setCurrentUser, setIsAdmin, setIsDriver, setIsCustomer}) => 
                             ) : null}
                 </div>
                 <div className="form-group">
-                    <button className="btn btn-primary" type="submit">
+                    <button className="btn btn-block form-button" type="submit">
                     Login
                     </button>
                 </div>

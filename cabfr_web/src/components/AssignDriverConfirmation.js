@@ -40,23 +40,39 @@ const AssignDriverConfirmation = () => {
     }
 
     return (
+
         <>
-            <p>{cab.reg_no}</p>
-            <p>{cab.model}</p>
-            <p>{cab.colour}</p>
-            <p>{cab.fare}</p>
-            <p>{driver.id}</p>
-            <p>{driver.driverName}</p>
-            <p>{driver.email}</p>
-            <p>{driver.phone}</p>
+        <div className="container">
+        <div className="card">
+            <div className="card-body">
+            <h1>Confirmation Page</h1>
+            <h3>
+                Cab Details - 
+            </h3>
+            <p>Cab Registration Number - {cab.reg_no}</p>
+            <p>Cab Model - {cab.model}</p>
+            <p>Colour - {cab.colour}</p>
+            <p>Fare - {cab.fare}</p>
+
+            <h3>
+                Driver Details
+            </h3>
+            <p>Driver id - {driver.id}</p>
+            <p>Driver Name - {driver.driverName}</p>
+            <p>Driver email - {driver.email}</p>
+            <p>Driver phone - {driver.phone}</p>
             
-            <button className="btn btn-info" onClick={handleCancel}>
+            <button className="btn btn-danger" onClick={handleCancel}>
                 Cancel
             </button>
 
             <button className="btn btn-success" onClick={handleAssign}>
                 Assign
             </button>
+
+            </div>
+            
+            </div></div>
 
             <Dialog open={open} onClose={handleToClose}>
                 <DialogTitle>{"Assignment successful"}</DialogTitle>
