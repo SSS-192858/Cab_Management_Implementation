@@ -17,7 +17,6 @@ export const getRequestByCustomerID = async(id) => {
 
 export const getRequestByCabCode = async(id) => {
     var token = authHeader();
-    console.log(id)
     const responseList = await axios.get(API_URL+`requests/cab/${id}`, {headers: {Authorization: "Bearer "+token}});
     return responseList.data;
 }
@@ -29,7 +28,6 @@ export const getRequestByDriverId = async(id)=>{
 }
 export const getRequestById = async (request_id) => {
     const response = await axios.get(API_URL + `requests/${request_id}`, { headers: { Authorization: "Bearer " + authHeader() } });
-    console.log(response.data)
     return response.data;
 }
 
@@ -47,11 +45,9 @@ export const registerRequest = async(customer,cab,startDate,endDate)=>{
 
 export const deleteRequest = async(slno) => {
     const response = await axios.delete(API_URL+`requests/delete/${slno}`,{headers:{Authorization:"Bearer "+authHeader()}});
-    console.log("Request Deleted " + response.data);   
 }
 
 export const accept = async(request) => {
-    console.log(request);
     const response = await axios.post(API_URL+`customerCab/accept`,{
         id : request.id,
         cab : request.cab,

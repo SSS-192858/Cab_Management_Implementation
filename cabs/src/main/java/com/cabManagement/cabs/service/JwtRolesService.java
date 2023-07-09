@@ -1,7 +1,7 @@
 package com.cabManagement.cabs.service;
 
-import com.cabManagement.cabs.entity.Role;
 import com.cabManagement.cabs.dao.RoleDAO;
+import com.cabManagement.cabs.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

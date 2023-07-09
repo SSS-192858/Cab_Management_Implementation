@@ -1,12 +1,13 @@
 package com.cabManagement.cabs.controller;
 
 import com.cabManagement.cabs.config.JwtTokenUtil;
+import com.cabManagement.cabs.entity.Customer;
+import com.cabManagement.cabs.entity.User;
 import com.cabManagement.cabs.service.CustomerService;
 import com.cabManagement.cabs.service.JwtUserDetailsService;
 import org.springframework.web.bind.annotation.*;
-import com.cabManagement.cabs.entity.Customer;
+
 import java.util.List;
-import com.cabManagement.cabs.entity.User;
 
 @RestController
 @RequestMapping("/customer")

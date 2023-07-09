@@ -1,8 +1,8 @@
 package com.cabManagement.cabs.dao;
 
-import com.cabManagement.cabs.entity.Customer;
 import com.cabManagement.cabs.entity.Driver;
-import java.util.*;
+
+import java.util.List;
 
 public interface DriverDAO {
     public Driver save(Driver Driver);

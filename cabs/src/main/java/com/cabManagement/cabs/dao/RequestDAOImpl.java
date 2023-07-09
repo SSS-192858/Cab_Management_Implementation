@@ -1,12 +1,12 @@
 package com.cabManagement.cabs.dao;
 
 import com.cabManagement.cabs.entity.Request;
-import com.cabManagement.cabs.exceptions.RequestNotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
-import org.springframework.stereotype.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 @Repository

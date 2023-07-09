@@ -20,7 +20,6 @@ const LoginForm = ({setCurrentUser, setIsAdmin, setIsDriver, setIsCustomer}) => 
 
   const setCurrentDriver = async () => {
     const temp = await getDriverById();
-    console.log(temp)
     setPersonalDriverInStorage(temp);
     setDriverInStorage(temp);
     return temp;
@@ -28,7 +27,6 @@ const LoginForm = ({setCurrentUser, setIsAdmin, setIsDriver, setIsCustomer}) => 
 
   const setCurrentCustomer = async () => {
     const temp = await getCustomerById();
-    console.log(temp)
     setCustomerInStorage(temp);
     return temp;
   }

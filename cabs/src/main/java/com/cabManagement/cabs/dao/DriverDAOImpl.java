@@ -1,10 +1,8 @@
 package com.cabManagement.cabs.dao;
 
 import com.cabManagement.cabs.entity.Cab;
-import com.cabManagement.cabs.entity.Customer;
 import com.cabManagement.cabs.entity.Driver;
 import com.cabManagement.cabs.exceptions.CabNotFoundException;
-import com.cabManagement.cabs.exceptions.DriverNotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;

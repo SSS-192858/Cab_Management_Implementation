@@ -2,7 +2,8 @@ package com.cabManagement.cabs.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import java.util.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "cab")

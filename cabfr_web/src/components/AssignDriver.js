@@ -14,7 +14,6 @@ const AssignDriver = () => {
 
     const getdriversComp = async() => {
         const response = await getDrivers();
-        console.log(response)
         setDrivers(response);
     }
 

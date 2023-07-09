@@ -1,6 +1,7 @@
 package com.cabManagement.cabs.dao;
 
 import com.cabManagement.cabs.entity.Request;
+
 import java.util.List;
 
 public interface RequestDAO {

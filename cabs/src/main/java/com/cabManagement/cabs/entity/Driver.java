@@ -1,7 +1,6 @@
 package com.cabManagement.cabs.entity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import java.util.*;
+
 @Entity
 @Table(name = "driver")
 public class Driver {

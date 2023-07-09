@@ -1,6 +1,7 @@
 package com.cabManagement.cabs.dao;
 
 import com.cabManagement.cabs.entity.Cab;
+
 import java.util.List;
 
 public interface CabDAO {
