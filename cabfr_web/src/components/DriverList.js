@@ -8,7 +8,6 @@ function DriverList(){
 
   const getdriversComp = async () => {
     const response = await getDrivers();
-    console.log(response)
     setDrivers(response);
   }
 

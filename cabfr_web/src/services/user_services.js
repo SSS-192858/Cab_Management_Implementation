@@ -17,47 +17,38 @@ export const getAdminBoard = () => {
 
 export const getCabs = async() => {
     const cabs = await axios.get(API_URL + "cabs/allCabs", { headers: { Authorization: "Bearer " + authHeader() } });
-    console.log(cabs.data);
     return cabs.data;
 }
 
 export const getCabById = async(reg_no) => {
     const response = await axios.get(API_URL + "cabs/" + reg_no, { headers: { Authorization: "Bearer " + authHeader() } });
-    console.log(response.data)
     return response.data;
 }
 
 // back end code for getting the driver with user ID needed.
 export const getDriverById = async() => {
     var token = authHeader();
-    console.log(token);
     const response = await axios.get(API_URL + "driver/getByUser", { headers: { Authorization: "Bearer " + token } });
-    console.log(response.data)
     return response.data;
 }
 
 export const getCustomerById = async() => {
     var token = authHeader();
-    console.log(token);
     const response = await axios.get(API_URL + "customer/getByUser", { headers: { Authorization: "Bearer " + token } });
-    console.log(response.data)
     return response.data;
 }
 
 export const getDrivers = async() => {
     const response = await axios.get(API_URL + `driver/getAll`, { headers: { Authorization: "Bearer " + authHeader() } });
-    console.log(response.data)
     return response.data;
 }
 
 export const getCustomers = async() => {
     const response = await axios.get(API_URL + `customer/getAll`, { headers: { Authorization: "Bearer " + authHeader() } });
-    console.log(response.data)
     return response.data;
 }
 export const getCustomerCabs = async() => {
     const response = await axios.get(API_URL + `customerCab/getAll`, { headers: { Authorization: "Bearer " + authHeader() } });
-    console.log(response.data)
     return response.data;
 }
 

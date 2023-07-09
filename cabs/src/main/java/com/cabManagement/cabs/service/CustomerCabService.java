@@ -1,18 +1,17 @@
 package com.cabManagement.cabs.service;
 
-import com.cabManagement.cabs.dao.DriverDAO;
-import com.cabManagement.cabs.entity.*;
 import com.cabManagement.cabs.dao.CabDAO;
 import com.cabManagement.cabs.dao.CustCabDAO;
 import com.cabManagement.cabs.dao.CustomerDAO;
-import com.cabManagement.cabs.entity.Customer;
-import com.cabManagement.cabs.entity.CustomerCab;
+import com.cabManagement.cabs.dao.DriverDAO;
+import com.cabManagement.cabs.entity.*;
 import com.cabManagement.cabs.exceptions.CabNotFoundException;
 import com.cabManagement.cabs.exceptions.CustomerCabNotFoundException;
 import com.cabManagement.cabs.exceptions.CustomerNotFoundException;
 import com.cabManagement.cabs.exceptions.DriverNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service

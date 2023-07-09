@@ -19,7 +19,6 @@ const CabRequestDetails = ({isCustomer,isAdmin,isDriver}) => {
     
     const [request, setRequest] = useState(() => {
         const temp = getRequestFromStorage();
-        console.log(temp)
         return temp;
     })
 

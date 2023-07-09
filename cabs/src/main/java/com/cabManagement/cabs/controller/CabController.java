@@ -3,8 +3,6 @@ package com.cabManagement.cabs.controller;
 
 import com.cabManagement.cabs.entity.Cab;
 import com.cabManagement.cabs.entity.Driver;
-import com.cabManagement.cabs.exceptions.CabNotFoundException;
-import com.cabManagement.cabs.exceptions.DriverNotFoundException;
 import com.cabManagement.cabs.service.CabService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

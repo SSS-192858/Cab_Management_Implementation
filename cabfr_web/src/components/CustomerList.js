@@ -8,7 +8,6 @@ function CustomerList(){
 
   const getcustomersComp = async () => {
     const response = await getCustomers();
-    console.log(response)
     setCustomers(response);
   }
 

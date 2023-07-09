@@ -1,7 +1,10 @@
 package com.cabManagement.cabs.entity;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
 @Entity
 @Table(name = "customer")
 public class Customer {
