@@ -1,13 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { setDriverInStorage } from "../services/localStorageHandler";
 
+//list item component to display driver details
 const DriverListItem = ({driver}) => {
 
+    //set the driver in storage when clicked
     const handleClick = () => {
         setDriverInStorage(driver);
     }
 
+    //clickable link to go to the driver details page when clicked
     return (
     <a href="/driverDetail">
         <div className="card1" onClick={handleClick}>

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import {stringValidator} from "./validators";
+import { stringValidator } from "./validators";
 
+// checks for errors in the form fields
 const touchErrors = errors => {
     return Object.entries(errors).reduce((acc, [field, fieldError]) => {
         acc[field] = {
@@ -35,6 +36,9 @@ export const useCabSaveValidator = form => {
         }
     });
 
+    // calling the validators from validators.js
+    // and checking whether they can constitute a valid form entry
+
     const validateForm = ({ form, field, errors, forceTouchErrors = false }) => {
         let isValid = true;
 
@@ -46,7 +50,9 @@ export const useCabSaveValidator = form => {
             nextErrors = touchErrors(errors);
         }
 
-        const {reg_no,model,colour,fare} = form;
+        const { reg_no, model, colour, fare } = form;
+
+        // checking the validity of data entered in various fields of the add a new cab form
 
         if (nextErrors.reg_no.dirty && (field ? field === "reg_no" : true)) {
             const message = stringValidator(reg_no, form);
@@ -75,8 +81,8 @@ export const useCabSaveValidator = form => {
             nextErrors.fare.message = fareMessage;
             if (!!fareMessage) isValid = false;
         }
-        
-        
+
+        // in case there are errors, return the error messages
         setErrors(nextErrors);
 
         return {

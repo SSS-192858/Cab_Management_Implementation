@@ -2,10 +2,12 @@ import React, {useState, useEffect} from 'react'
 import DriverListItem from '../common/DriverListItem';
 import { getDrivers } from '../services/user_services';
 
+//function to show the list of drivers registered with the cab management service
 function DriverList(){
 
   const [drivers, setDrivers] = useState([]);
 
+  //drivers are fetched from the backend
   const getdriversComp = async () => {
     const response = await getDrivers();
     setDrivers(response);
@@ -17,6 +19,7 @@ function DriverList(){
   
   return (
     <>
+    {/* if no drivers, show banner saying nothing to show, else show the list of drivers */}
       { (drivers.length === 0) ? <div className='container banner'>
             <header className='jumbotron banner'> 
             <h5>Nothing to show</h5>

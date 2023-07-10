@@ -1,5 +1,5 @@
 {
-  "name": "libfr_web",
+  "name": "cabfr_web",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -22,14 +22,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.js src/**/*.jsx"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [
@@ -42,9 +35,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "eslint": "^8.44.0",
-    "eslint-plugin-react": "^7.32.2"
   }
 }

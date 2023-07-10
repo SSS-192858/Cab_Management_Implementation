@@ -9,20 +9,25 @@ import { useNavigate } from "react-router-dom";
 import { getDriverFromStorage,getPersonalDriverFromStorage,removeDriverFromStorage} from "../services/localStorageHandler";
 import { deleteDriver } from "../services/auth_services";
 
+// option to show driver details.
 const DriverDetails = ({isDriver, isAdmin}) => {
+    // open variable that will be used to  
     const [open, setOpen] = useState(false);
     const navigate = useNavigate();
 
+    // driver varible that will be used to store other drivers.
     const [driver, setDriver] = useState(() => {
         const temp = getDriverFromStorage();
         return temp;
     })
 
+    // This is will contain the current selected driver.
     const [currDriver, setCurrentDriver] = useState(() => {
         const temp = getPersonalDriverFromStorage();
         return temp;
     })
 
+    // this function will be called when we delete the driver.
     const handleToClose = () => {
         deleteDriver(driver.id);
         setOpen(false);
@@ -30,22 +35,28 @@ const DriverDetails = ({isDriver, isAdmin}) => {
         navigate("/drivers")
     };
 
+    // this function will be called when we want to cancel the operation.
     const handleCancel = ()=>{
         setOpen(false);
     }
 
+
+//  this function will be called when we want to update driver.
     const navFunc1 = () => {
         navigate("/updateDriver");
     } 
 
+    // this function will be called when we want to see the request for the driver.
     const navFunc2 = () => {
         navigate("/requestForDriver");
     }
 
+    // this function will be called when we want to see the bookings for that driver.
     const navFunc3 = () => {
         navigate("/cabCustomerByDriver")
     }
 
+    // this function will be called when we want to see the cabs for that driver.
     const navFunc4 = () => {
         navigate("/cabsForDriver")
     }
@@ -66,18 +77,22 @@ const DriverDetails = ({isDriver, isAdmin}) => {
                     {(isDriver && currDriver.id === driver.id) && (
                         <>
                         <button onClick={navFunc1} className="btn btn-warning " type="submit">
+                            {/* option to update driver details. */}
                             Update Info
                         </button>
 
                         <button onClick={navFunc2} className="btn btn-primary " type="submit">
+                            {/* option to see cab requests. */}
                             See all Cab Requests
                         </button>
 
                         <button onClick={navFunc3} className="btn btn-info " type="submit">
+                            {/* option to see cab bookings. */}
                             See all Cab Appointments
                         </button>
 
                         <button onClick={navFunc4} className="btn btn-primary " type="submit">
+                            {/* option to see all cabs */}
                             See all Cabs 
                         </button>
 
@@ -86,11 +101,13 @@ const DriverDetails = ({isDriver, isAdmin}) => {
 
                     {isAdmin && (
                         <button onClick={()=>{setOpen(true)}} className="btn btn-danger " type="submit">
+                            {/* option to delete the driver. */}
                             Delete Driver
                         </button>
                     )}
                 </div>
             </div>
+            {/* Dialog box to delete the driver */}
             <Dialog open={open} onClose={handleToClose}>
                 <DialogTitle>{"Delete Dtiver"}</DialogTitle>
                 <DialogContent>
@@ -100,10 +117,12 @@ const DriverDetails = ({isDriver, isAdmin}) => {
                 </DialogContent>
                 <DialogActions>
                     <button onClick={handleCancel} color="primary" autoFocus>
+                        {/* option to cancel the operation. */}
                         Cancel
                     </button>
                     <button onClick={handleToClose}
                         color="danger" autoFocus>
+                            {/* option to delete the driver.*/}
                         Delete
                     </button>
                     

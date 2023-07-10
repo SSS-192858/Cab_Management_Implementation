@@ -8,17 +8,20 @@ import DialogContent from "@mui/material/DialogContent";
 import { useNavigate } from "react-router-dom";
 import { getPersonalDriverFromStorage, setDriverInStorage, removeDriverFromStorage} from "../services/localStorageHandler";
 import { deleteDriver } from "../services/auth_services";
-
+// used to see the personal driver(selected driver) details.
 const PersonalDriverDetails = ({isDriver, isAdmin}) => {
+    // open variable that will be used to working of dialog box.
     const [open, setOpen] = useState(false);
     const navigate = useNavigate();
 
+    // this will store the current driver.
     const [driver, setDriver] = useState(() => {
         const temp = getPersonalDriverFromStorage();
         setDriverInStorage(temp);
         return temp;
     })
 
+    //  function to delete driver.
     const handleToClose = () => {
         deleteDriver(driver.id);
         setOpen(false);
@@ -26,22 +29,27 @@ const PersonalDriverDetails = ({isDriver, isAdmin}) => {
         navigate("/drivers")
     };
 
+    // function to cancel the operation.
     const handleCancel = ()=>{
         setOpen(false);
     }
 
+    // function to update driver.
     const navFunc1 = () => {
         navigate("/updateDriver");
     } 
 
+    // function to request driver.
     const navFunc2 = () => {
         navigate("/requestForDriver");
     }
 
+    // function to show cab bookings by driver.
     const navFunc3 = () => {
         navigate("/cabCustomerByDriver")
     }
 
+    // functio to show cabs for the driver.
     const navFunc4 = () => {
         navigate("/cabsForDriver")
     }
@@ -61,18 +69,22 @@ const PersonalDriverDetails = ({isDriver, isAdmin}) => {
                     {(isDriver) && (
                         <>
                         <button onClick={navFunc1} className="btn btn-warning " type="submit">
+                            {/* option to update the driver. */}
                             Update Info
                         </button>
 
                         <button onClick={navFunc2} className="btn btn-primary " type="submit">
+                            {/* option to see requests. */}
                             See all Cab Requests
                         </button>
 
                         <button onClick={navFunc3} className="btn btn-primary " type="submit">
+                            {/* option to see bookings */}
                             See all Cab Appointments
                         </button>
 
                         <button onClick={navFunc4} className="btn btn-primary " type="submit">
+                            {/* option to see the cabs assigned to him */}
                             See all Cabs 
                         </button>
 
@@ -81,11 +93,13 @@ const PersonalDriverDetails = ({isDriver, isAdmin}) => {
 
                     {isAdmin && (
                         <button onClick={()=>{setOpen(true)}} className="btn btn-danger " type="submit">
+                            {/* option to delete the driver. */}
                             Delete Driver
                         </button>
                     )}
                 </div>
             </div>
+            {/* dialog box for deleting the driver. */}
             <Dialog open={open} onClose={handleToClose}>
                 <DialogTitle>{"Delete Dtiver"}</DialogTitle>
                 <DialogContent>
@@ -95,10 +109,12 @@ const PersonalDriverDetails = ({isDriver, isAdmin}) => {
                 </DialogContent>
                 <DialogActions>
                     <button onClick={handleCancel} color="primary" autoFocus>
+                        {/* option to cancel the operation. */}
                         Cancel
                     </button>
                     <button onClick={handleToClose}
                         color="danger" autoFocus>
+                            {/* option to delete the operation. */}
                         Delete
                     </button>
                     

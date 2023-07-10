@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { confirmPasswordValidator, stringValidator } from "./validators";
 
+// checks for errors in the form fields
 const touchErrors = errors => {
     return Object.entries(errors).reduce((acc, [field, fieldError]) => {
         acc[field] = {
@@ -30,6 +31,9 @@ export const useAdminSignupFormValidator = form => {
         }
     });
 
+    // calling the validators from validators.js
+    // and checking whether they can constitute a valid form entry
+
     const validateForm = ({ form, field, errors, forceTouchErrors = false }) => {
         let isValid = true;
 
@@ -41,7 +45,9 @@ export const useAdminSignupFormValidator = form => {
             nextErrors = touchErrors(errors);
         }
 
-        const { username, password, confirmPassword} = form;
+        const { username, password, confirmPassword } = form;
+
+        // checking the validity of data entered in various fields of the signup admin form
 
         if (nextErrors.username.dirty && (field ? field === "username" : true)) {
             const message = stringValidator(username, form);
@@ -64,6 +70,7 @@ export const useAdminSignupFormValidator = form => {
             if (!!confirmPasswordMessage) isValid = false;
         }
 
+        // in case there are errors, return the error messages
         setErrors(nextErrors);
 
         return {

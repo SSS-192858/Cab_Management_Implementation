@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { stringValidator} from "./validators";
+import { stringValidator } from "./validators";
 
+// checks for errors in the form fields
 const touchErrors = errors => {
     return Object.entries(errors).reduce((acc, [field, fieldError]) => {
         acc[field] = {
@@ -25,6 +26,9 @@ export const RequestCabValidator = form => {
         }
     });
 
+    // calling the validators from validators.js
+    // and checking whether they can constitute a valid form entry
+
     const validateForm = ({ form, field, errors, forceTouchErrors = false }) => {
         let isValid = true;
 
@@ -36,7 +40,9 @@ export const RequestCabValidator = form => {
             nextErrors = touchErrors(errors);
         }
 
-        const { startDate,endDate } = form;
+        const { startDate, endDate } = form;
+
+        // checking the validity of data entered in various fields of the request cab form
 
         if (nextErrors.startDate.dirty && (field ? field === "startDate" : true)) {
             const message = stringValidator(startDate, form);
@@ -51,6 +57,8 @@ export const RequestCabValidator = form => {
             nextErrors.endDate.message = Message;
             if (!!Message) isValid = false;
         }
+
+        // in case there are errors, return the error messages
         setErrors(nextErrors);
 
         return {

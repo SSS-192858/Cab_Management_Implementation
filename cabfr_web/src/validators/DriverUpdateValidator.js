@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { stringValidator, emailValidator, phoneValidator } from "./validators";
 
+// checks for errors in the form fields
 const touchErrors = errors => {
     return Object.entries(errors).reduce((acc, [field, fieldError]) => {
         acc[field] = {
@@ -30,6 +31,9 @@ export const useDriverUpdateFormValidator = form => {
         }
     });
 
+    // calling the validators from validators.js
+    // and checking whether they can constitute a valid form entry
+
     const validateForm = ({ form, field, errors, forceTouchErrors = false }) => {
         let isValid = true;
 
@@ -43,11 +47,13 @@ export const useDriverUpdateFormValidator = form => {
 
         const { driverName, email, phone } = form;
 
+        // checking the validity of data entered in various fields of the update driver form
+
         if (nextErrors.driverName.dirty && (field ? field === "driverName" : true)) {
             const driverNameMessage = stringValidator(driverName, form);
             nextErrors.driverName.error = !!driverNameMessage;
             nextErrors.driverName.message = driverNameMessage;
-            if (!! driverNameMessage) isValid = false;
+            if (!!driverNameMessage) isValid = false;
         }
 
         if (nextErrors.email.dirty && (field ? field === "email" : true)) {
@@ -64,6 +70,7 @@ export const useDriverUpdateFormValidator = form => {
             if (!!phoneMessage) isValid = false;
         }
 
+        // in case there are errors, return the error messages
         setErrors(nextErrors);
 
         return {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useLoginFormValidator } from "../validators/loginFormValidator";
 import { getCurrentUser, login } from "../services/auth_services";
 import { useNavigate } from "react-router-dom";
@@ -6,6 +6,7 @@ import {getDriverById, getCustomerById} from "../services/user_services";
 import {setCustomerInStorage, setDriverInStorage, setPersonalDriverInStorage} from "../services/localStorageHandler";
 import image1 from "../assets/image1.png";
 
+// Login form
 const LoginForm = ({setCurrentUser, setIsAdmin, setIsDriver, setIsCustomer}) => {
   const [form, setForm] = useState({
     username: "",
@@ -18,6 +19,7 @@ const LoginForm = ({setCurrentUser, setIsAdmin, setIsDriver, setIsCustomer}) => 
 
   const {errors, validateForm} = useLoginFormValidator(form);
 
+  // in case driver is logged in, set in local storage
   const setCurrentDriver = async () => {
     const temp = await getDriverById();
     setPersonalDriverInStorage(temp);
@@ -25,12 +27,14 @@ const LoginForm = ({setCurrentUser, setIsAdmin, setIsDriver, setIsCustomer}) => 
     return temp;
   }
 
+  // in case customer is logged in, set in local storage
   const setCurrentCustomer = async () => {
     const temp = await getCustomerById();
     setCustomerInStorage(temp);
     return temp;
   }
 
+  // when any form field is updated, check validity of the field 
   const onUpdateField = e => {
     const nextFormState = {
       ...form,
@@ -39,11 +43,16 @@ const LoginForm = ({setCurrentUser, setIsAdmin, setIsDriver, setIsCustomer}) => 
     setForm(nextFormState);
   };
 
+  // when Login button is clicked, perform all validation checks
+  // and if valid, login the user/admin and display the cabs page, else display the error message
   const onSubmitForm = e => {
     setMessage("")
-    e.preventDefault();    
+    e.preventDefault();
+    // checking validity of form fields     
     const { isValid } = validateForm({ form, errors, forceTouchErrors: true });
+    // if not valid
     if (!isValid) return;
+    // if valid
     login(form.username, form.password).then(
       response => {
 
@@ -76,9 +85,12 @@ const LoginForm = ({setCurrentUser, setIsAdmin, setIsDriver, setIsCustomer}) => 
     )
   };
 
+  // rendering form components on the screen
+  
   return (
 
     <div className="col-md-12">
+      {/* image of person */}
         <div className="card card-container">
               <img
                 src={image1}
@@ -86,7 +98,10 @@ const LoginForm = ({setCurrentUser, setIsAdmin, setIsDriver, setIsCustomer}) => 
                 className="profile-img-card"
               />
 
+            {/* The actual form */}
             <form onSubmit={onSubmitForm}>
+
+              {/* username input field */}
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input
@@ -103,6 +118,7 @@ const LoginForm = ({setCurrentUser, setIsAdmin, setIsDriver, setIsCustomer}) => 
                             ) : null}
                 </div>
 
+                {/* password input field */}
                 <div className="form-group">
                     <label htmlFor="password">Password</label>
                     <input
@@ -118,12 +134,15 @@ const LoginForm = ({setCurrentUser, setIsAdmin, setIsDriver, setIsCustomer}) => 
                             <div className="alert alert-danger" role="alert">{errors.password.message}</div>
                             ) : null}
                 </div>
+
+                {/* login button */}
                 <div className="form-group">
                     <button className="btn btn-block form-button" type="submit">
                     Login
                     </button>
                 </div>
 
+                {/* display error message if any */}
                 {message ? 
                   <div className="alert alert-danger" role="alert">{message}</div>
                 : null}

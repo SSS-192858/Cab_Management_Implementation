@@ -9,6 +9,8 @@ import DialogContent from "@mui/material/DialogContent";
 import { useDriverSignupFormValidator } from "../validators/signupDriverValidator";
 import image1 from "../assets/image1.png";
 
+// driver signup form
+// admin registers driver and then driver uses the credentials to login
 const SignupDriver = () => {
 
     const [open, setOpen] = React.useState(false);
@@ -27,15 +29,18 @@ const SignupDriver = () => {
 
     const {errors, validateForm} = useDriverSignupFormValidator(form)
 
+    //opens dialog box
     const handleClickToOpen = () => {
         setOpen(true);
     };
- 
+
+    // closes dialog box
     const handleToClose = () => {
         setOpen(false);
         navigate("/admin")
     };
 
+    // when any form field is updated, check validity of the field
     const onUpdateField = e => {
         const nextFormState = {
           ...form,
@@ -44,12 +49,20 @@ const SignupDriver = () => {
         setForm(nextFormState);
     };
 
+    // when register button is clicked, perform all validation checks ( including backend checks such as unique username )
+    // and if valid, display dialog box signifying completion and take admin to home page and ask driver to login with the credentials
+    // else display error message 
+
     const onSubmitForm = e => {
         setMessage("")
-        e.preventDefault();    
+        e.preventDefault(); 
+        // check validity of form fields   
         const { isValid } = validateForm({ form, errors, forceTouchErrors: true });
+        // if invalid
         if (!isValid) return;
+        // if valid
         registerDriver(form.username, form.password, form.driverName, form.email, form.phone).then(
+            //if successful, open dialog box
             response => {
                 handleClickToOpen()
             },
@@ -64,6 +77,8 @@ const SignupDriver = () => {
         )
     };
 
+    // rendering form components on the screen
+
     return (
 
         <div className="col-md-12">
@@ -74,8 +89,9 @@ const SignupDriver = () => {
                 className="profile-img-card"
             />
 
+            {/* actual form */}
             <form onSubmit={onSubmitForm}>
-                
+                {/* username field */}
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input
@@ -92,6 +108,7 @@ const SignupDriver = () => {
                             ) : null}
                     </div>
 
+                    {/* password field */}
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
                         <input
@@ -108,6 +125,7 @@ const SignupDriver = () => {
                             ) : null}
                     </div>
 
+                    {/* confirm password field */}
                     <div className="form-group">
                         <label htmlFor="password">Confirm Password</label>
                         <input
@@ -124,6 +142,7 @@ const SignupDriver = () => {
                             ) : null}
                     </div>
 
+                    {/* driver name field */}
                     <div className="form-group">
                     <label htmlFor="driverName">Name</label>
                     <input
@@ -140,6 +159,7 @@ const SignupDriver = () => {
                             ) : null}
                     </div>
 
+                    {/* email field */}
                     <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input
@@ -156,6 +176,7 @@ const SignupDriver = () => {
                             ) : null}
                     </div>
 
+                    {/* phone field */}
                     <div className="form-group">
                     <label htmlFor="phone">Phone</label>
                     <input
@@ -172,16 +193,19 @@ const SignupDriver = () => {
                             ) : null}
                     </div>
 
+                    {/* register button */}
                     <div className="form-group">
                         <button className="btn btn-block form-button">Sign Up</button>
                     </div>
 
+                    {/* display error message (if exists) */}
                     {message ? 
                         <div className="alert alert-danger" role="alert">{message}</div>
                         : null}
                 </form>
             </div>
 
+            {/* Display dialog box when driver has been successfully registered */}
             <Dialog open={open} onClose={handleToClose}>
                 <DialogTitle>{"Signup successful"}</DialogTitle>
                 <DialogContent>
@@ -190,6 +214,7 @@ const SignupDriver = () => {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
+                    {/* close dialog box, ask driver to use same credentials entered here to login as a driver */}
                     <button onClick={handleToClose}
                         color="primary" autoFocus>
                         Close

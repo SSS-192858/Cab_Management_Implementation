@@ -9,8 +9,11 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 
+//the confirmation page shows confirmation of the driver and the cab
+//the user can cancel the operation or assign the driver
 const AssignDriverConfirmation = () => {
 
+    //get cab from storage
     const [cab, setCab] = useState(() => {
         const temp = getCabFromStorage();
         return temp;
@@ -18,6 +21,7 @@ const AssignDriverConfirmation = () => {
 
     const [open, setOpen] = useState(false);
 
+    //get driver from storage
     const [driver, setDriver] = useState(() => {
         const temp = getDriverFromStorage();
         return temp;
@@ -25,6 +29,7 @@ const AssignDriverConfirmation = () => {
 
     const navigate = useNavigate();
 
+    //functions to handle the cancelation and the assigning
     const handleCancel = () => {
         navigate("/assignDriver");
     }
@@ -34,6 +39,7 @@ const AssignDriverConfirmation = () => {
         setOpen(true)
     }
 
+    //to close the confimation dialog box
     const handleToClose = () => {
         setOpen(false);
         navigate("/cabs")
@@ -61,7 +67,8 @@ const AssignDriverConfirmation = () => {
             <p>Driver Name - {driver.driverName}</p>
             <p>Driver email - {driver.email}</p>
             <p>Driver phone - {driver.phone}</p>
-            
+
+            {/* cancel and assign buttons */}
             <button className="btn btn-danger" onClick={handleCancel}>
                 Cancel
             </button>
@@ -74,6 +81,7 @@ const AssignDriverConfirmation = () => {
             
             </div></div>
 
+            {/* confirmation dialog box */}
             <Dialog open={open} onClose={handleToClose}>
                 <DialogTitle>{"Assignment successful"}</DialogTitle>
                 <DialogContent>
