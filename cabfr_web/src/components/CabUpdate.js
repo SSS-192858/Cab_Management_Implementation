@@ -10,15 +10,18 @@ import { useCabSaveValidator } from "../validators/CabSaveValidator";
 import { updateCab } from "../services/auth_services";
 import image from "../assets/image.png";
 
+//form to update the cab
 const CabUpdateForm = () => {
   
     const [open,setOpen] = React.useState(false);
 
+    //get cab from storage, to show on screen
     const [cab, setCab] = useState(() => {
       const temp = getCabFromStorage();
       return temp;
     })
 
+    //form state variable
     const [form, setForm] = useState({
       reg_no: cab.reg_no,
       model: cab.model,
@@ -28,20 +31,9 @@ const CabUpdateForm = () => {
 
   const navigate = useNavigate();
 
+  //functions ot handle the opening and closing of dialog box
   const handleClickToOpen = () => {
     setOpen(true);
-  };
-
-  const [message, setMessage] = useState("");
-
-  const {errors, validateForm} = useCabSaveValidator(form);
-
-  const onUpdateField = e => {
-    const nextFormState = {
-      ...form,
-      [e.target.name]: e.target.value,
-    };
-    setForm(nextFormState);
   };
 
   const handleToClose = () => {
@@ -50,16 +42,33 @@ const CabUpdateForm = () => {
     removeCabFromStorage();
   };
 
+  const [message, setMessage] = useState("");
+
+  const {errors, validateForm} = useCabSaveValidator(form);
+
+  //form state update function
+  const onUpdateField = e => {
+    const nextFormState = {
+      ...form,
+      [e.target.name]: e.target.value,
+    };
+    setForm(nextFormState);
+  };
+
+  //function called when we press submit
   const onSubmitForm = e => {
     setMessage("")
-    e.preventDefault();    
+    e.preventDefault();  
+    //if valid, send request to update  
     const { isValid } = validateForm({ form, errors, forceTouchErrors: true });
     if (!isValid) return;
     updateCab(form.reg_no, form.model, form.colour, form.fare).then(
         response => {
+          //open dialog box in case of success
             handleClickToOpen()
         },
         error => {
+          //else show the error message
             const resMessage = (error.response &&
                 error.response.data &&
                 error.response.data.message) ||
@@ -86,6 +95,8 @@ const CabUpdateForm = () => {
                         Cab Code : {cab.reg_no}
                     </p>
                </div>
+              
+              {/* Model input */}
                 <div className="form-group">
                     <label htmlFor="model">Cab Model</label>
                     <input
@@ -103,6 +114,7 @@ const CabUpdateForm = () => {
                             ) : null}
                 </div>
 
+                {/* Colour input */}
                 <div className="form-group">
                     <label htmlFor="colour">Car Colour</label>
                     <input
@@ -120,6 +132,7 @@ const CabUpdateForm = () => {
                             ) : null}
                 </div>
 
+                {/* Fare input */}
                 <div className="form-group">
                     <label htmlFor="author">Fare</label>
                     <input
@@ -142,11 +155,14 @@ const CabUpdateForm = () => {
                     </button>
                 </div>
 
+                {/* Conditonally show the error message */}
                 {message ? 
                   <div className="alert alert-danger" role="alert">{message}</div>
                 : null}
             </form>
         </div>
+
+        {/* Dialog box to show the success of the request */}
         <Dialog open={open} onClose={handleToClose}>
                 <DialogTitle>{"Cab Updated successfully"}</DialogTitle>
                 <DialogContent>

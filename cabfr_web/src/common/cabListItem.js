@@ -1,13 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { setCabInStorage } from "../services/localStorageHandler";
 
+//list item component to display cab details
 const CabListItem = ({cab}) => {
 
+    //when the component is clicked, the required cab is set in storage
     const handleClick = () => {
         setCabInStorage(cab);
     }
 
+    //clickable link to display the details of the cab when clicked
     return (
         <a href="/cabDetails">
             <div className="card1" onClick={handleClick}>

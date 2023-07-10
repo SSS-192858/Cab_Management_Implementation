@@ -9,6 +9,7 @@ import DialogContent from "@mui/material/DialogContent";
 import { useCustomerSignupFormValidator } from "../validators/signupCustomerValidator";
 import image1 from "../assets/image1.png";
 
+// customer signup form
 const SignupCustomer = () => {
 
     const [open, setOpen] = React.useState(false);
@@ -27,15 +28,18 @@ const SignupCustomer = () => {
 
     const {errors, validateForm} = useCustomerSignupFormValidator(form)
 
+    //opens dialog box
     const handleClickToOpen = () => {
         setOpen(true);
     };
- 
+
+    // closes dialog box
     const handleToClose = () => {
         setOpen(false);
         navigate("/login")
     };
 
+    // when any form field is updated, check validity of the field
     const onUpdateField = e => {
         const nextFormState = {
           ...form,
@@ -44,12 +48,20 @@ const SignupCustomer = () => {
         setForm(nextFormState);
     };
 
+    // when register button is clicked, perform all validation checks ( including backend checks such as unique username )
+    // and if valid, display dialog box signifying completion and take customer to login page to perform actual login, 
+    // else show error message 
+    
     const onSubmitForm = e => {
         setMessage("")
-        e.preventDefault();    
+        e.preventDefault();
+        // check validity of form fields
         const { isValid } = validateForm({ form, errors, forceTouchErrors: true });
+        // if not valid
         if (!isValid) return;
+        // if valid
         registerCustomer(form.username, form.password, form.customerName, form.email, form.phone).then(
+            //if successful, open dialog box
             response => {
                 handleClickToOpen()
             },
@@ -64,6 +76,8 @@ const SignupCustomer = () => {
         )
     };
 
+    // rendering form components on the screen
+    
     return (
 
         <div className="col-md-12">
@@ -74,8 +88,9 @@ const SignupCustomer = () => {
                 className="profile-img-card"
             />
 
+            {/* actual form */}
             <form onSubmit={onSubmitForm}>
-                
+                {/* username field */}
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input
@@ -92,6 +107,7 @@ const SignupCustomer = () => {
                             ) : null}
                     </div>
 
+                    {/* password field */}
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
                         <input
@@ -108,6 +124,7 @@ const SignupCustomer = () => {
                             ) : null}
                     </div>
 
+                    {/* confirm password field */}
                     <div className="form-group">
                         <label htmlFor="confirmPassword">Confirm Password</label>
                         <input
@@ -124,6 +141,7 @@ const SignupCustomer = () => {
                             ) : null}
                     </div>
 
+                    {/* customer name field */}
                     <div className="form-group">
                     <label htmlFor="customerName">Name</label>
                     <input
@@ -140,6 +158,7 @@ const SignupCustomer = () => {
                             ) : null}
                     </div>
 
+                    {/* email field */}
                     <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input
@@ -156,6 +175,7 @@ const SignupCustomer = () => {
                             ) : null}
                     </div>
 
+                    {/* phone field */}
                     <div className="form-group">
                     <label htmlFor="phone">Phone</label>
                     <input
@@ -172,16 +192,19 @@ const SignupCustomer = () => {
                             ) : null}
                     </div>
 
+                    {/* register button */}
                     <div className="form-group">
                         <button className="btn btn-block form-button">Sign Up</button>
                     </div>
 
+                    {/* display error message (if exists) */}
                     {message ? 
                         <div className="alert alert-danger" role="alert">{message}</div>
                         : null}
                 </form>
             </div>
 
+            {/* Display dialog box when customer has been successfully registered */}
             <Dialog open={open} onClose={handleToClose}>
                 <DialogTitle>{"Signup successful"}</DialogTitle>
                 <DialogContent>
@@ -190,6 +213,7 @@ const SignupCustomer = () => {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
+                    {/* close dialog box and go to login page, use same credentials entered here to login as a customer */}
                     <button onClick={handleToClose}
                         color="primary" autoFocus>
                         Go to Login Page

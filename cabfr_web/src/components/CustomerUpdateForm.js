@@ -10,9 +10,11 @@ import { getCustomerFromStorage, setCustomerInStorage } from "../services/localS
 import { useCustomerUpdateFormValidator } from "../validators/CustomerUpdateValidator";
 import image1 from "../assets/image1.png";
 
+// form to update customer
 const UpdateCustomer = () => {
 
     const [open, setOpen] = React.useState(false);
+    // get customer from storage, the details of whom will be displayed here
     const [customer, setCustomer] = useState(() => {
         const temp = getCustomerFromStorage();
         return temp;
@@ -29,18 +31,20 @@ const UpdateCustomer = () => {
 
     const {errors, validateForm} = useCustomerUpdateFormValidator(form)
 
+    // open dialog box ( when details successfully updated )
     const handleClickToOpen = () => {
         const temp = {id: customer.id, customerName: form.customerName, email: form.email, phone: form.phone}
-        // setStudentInStorage(temp);
         setCustomerInStorage(temp)
         setOpen(true);
     };
- 
+
+    // close dialog box
     const handleToClose = () => {
         setOpen(false);
         navigate("/customerDetail")
     };
 
+    // when any form field is updated, check validity of the field
     const onUpdateField = e => {
         const nextFormState = {
           ...form,
@@ -49,9 +53,13 @@ const UpdateCustomer = () => {
         setForm(nextFormState);
     };
 
+    // when update button is clicked, perform all validation checks
+    // and if valid, display dialog box signifying completion and take user
+    // to customer detail / profile page, else show errors 
     const onSubmitForm = e => {
         setMessage("")
-        e.preventDefault();    
+        e.preventDefault();
+        // check validity of form fields
         const { isValid } = validateForm({ form, errors, forceTouchErrors: true });
         if (!isValid) return;
         updateCustomer(customer.id, form.customerName, form.email, form.phone).then(
@@ -79,8 +87,10 @@ const UpdateCustomer = () => {
                 className="profile-img-card"
             />
 
+            {/* actual form */}
             <form onSubmit={onSubmitForm}>
 
+                {/* customer name field */}
                     <div className="form-group">
                     <label htmlFor="customerName">Name</label>
                     <input
@@ -97,6 +107,7 @@ const UpdateCustomer = () => {
                             ) : null}
                     </div>
 
+                    {/* email */}
                     <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input
@@ -113,6 +124,7 @@ const UpdateCustomer = () => {
                             ) : null}
                     </div>
 
+                    {/* phone */}
                     <div className="form-group">
                     <label htmlFor="phone">Phone</label>
                     <input
@@ -129,24 +141,28 @@ const UpdateCustomer = () => {
                             ) : null}
                     </div>
 
+                    {/* update button */}
                     <div className="form-group">
                         <button className="btn btn-block form-button">Update details</button>
                     </div>
 
+                    {/* display error message ( if exists )*/}
                     {message ? 
                         <div className="alert alert-danger" role="alert">{message}</div>
                         : null}
                 </form>
             </div>
 
+            {/* Display dialog box when update has been successfully registered */}
             <Dialog open={open} onClose={handleToClose}>
-                <DialogTitle>{"Signup successful"}</DialogTitle>
+                <DialogTitle>{"Update successful"}</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
                         Customer details have been updated successfully!
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
+                    {/* close and navigate back to customer details / profile page */}
                     <button onClick={handleToClose}
                         color="primary" autoFocus>
                         Close

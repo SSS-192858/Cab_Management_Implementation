@@ -1,3 +1,12 @@
+//the following things are stored in local storage to prevent loss when refreshed
+//1. Current Cab
+//2. Current Driver
+//3. Logged in driver (when the driver is logged in, indicated by personal driver)
+//4. Current Request
+//5. Current CabCustomer record
+
+//the following defines the methods to handle the same, i.e. set, get and remove from storage
+
 export const setCabInStorage = (cab) => {
     localStorage.setItem("cab", JSON.stringify(cab));
 }

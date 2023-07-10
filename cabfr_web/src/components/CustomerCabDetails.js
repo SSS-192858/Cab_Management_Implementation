@@ -8,22 +8,27 @@ import { deleteCustomerCabbyId } from "../services/user_services";
 import { useNavigate } from "react-router-dom";
 import { getCustomerCabFromStorage } from "../services/localStorageHandler";
 import dateFormat from "dateformat";
+// This will be used to show the customer cab booking info.
 const CustomerCabDetail = ({isAdmin}) => {
 
+    // this will be used to hold the selected customer cab booking.
     const [CustomerCab,setCustomerCab] = useState(() => {
         const temp = getCustomerCabFromStorage();
         return temp;
     })
 
+    // open variable that will be used for working of dialog box.
     const [open, setOpen] = useState(false);
     const navigate = useNavigate();
 
+    // this function will be used when we want to delete the customer cab relation.
     const handleToClose = () => {
         deleteCustomerCabbyId(CustomerCab.slno);
         setOpen(false);
         navigate("/cabCustomerList");
     };
 
+    // this function will be used when we want to cancel the operation.
     const handleCancel = ()=>{
         setOpen(false);
     }
@@ -74,11 +79,13 @@ const CustomerCabDetail = ({isAdmin}) => {
                     
                 {isAdmin && 
                 <button onClick={()=>{setOpen(true)}} className="btn btn-danger" type="submit">
+                    {/* This function will be used when we want to delete the customer cab relation. */}
                     Delete CustomerCab
                 </button>
                 }   
                 </div>
             </div>
+            {/* Dialog box that will be used when we want to delete the customer-cab booking. */}
             <Dialog open={open} onClose={handleToClose}>
                 <DialogTitle>{"Delete CustomerCab"}</DialogTitle>
                 <DialogContent>
@@ -88,10 +95,12 @@ const CustomerCabDetail = ({isAdmin}) => {
                 </DialogContent>
                 <DialogActions>
                     <button onClick={handleCancel} color="primary" autoFocus>
+                        {/* option to cancel the operation */}
                         Cancel
                     </button>
                     <button onClick={handleToClose}
                         color="danger" autoFocus>
+                            {/* Option to delete customer Cab */}
                         Delete CustomerCab
                     </button>
                 </DialogActions>

@@ -1,3 +1,4 @@
+import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -30,6 +31,7 @@ import PersonalDriverDetails from "./components/PersonalDriverDetails";
 
 function App() {
 
+  // isAdmin variable that will be used to see the if the currently logged-in user is Admin or not.
   const [isAdmin, setIsAdmin] = useState(()=>{
     const user = getCurrentUser();
     if (user && user.user && user.user.roles[0] && user.user.roles[0].name && user.user.roles[0].name === "ADMIN"){
@@ -38,6 +40,7 @@ function App() {
       return false;
     }
   });
+  // isDriver variable that will be used to see if the currently logged in user is Driver or not.
   const [isDriver, setIsDriver] = useState(()=>{
     const user = getCurrentUser();
     if (user && user.user && user.user.roles[0] && user.user.roles[0].name && user.user.roles[0].name === "DRIVER"){
@@ -46,6 +49,7 @@ function App() {
       return false;
     }
   });
+  //  isCustomer variable that will be used to see if the currently logged in user is Customer or not.
   const [isCustomer, setIsCustomer] = useState(()=>{
     const user = getCurrentUser();
     if (user && user.user && user.user.roles[0] && user.user.roles[0].name && user.user.roles[0].name === "CUSTOMER"){
@@ -54,11 +58,13 @@ function App() {
       return false;
     }
   });
+  // this will contain the current logged in user.
   const [currentUser, setCurrentUser] = useState(()=>{
     const temp = getCurrentUser();
     return temp;
   });
 
+  // resolve login function that will set up the variables.
   const resolveLogin = () => {
     const user = getCurrentUser();
     if (user) {
@@ -69,6 +75,8 @@ function App() {
     }
   };
 
+  // loggout function that will remove all the data from the local storage and the set the 
+  // variables to its default value.
   const Applogout = () => {
     logout();
     setCurrentUser(null);
@@ -82,6 +90,7 @@ function App() {
     removePersonalDriverFromStorage();
   }
 
+  // calling resolve login function during the time page is loading.
   useEffect(() => {
     resolveLogin();
   }, []);
@@ -89,6 +98,7 @@ function App() {
   return (
       <div>
         <nav className="navbar navbar-expand navbar-dark nav">
+          {/* Link to home page  */}
           <Link to={"/"} className="navbar-brand">
             Cab Company
           </Link>
@@ -97,6 +107,7 @@ function App() {
             {currentUser && (
               <li className="nav-item">
               <Link to={"/cabs"} className="nav-link">
+                {/* This will show the list of cabs */}
                 Cabs
               </Link>
               </li>
@@ -106,6 +117,7 @@ function App() {
               <>
               <li className="nav-item">
               <Link to={"/cabsSave"} className="nav-link">
+                {/* option to add a cab */}
                 Add a Cab
               </Link>
             </li>
@@ -117,21 +129,25 @@ function App() {
               <>
                 <li className="nav-item">
                   <Link to={"/allRequests"} className="nav-link">
+                    {/*List of Requests */}
                     Requests
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link to={"/customers"} className="nav-link">
+                    {/* List of Customers */}
                     Customers
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link to={"/drivers"} className="nav-link">
+                    {/* List of Drivers */}
                     Drivers
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link to={"/cabCustomerList"} className="nav-link">
+                    {/* List of Customer-Cab bookings */}
                     Customer Cab Info
                     </Link>
                 </li>
@@ -149,11 +165,13 @@ function App() {
                 <>
                 <li>
                   <a href = "/registerAdmin" className="nav-link">
+                    {/* Option to register a new Admin */}
                     Register New Admin
                   </a>
                 </li>
               <li>
                 <a href = "/registerDriver" className="nav-link">
+                  {/* Option to register a new driver*/}
                   Register New Driver
                 </a>
               </li>
@@ -165,18 +183,21 @@ function App() {
                 
                 <li className="nav-item">
                   <Link to={"/requestForCustomer"} className="nav-link">
+                    {/* Option to see the pending Requests */}
                     Pending Requests
                   </Link>
                 </li>
 
                 <li className="nav-item">
                   <Link to={"/cabCustomerByCustomer"} className="nav-link">
+                    {/* Option to see his/her Cab Appointments */}
                     Cab Appointments
                   </Link>
                 </li>
 
                 <li className="nav-item">
                   <Link to={"/customerDetail"} className="nav-link">
+                    {/* Option to see profile  .*/}
                     Profile
                   </Link>
                 </li>
@@ -187,22 +208,26 @@ function App() {
                 <>
                 <li className="nav-item">
                   <Link to={"/requestForDriver"} className="nav-link">
+                    {/* Option to see the pending Requests. */}
                     Pending Requests
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link to={"/cabsforDriver"} className="nav-link">
+                    {/* Option to see driver's cabs */}
                     See my cabs
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link to={"/cabCustomerByDriver"} className="nav-link">
+                    {/* Option to see his appointments */}
                     Cabs Appointments
                   </Link>
                 </li>
 
                 <li className="nav-item">
                   <Link to={"/personalDriverDetail"} className="nav-link">
+                    {/* Option to see profile. */}
                     Profile
                   </Link>
                 </li>
@@ -211,6 +236,7 @@ function App() {
 
               <li className="nav-item">
                 <a href="/login" className="nav-link" onClick={Applogout}>
+                  {/* Log out function */}
                   Log out
                 </a>
               </li>
@@ -220,12 +246,14 @@ function App() {
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link to={"/login"} className="nav-link">
+                  {/* Login function */}
                   Login
                 </Link>
               </li>
 
               <li className="nav-item">
                 <Link to={"/registerCustomer"} className="nav-link">
+                  {/* Sign up function */}
                   Sign Up
                 </Link>
               </li>
