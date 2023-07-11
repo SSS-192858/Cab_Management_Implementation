@@ -1,6 +1,6 @@
 import React from "react";
 import { setCabInStorage } from "../services/localStorageHandler";
-
+import {Link} from 'react-router-dom';
 //list item component to display cab details
 const CabListItem = ({cab}) => {
 
@@ -11,7 +11,7 @@ const CabListItem = ({cab}) => {
 
     //clickable link to display the details of the cab when clicked
     return (
-        <a href="/cabDetails">
+        <Link to={"/cabDetails"}>
             <div className="card1" onClick={handleClick}>
                 <div className="card-body">
                     <h3>Cab-Reg-No. - {cab.reg_no}</h3>
@@ -21,7 +21,7 @@ const CabListItem = ({cab}) => {
                     <p>Cab Fare - {cab.fare}</p>
                 </div>
             </div>
-        </a>
+        </Link>
     )
 }
 export default CabListItem;

@@ -1,5 +1,6 @@
 import React from "react";
 import { setDriverInStorage } from "../services/localStorageHandler";
+import {Link} from 'react-router-dom';
 
 //list item component to display driver details
 const DriverListItem = ({driver}) => {
@@ -11,7 +12,7 @@ const DriverListItem = ({driver}) => {
 
     //clickable link to go to the driver details page when clicked
     return (
-    <a href="/driverDetail">
+    <Link to={"/driverDetail"}>
         <div className="card1" onClick={handleClick}>
             <div className="card-body">
             <h3>Driver Name - {driver.driverName}</h3>
@@ -20,7 +21,7 @@ const DriverListItem = ({driver}) => {
                 <p>Driver Phone - {driver.phone}</p>
             </div>
         </div>
-    </a>
+    </Link>
     )
 }
 

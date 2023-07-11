@@ -13,7 +13,7 @@ export const CustomerCabListItem = ({customerCab}) => {
 
     //clickable link to display the details of the cab customer record when clicked
     return (
-    <a href="/cabCustomerDetails">
+    <Link to={"/cabCustomerDetails"}>
     <div className="card1" onClick={handleClick}>
         <div className='card-body'>
             <h3>Cab- {customerCab.cab.reg_no}</h3>
@@ -29,7 +29,7 @@ export const CustomerCabListItem = ({customerCab}) => {
             
         </div>
     </div>
-    </a>
+    </Link>
   )
 }
 
