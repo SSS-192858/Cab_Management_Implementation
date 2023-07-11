@@ -1,6 +1,7 @@
 import React from "react";
 import {setRequestInStorage} from "../services/localStorageHandler";
 import dateFormat from 'dateformat';
+import {Link} from 'react-router-dom';
 
 //list item component to display cab customer request details
 const CabRequestListItem = ({request}) => {
@@ -12,7 +13,7 @@ const CabRequestListItem = ({request}) => {
 
     //clickable link to display the details of the request record when clicked    
     return (
-        <a href="/requestDetails">
+        <Link to={"/requestDetails"}>
             <div className="card1" onClick={handleClick}>
                 <div className="card-body">   
                     <h3>Cab- {request.cab.reg_no}</h3>
@@ -28,7 +29,7 @@ const CabRequestListItem = ({request}) => {
                     
                 </div>
             </div>
-        </a>
+        </Link>
     )
 }
 

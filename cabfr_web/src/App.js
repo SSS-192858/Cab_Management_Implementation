@@ -164,16 +164,16 @@ function App() {
               {isAdmin && (
                 <>
                 <li>
-                  <a href = "/registerAdmin" className="nav-link">
+                  <Link to = {"/registerAdmin"} className="nav-link">
                     {/* Option to register a new Admin */}
                     Register New Admin
-                  </a>
+                  </Link>
                 </li>
               <li>
-                <a href = "/registerDriver" className="nav-link">
+                <Link to = {"/registerDriver"} className="nav-link">
                   {/* Option to register a new driver*/}
                   Register New Driver
-                </a>
+                </Link>
               </li>
               </>
               )}
@@ -235,10 +235,10 @@ function App() {
               )}
 
               <li className="nav-item">
-                <a href="/login" className="nav-link" onClick={Applogout}>
+                <Link to={"/login"} className="nav-link" onClick={Applogout}>
                   {/* Log out function */}
                   Log out
-                </a>
+                </Link>
               </li>
 
             </div>
