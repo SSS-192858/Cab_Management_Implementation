@@ -57,7 +57,7 @@ public class WebSecurityConfig {
                             .requestMatchers(HttpMethod.GET, "/dummy_driver").hasRole("DRIVER")
                             .requestMatchers(HttpMethod.GET, "/customer/getAll").hasRole("ADMIN")
                             .requestMatchers(HttpMethod.GET,"/customer/getCustomer/**").hasAnyRole("CUSTOMER", "ADMIN")
-                            .requestMatchers(HttpMethod.DELETE, "/customer/delete/**").hasAnyRole("CUSTOMER", "ADMIN")
+                            .requestMatchers(HttpMethod.DELETE, "/customer/delete/**").hasAnyRole("ADMIN")
                             .requestMatchers(HttpMethod.POST, "/customer/save").hasRole("CUSTOMER")
                             .requestMatchers(HttpMethod.PUT, "/customer/update").hasRole("CUSTOMER")
                             .requestMatchers(HttpMethod.GET, "/driver/getAll").hasRole("ADMIN")
