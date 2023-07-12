@@ -201,29 +201,30 @@ Also, in order to view all the json object formats of the requests that can be m
 
 ## Frontend
 
-The frontend of the application is written in React.js. The folder containing the same is **elecfr_web** There is a single nav bar which shows options based on who is logged in, (customer, driver, admin or no one), and provides to links to go to these web pages. The components are roughly classified into the following types:
+The frontend of the application is written in React.js. The folder containing the same is **cabfr_web** There is a single nav bar which shows options based on who is logged in, (customer, driver, admin or no one), and provides to links to go to these web pages. The components are roughly classified into the following types:
 
 1. **Validation functions** - These are used to validate the entries filled in the various forms, and enforce validation rules on the inputs being sent, and display error messages to the respective components for any invalid inputs. They are stored in the validators subdirectory in src. The files are as follows - 
 
     1. **validators.js** - the common validators to be used by all the components
-    2. **driverUpdateValidator.js** - the validator for the form shown to update an driver's details.
+    2. **DriverUpdateValidator.js** - the validator for the form shown to update an driver's details.
     3. **loginFormValidator.js** - the validator for the form shown to login to the application.
     4. **signupAdminValidator.js** - the validator for the form shown to register a new admin account to the application.
-    5. **signupdriverValidator.js** - the validator for the form shown to register a new driver account to the application.
-    6. **signupcustomerValidator.js** - the validator for the form shown to register a new customer account to the application.
-    7. **cabsRequestValidator.js** - the validator for the form shown to register a new request by a given customer.
-    8. **cabsSaveValidator.js** - the validator for the form shown to save/update a cabs.
+    5. **signupDriverValidator.js** - the validator for the form shown to register a new driver account to the application.
+    6. **signupCustomerValidator.js** - the validator for the form shown to register a new customer account to the application.
+    7. **RequestCabValidator.js** - the validator for the form shown to register a new request by a given customer.
+    8. **CabSaveValidator.js** - the validator for the form shown to save/update a cabs.
 
 2. **Services** - These contain services used by the application to handle variables in local storage, and to send requests to the backend, which runs on localhost:8080. They are stored in services subdirectory of src, and are as follows - 
 
     1. **auth_header.js** - a single function to extract the jwt token stored in local storage, to send in requests as a header.
     2. **auth_services.js** - contains all functions to handle authentication services in the application (login, signup, token management etc.)
-    3. **localStorage_services.js** - a number of variables are stored in local storage to prevent loss in case of page refresh, this file contains all functions to handle the same.
+    3. **localStorageHandler.js** - a number of variables are stored in local storage to prevent loss in case of page refresh, this file contains all functions to handle the same.
     4. **user_services.js** - all the other functions to send varied requests to the backend are stored here.
+    5. **request_services.js** - contains all functions to handle request related services.
 
-3. **List items** - These contain the list items shown on screen as a part of the list components. All list item components are clickable, and show a summary of the items they represent, and provide links to see full details of the item. Kindly refer to the files to find comments to explain the working of the same. They are present in the common subdirectory of the src directory.
+3. **List items** - These contain the list items shown on screen as a part of the list components. All list item components are clickable, and show a summary of the items they represent, and provide links to see full details of the item. Kindly refer to the files to find comments which explain the working of the same. They are present in the common subdirectory of the src directory and the name of the directory is *commons*.
 
-4. **Components** - These are the screens of the application which are shown to the user. They contain forms to create/ update data present in the db, lists to see lists of various entities requested by the user (customers, cabss, requests etc) and details components to see the details of a particular entity. The names of the files can be used to identify which screen serves which purpose. We only show screens to the user which he is allowed to access. Kindly refer to the comments present in various screens to find details of implementation. They are present in the components subdirectory of the src folder.
+4. **Components** - These are the screens of the application which are shown to the user. They contain forms to create/ update data present in the db, lists to see lists of various entities requested by the user (customers, cabs, requests etc) and details components to see the details of a particular entity. The names of the files can be used to identify which screen serves which purpose. We only show screens to the user which he/she is allowed to access. Kindly refer to the comments present in various screens to find details of implementation. They are present in the components subdirectory of the src folder.
 
 5. **Dockerfile** - The dockerfile is also available for the frontend. It builds the project, installs required node modules, and runs the command to provide an image for the frontend.
 
