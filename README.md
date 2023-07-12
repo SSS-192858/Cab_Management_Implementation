@@ -158,7 +158,7 @@ The various endpoints are -
 
 * **/customer/getAll** - See all customers registered with the organization. Only an admin has access to this endpoint.
 * **/customer/getCustomer/\*\*** - Get details of a particular customer by their customer id. This can be used by a customer or an admin to view details of the customer.
-* **/customer/delete/\*\*** - Delete a customer record from the database(The *customer id* will be pass as *id - (Path Variable)*). Admins and customers have access to this endpoint
+* **/customer/delete/\*\*** - Delete a customer record from the database(The *customer id* will be pass as *id - (Path Variable)*). Admins have access to this endpoint
 * **/customer/save** - Save details of a customer when registering them. Customers have access this endpoint.
 * **/customer/update** - Update details of an already registered customer. Can be done by a customer wanting to update their own details.
 * **/customer/getByUser** - Get details of a customer from user id, which is obtained by sending the jwt token as part of an authorization header, using which the customer details can be accesed. Only accessible to a customer trying to see their personal details.
@@ -177,7 +177,7 @@ Only Admins have access to this functionality and endpoint.
 * **/customerCab/\*\*** - Used to get a particular customer cabs record whose *id* is passed as *Path Variable - id*. This endpoint is accessible by all users.
 * **/customerCab/accept** - Used to accept a request made by a customer and then save it as a customer cabs relation in the database. Only Accessible by admins.
 * **/customerCab/delete/\*\*** - Used to delete a customer cabs record. Accessible to all users.
-* **/customerCab/driver/\*\*** - used to get the list of customer cabs records of customers who are enrolled under the cabss that are driven by a particular driver.
+* **/customerCab/driver/\*\*** - used to get the list of customer cabs records of customers who are enrolled under the cabs that are driven by a particular driver.
 Drivers and Admins have access to this endpoint.
 * **/customerCab/customer/\*\*** - used to get the list of customer cabs records of cabs that the customer has enrollend himself in.Customers and admins have access to this endpoint.
 * **/customerCab/cab/\*\*** - used to get the list of studnet cabs records of cabs whose *registration_number* will be passed as *Path Variable*.Only drivers and admins have access to this endpoint.
