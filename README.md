@@ -90,13 +90,13 @@ respective documentation.
     [Node](https://nodejs.org/en)
 2. Download the four softwares suitable for your operating system.
 3. Next clone this repository.
-4. First go to the sql folder present at the same level `cd sql` or any other equivalent in your OS.
-5. Then run the follwing command in your terminal `source create.sql`. This shall create the necessary database in you local computer. This can also be done by opening the script in workbench, and running it.
+4. First go to the SQL folder present at the same level `cd SQL` or any other equivalent in your OS.
+5. Then run the follwing command in your terminal `source create_script.sql`. This shall create the necessary database in you local computer. This can also be done by opening the script in workbench, and running it.
 6. Next go to elecfr_web and type the following in the terminal. `npm install` This shall download all the necessary packages required to run the front-end in your local system.
 7. Now go to the ElectiveManagement folder and then to src/main/resources. `cd src/main/resources`/ it's equivalent in your OS.
 8. Go to *application.properties* file and then **comment in the first three lines**.
 9. Make sure to add your *username* and *password* in those fields.
-10. Next run the spring boot application(*ElectiveManagementApplication*) using any IDE (we recommend I*ntelliJ), or type the following command in your terminal ```mvn spring-boot:run```
+10. Next run the spring boot application(*ElectiveManagementApplication*) using any IDE (we recommend IntelliJ), or type the following command in your terminal ```mvn spring-boot:run```
 11. Now head back to the src folder in elecfr_web and run the *App.js* using the `npm start` command.
 12. You can now access the frontend using any browser at http://localhost:3000/
 
