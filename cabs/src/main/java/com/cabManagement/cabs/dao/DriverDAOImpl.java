@@ -52,8 +52,8 @@ public class DriverDAOImpl implements DriverDAO{
     // update details of existing driver
     @Override
     @Transactional
-    public void updateDriver(Driver Driver) {
-        this.entityManager.merge(Driver);
+    public Driver updateDriver(Driver Driver) {
+        return this.entityManager.merge(Driver);
     }
 
     // using cab registration number, find driver assigned to the cab

@@ -9,7 +9,7 @@ public interface DriverDAO {
     public Driver save(Driver Driver);
     public Driver getDriverbyId(int id);
     public Driver deletebyId(int id);
-    public void updateDriver(Driver Driver);
+    public Driver updateDriver(Driver Driver);
     public List<Driver> findAllDrivers();
     public Driver getDriverByCabRegNo(String reg_no);
     public Driver getDriverByUserId(Integer id);
