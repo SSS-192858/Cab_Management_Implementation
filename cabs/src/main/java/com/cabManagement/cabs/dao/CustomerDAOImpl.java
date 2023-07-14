@@ -54,8 +54,8 @@ public class CustomerDAOImpl implements CustomerDAO {
     // update details of existing customer
     @Override
     @Transactional
-    public void updateCustomer(Customer customer) {
-        this.entityManager.merge(customer);
+    public Customer updateCustomer(Customer customer) {
+        return this.entityManager.merge(customer);
     }
 
     @Override

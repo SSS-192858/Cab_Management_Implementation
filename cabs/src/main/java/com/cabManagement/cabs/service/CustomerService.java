@@ -58,8 +58,7 @@ public class CustomerService {
         if(c == null){
             throw new CustomerNotFoundException();
         }
-        this.customerDAO.updateCustomer(customer);
-        return customer;
+        return this.customerDAO.updateCustomer(customer);
     }
 
     //method to get customer data using USER ID
