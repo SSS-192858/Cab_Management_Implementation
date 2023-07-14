@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { getAllRequests, getRequestByCabCode, getRequestByCustomerID, getRequestByDriverId} from "../services/request_services";
 import { useEffect } from "react";
-import {getCabFromStorage, getCustomerFromStorage, getDriverFromStorage} from "../services/localStorageHandler";
+import {getCabFromStorage, getCustomerFromStorage, getDriverFromStorage, getPersonalDriverFromStorage} from "../services/localStorageHandler";
 import CabRequestListItem from "../common/CabRequestListItem";
 
 //component to show the list of cabs requested
@@ -30,7 +30,7 @@ const CabRequestList = ({choice}) => {
         }
         else if(choice === 4){
             //else if choice = 4, show requests for cabs assigned to a driver
-            driver = await getDriverFromStorage();
+            driver = await getPersonalDriverFromStorage();
             const list = await getRequestByDriverId(driver.id);
             setRequests(list);
         }

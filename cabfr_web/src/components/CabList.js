@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { getCabs, getCabsByDriverId } from '../services/user_services';
 import CabListItem from '../common/cabListItem';
-import { getDriverFromStorage } from '../services/localStorageHandler';
+import { getDriverFromStorage, getPersonalDriverFromStorage } from '../services/localStorageHandler';
 
 //component to display the list of cabs
 function CabList({ choice }) {
@@ -10,7 +10,7 @@ function CabList({ choice }) {
 
     //driver retrieved from storage
     const [driver, setDriver] = useState(() => {
-        const temp = getDriverFromStorage();
+        const temp = getPersonalDriverFromStorage();
         return temp;
     })
 
