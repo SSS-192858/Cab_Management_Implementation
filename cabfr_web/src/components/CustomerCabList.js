@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import CustomerCabListItem from '../common/CustomerCabListItem';
 import { getCustomerCabs, getCustomerCabsByCustomerId, getCustomerCabsByDriverId, getCustomerCabsbyCabId } from '../services/user_services';
-import { getCabFromStorage, getCustomerFromStorage, getDriverFromStorage } from '../services/localStorageHandler';
+import { getCabFromStorage, getCustomerFromStorage, getDriverFromStorage, getPersonalDriverFromStorage } from '../services/localStorageHandler';
 
 // will show all the bookings list.
 const CustomerCabList = ({choice}) => {
@@ -32,7 +32,7 @@ const CustomerCabList = ({choice}) => {
     }
     else if (choice === 4){
       // will get all bookings for a driver.
-      driver = getDriverFromStorage();
+      driver = getPersonalDriverFromStorage();
       const response = await getCustomerCabsByDriverId(driver.id);
       setcustomerCabs(response);
     }
