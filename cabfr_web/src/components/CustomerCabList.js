@@ -40,7 +40,7 @@ const CustomerCabList = ({choice}) => {
 
   useEffect(() => {
     getRecords();
-  },[])
+  },[choice])
     
   return (
     <>

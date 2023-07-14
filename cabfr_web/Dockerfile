@@ -19,8 +19,16 @@ COPY . ./
 # Build the application
 RUN npm run build
 
-ENV NODE_ENV production
-# Expose the port on which the app will be running (3000 is the default that `serve` uses)
+FROM nginx:stable-alpine
+# Nginx configuration
+COPY nginx.conf /etc/nginx/nginx.conf
+
+COPY --from=build /app/build /usr/share/nginx/html
 EXPOSE 3000
-# Start the app
-CMD [ "npx", "serve", "build" ]
+CMD ["nginx", "-g", "daemon off;"]
+
+# ENV NODE_ENV production
+# # Expose the port on which the app will be running (3000 is the default that `serve` uses)
+# EXPOSE 3000
+# # Start the app
+# CMD [ "npx", "serve", "build" ]

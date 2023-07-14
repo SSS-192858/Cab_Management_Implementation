@@ -38,7 +38,7 @@ const CabRequestList = ({choice}) => {
 
     useEffect(() => {
         getRequests();
-    }, [])
+    }, [choice])
 
     return (
     <>
