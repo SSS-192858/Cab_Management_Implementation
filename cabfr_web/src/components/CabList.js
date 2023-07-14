@@ -27,7 +27,7 @@ function CabList({ choice }) {
 
     useEffect(() => {
         getCabsComp();
-    }, [])
+    }, [choice])
 
     return ( <> 
     {/* to show the list of cabs, if no cabs, show banner saying "Nothing to show" */}

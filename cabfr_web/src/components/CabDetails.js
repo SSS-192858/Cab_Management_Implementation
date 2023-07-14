@@ -96,15 +96,15 @@ const CabDetails = ({isCustomer,isAdmin,isDriver}) => {
                 <div className="card-body">
                     <h1 className="card-title">{cab.reg_no}</h1>
                     <div className="card-text">
-                        <p>{cab.model}</p>
-                        <p>{cab.colour}</p>
-                        <p>{cab.fare}</p>
+                        <p>Cab Model - {cab.model}</p>
+                        <p>Cab Colour- {cab.colour}</p>
+                        <p>Cab Fare - {cab.fare}</p>
 
                         {(cab.driver) ? <>
-                            <p>{cab.driver.id}</p>
-                            <p>{cab.driver.driverName}</p>
-                            <p>{cab.driver.email}</p>
-                            <p>{cab.driver.phone}</p>
+                            <p>Driver ID- {cab.driver.id}</p>
+                            <p>Driver Name -{cab.driver.driverName}</p>
+                            <p>Driver Email -{cab.driver.email}</p>
+                            <p>Driver Phone -{cab.driver.phone}</p>
                             
                         </> : null}
                     </div>

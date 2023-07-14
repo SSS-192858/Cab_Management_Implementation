@@ -9,7 +9,7 @@ const CustomerListItem = ({customer}) => {
     }
 
     return (
-    <Link to={"customerDetail"}>
+    <Link to={"/customerDetail"}>
         <div className="card1" onClick={handleClick}>
            <div className="card-body">
                 <h3>Customer Name {customer.customerName}</h3>
