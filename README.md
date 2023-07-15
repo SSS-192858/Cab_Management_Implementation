@@ -249,4 +249,4 @@ The frontend of the application is written in React.js. The folder containing th
 
 ## Other Links
 1. The link to the digital asset engineering guide is as follows - https://docs.google.com/document/d/1cFKj3P29J-JkyX3x5flS6IWnTE6GJt9SdBS4ZewAlro/edit?usp=sharing
-2. The link to the folder containing the demo videos is as follows - https://drive.google.com/drive/u/0/folders/1cv94AmvWgTYDokt-_pNo8sPMR-lpHDFC 
+2. The link to the folder containing the demo videos is as follows - https://drive.google.com/drive/folders/1cv94AmvWgTYDokt-_pNo8sPMR-lpHDFC?usp=sharing
