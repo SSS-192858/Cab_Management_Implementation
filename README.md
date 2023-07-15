@@ -245,8 +245,6 @@ The frontend of the application is written in React.js. The folder containing th
 
 4. **Components** - These are the screens of the application which are shown to the user. They contain forms to create/ update data present in the db, lists to see lists of various entities requested by the user (customers, cabs, requests etc) and details components to see the details of a particular entity. The names of the files can be used to identify which screen serves which purpose. We only show screens to the user which he/she is allowed to access. Kindly refer to the comments present in various screens to find details of implementation. They are present in the components subdirectory of the src folder.
 
-**One thing we would like to mention is that if a driver is assigned to a cab, then the cab can't be deleted. You have to manually remove the driver first, and then delete it.**
-
 5. **Dockerfile** - The dockerfile is also available for the frontend. It builds the project, installs required node modules, and runs the command to provide an image for the frontend.
 
 ## Other Links
